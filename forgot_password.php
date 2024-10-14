@@ -87,6 +87,16 @@
             $('#resetPasswordForm').on('submit', function(e) {
                 e.preventDefault(); // Ngăn chặn hành động submit mặc định
 
+                // Hiển thị cảnh chờ (loading) bằng SweetAlert
+                Swal.fire({
+                    title: 'Please wait...',
+                    text: 'Processing your request',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading(); // Hiển thị loader
+                    }
+                });
+
                 // Thêm action vào dữ liệu gửi đi
                 var formData = $(this).serialize() + '&action=request_reset'; // Gửi email và action
 
@@ -96,7 +106,9 @@
                     data: formData, // Gửi dữ liệu từ form
                     dataType: 'json', // Kiểu dữ liệu phản hồi
                     success: function(response) {
-                        // Hiển thị thông báo bằng SweetAlert
+                        Swal.close(); // Đóng cảnh chờ khi có phản hồi
+
+                        // Hiển thị thông báo kết quả bằng SweetAlert
                         if (response.status === 'success') {
                             Swal.fire({
                                 title: 'Success!',
@@ -114,6 +126,8 @@
                         }
                     },
                     error: function() {
+                        Swal.close(); // Đóng cảnh chờ khi xảy ra lỗi
+
                         Swal.fire({
                             title: 'Error!',
                             text: 'An error occurred while processing your request.',
@@ -125,6 +139,7 @@
             });
         });
     </script>
+
 </body>
 
 </html>

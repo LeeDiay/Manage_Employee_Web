@@ -86,7 +86,7 @@ function sendPasswordResetEmail($email, $resetToken) {
 
         $mail->isHTML(true);
         $mail->Subject = 'Password Reset Request';
-        $resetLink = "http://127.0.0.1/leave_portal/forgot_password_token.php?token=$resetToken";
+        $resetLink = "http://127.0.0.1/Management/forgot_password_token.php?token=$resetToken";
         $mail->Body = "<p>Click <a href='$resetLink'>here</a> to reset your password.</p>";
 
         $mail->send();
