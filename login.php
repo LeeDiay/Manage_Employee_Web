@@ -28,7 +28,7 @@ function login($email, $password) {
             $recordsRow = mysqli_fetch_assoc($staffQuery);
             return checkAndSetSession($recordsRow);
         } else {
-            return array('status' => 'error', 'message' => 'Invalid Details');
+            return array('status' => 'error', 'message' => 'Sai thông tin tài khoản hoặc mật khẩu');
         }
     }
 }
@@ -69,7 +69,7 @@ function checkAndSetSession($userRecord) {
 
     return array(
         'status' => 'success',
-        'message' => 'Successfully logged in',
+        'message' => 'Đăng nhập thành công',
         'role' => $userType,
         'password_reset' => $passwordReset
     );

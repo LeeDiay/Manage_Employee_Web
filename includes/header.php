@@ -12,7 +12,7 @@
     <meta name="author" content="#">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Favicon icon -->
-    <link rel="icon" href="..\files\assets\images\favicon.ico" type="image/x-icon">
+    <link rel="icon" href="..\uploads\images\logo.avif" type="image/png">
     <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="..\files\bower_components\font-awesome\css\font-awesome.min.css">
