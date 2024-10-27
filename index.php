@@ -373,6 +373,13 @@
             }
         });
     });
+    $(document).ready(function() {
+        $('#loginModal').on('keypress', function(event) {
+            if (event.which === 13) { // Kiểm tra phím Enter
+                $('#login-form').click(); // Gọi hàm đăng nhập
+            }
+        });
+    });
 </script>
 <style>
     body {
