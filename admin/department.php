@@ -169,12 +169,12 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline"  id="pnotify-desktop-success">
-                                                    <h4>Department List</h4>
+                                                    <h4>Danh sách phòng ban</h4>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class=" col-lg-4">
-                                            <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" data-modal="modal-13"> <i class="icofont icofont-plus m-r-5"></i> New Department
+                                            <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" data-modal="modal-13"> <i class="icofont icofont-plus m-r-5"></i> Thêm phòng ban mới
                                             </button>
                                         </div>
                                     </div>
@@ -192,9 +192,9 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <div class="dropdown-secondary dropdown">
                                                             <button class="btn btn-primary btn-mini dropdown-toggle waves-effect waves-light" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $department['name'] ?></button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdown1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                                                <a class="dropdown-item waves-light waves-effect" href="staff_list.php?department=<?= urlencode($department['name']) ?>"><span class="point-marker bg-danger"></span>View Staff</a>
-                                                                <a class="dropdown-item waves-light waves-effect edit-btn md-trigger" href="#" data-modal="modal-13" data-original-title="Edit" data-id="<?= $department['id'] ?>" data-name="<?= $department['name'] ?>" data-description="<?= $department['desc'] ?>"><span class="point-marker bg-warning"></span>Edit</a>
-                                                                <a class="dropdown-item waves-light waves-effect delete-btn" href="#" data-original-title="Delete" data-id="<?= $department['id'] ?>"><span class="point-marker bg-success"></span>Delete</a>
+                                                                <a class="dropdown-item waves-light waves-effect" href="staff_list.php?department=<?= urlencode($department['name']) ?>"><span class="point-marker bg-danger"></span>Xem</a>
+                                                                <a class="dropdown-item waves-light waves-effect edit-btn md-trigger" href="#" data-modal="modal-13" data-original-title="Edit" data-id="<?= $department['id'] ?>" data-name="<?= $department['name'] ?>" data-description="<?= $department['desc'] ?>"><span class="point-marker bg-warning"></span>Sửa thông tin</a>
+                                                                <a class="dropdown-item waves-light waves-effect delete-btn" href="#" data-original-title="Delete" data-id="<?= $department['id'] ?>"><span class="point-marker bg-success"></span>Xóa</a>
                                                             </div>
                                                             <!-- end of dropdown menu -->
                                                         </div>
@@ -212,7 +212,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <?php else: ?>
                                                             <h5>No</h5>
                                                         <?php endif; ?>
-                                                        <p class="text-muted">Total Staff</p>
+                                                        <p class="text-muted">Tổng số nhân viên</p>
                                                     </div>
                                                     <div class="design-description d-inline-block">
                                                         <?php if ($department['managerCount'] > 0): ?>
@@ -220,7 +220,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <?php else: ?>
                                                             <h5>No</h5>
                                                         <?php endif; ?>
-                                                        <p class="text-muted">Total Managers</p>
+                                                        <p class="text-muted">Số người quản lí</p>
                                                     </div>
                                                     <div class="team-box p-b-20">
                                                         <p class="d-inline-block m-r-20 f-w-400">
@@ -249,7 +249,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         </div>
                                                     </div>
                                                     <div class="progress-box">
-                                                        <p class="d-inline-block m-r-20 f-w-400">Progress</p>
+                                                        <p class="d-inline-block m-r-20 f-w-400">Tiến độ công việc</p>
                                                         <div class="progress d-inline-block">
                                                                 <?php
                                                                 $staffPercentage = $totalStaff > 0 ? round(($department['staffCount'] / $totalStaff) * 100) : 0;
@@ -266,21 +266,21 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                         <!-- Add Contact Start Model start-->
                                            <div class="md-modal md-effect-13 addcontact" id="modal-13">
                                                 <div class="md-content" style="max-width: 400px;">
-                                                    <h3 class="f-26">Add Department</h3>
+                                                    <h3 class="f-26">Thêm phòng ban mới</h3>
                                                     <div >
                                                          <input hidden type="text" class="form-control department-id" name="department-id">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="icofont icofont-bank-alt"></i></span>
-                                                            <input type="text" class="form-control dname" name="dname" placeholder="Department Name">
+                                                            <input type="text" class="form-control dname" name="dname" placeholder="Tên phòng ban">
                                                         </div>
                                                         <div class="input-group">
-                                                            <textarea class="form-control description" name="description" placeholder="Description here" spellcheck="false" rows="5"></textarea>
+                                                            <textarea class="form-control description" name="description" placeholder="Mô tả..." spellcheck="false" rows="5"></textarea>
                                                         </div>
                                                         
                                                         <div class="text-center">
-                                                            <button type="submit"  id="save-btn" class="btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block save_btn">Save</button>
-                                                            <button type="submit" id="update-btn" class="btn btn-primary waves-effect m-r-20 f-w-600 update_btn" style="display:none;">Update</button>
-                                                            <button type="button" class="btn btn-primary waves-effect m-r-20 f-w-600 md-close d-inline-block close_btn">Close</button>
+                                                            <button type="submit"  id="save-btn" class="btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block save_btn">Lưu</button>
+                                                            <button type="submit" id="update-btn" class="btn btn-primary waves-effect m-r-20 f-w-600 update_btn" style="display:none;">Sửa đổi</button>
+                                                            <button type="button" class="btn btn-primary waves-effect m-r-20 f-w-600 md-close d-inline-block close_btn">Đóng</button>
                                                         </div>
                                                     </div>
                                                </div>
@@ -323,7 +323,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                 if (data.dname.trim() === '' || data.description.trim() === '') {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please all fieds are required. Kindly fill all',
+                        text: 'Vui lòng điền đầy đủ thông tin',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -338,7 +338,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                         if (response.status == 'success') {
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Inserted Successfully',
+                                title: 'Thêm mới thành công',
                                 html:
                                 'Name : ' + data['dname'],
                                 confirmButtonColor: '#01a9ac',
@@ -398,7 +398,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                 if (data.dname.trim() === '' || data.description.trim() === '') {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please all fieds are required. Kindly fill all',
+                        text: 'Vui lòng điền đầy đủ thông tin',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -413,9 +413,9 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                         if (response.status == 'success') {
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Updated Successfully',
+                                title: 'Cập nhật thành công',
                                 html:
-                                'Name : ' + data['dname'],
+                                'Tên : ' + data['dname'],
                                 confirmButtonColor: '#01a9ac',
                                 confirmButtonText: 'OK'
                             }).then((result) => {
@@ -444,13 +444,13 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
         $('.delete-btn').click(function(){
         (async () => {
             const { value: formValues } = await Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Bạn có chắc muốn xóa?',
+                text: "Bạn sẽ không thể khôi phục nó!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Đúng vậy!'
             })
 
             if (formValues) {
@@ -469,8 +469,8 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                     if (response && responseObject.status === 'success') {
                         // Show success message
                         Swal.fire(
-                            'Deleted!',
-                            'Department has been deleted.',
+                            'Xóa thành công',
+                            'Phòng ban đã được xóa.',
                             'success'
                         ).then((result) => {
                                 if (result.isConfirmed) {
@@ -482,15 +482,15 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                     } else {
                         // Show error message
                         Swal.fire(
-                            'Error!',
-                            'Failed to delete department.',
+                            'Lỗi',
+                            'Không thể xóa phòng ban.',
                             'error'
                         );
                     }
                 },
                 error: function(xhr, status, error) {
                     console.log("AJAX error: " + error);
-                    Swal.fire('Error!', 'Failed to delete department.', 'error');
+                    Swal.fire('Lỗi!', 'Có lỗi xảy ra', 'error');
                 }
 
             });

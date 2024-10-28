@@ -15,6 +15,6 @@ if ($result->num_rows > 0) {
     $newNumber = '001';
 }
 
-$newId = 'LLM ' . $newNumber;
+$newId = 'NV' . $newNumber;
 echo $newId;
 ?>

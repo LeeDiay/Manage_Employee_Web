@@ -1,5 +1,5 @@
 <?php 
-date_default_timezone_set('Africa/Accra');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 include('../includes/config.php');
 
 function updateLeaveType($id, $dname, $description, $status, $assigned) {
@@ -16,11 +16,11 @@ function updateLeaveType($id, $dname, $description, $status, $assigned) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Leave Type Updated Successfully');
+        $response = array('status' => 'success', 'message' => 'Cập nhật thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to update leave type');
+        $response = array('status' => 'error', 'message' => 'Cập nhật thất bại');
         echo json_encode($response);
         exit;
     }
@@ -30,7 +30,7 @@ function saveLeaveType($dname, $description, $status, $assigned) {
     global $conn;
 
     if (empty($dname) || empty($description) || empty($status) || empty($assigned)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin');
         echo json_encode($response);
         exit;
     }
@@ -43,7 +43,7 @@ function saveLeaveType($dname, $description, $status, $assigned) {
     $count = mysqli_num_rows($result);
 
     if ($count > 0) { 
-        $response = array('status' => 'error', 'message' => 'Leave Type already exists');
+        $response = array('status' => 'error', 'message' => 'Loại nghỉ phép đã tồn tại');
         echo json_encode($response);
         exit;
     } else {
@@ -54,11 +54,11 @@ function saveLeaveType($dname, $description, $status, $assigned) {
         mysqli_stmt_execute($stmt);
 
         if (mysqli_stmt_affected_rows($stmt) > 0) {
-            $response = array('status' => 'success', 'message' => 'Leave Type added successfully');
+            $response = array('status' => 'success', 'message' => 'Thêm thành công');
             echo json_encode($response);
             exit;
         } else {
-            $response = array('status' => 'error', 'message' => 'Failed to add leave type');
+            $response = array('status' => 'error', 'message' => 'Thất bại');
             echo json_encode($response);
             exit;
         }
@@ -73,11 +73,11 @@ function deleteLeaveType($id) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Leave Type Deleted Successfully');
+        $response = array('status' => 'success', 'message' => 'Xóa thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to delete leave type');
+        $response = array('status' => 'error', 'message' => 'Xóa thất bại');
         echo json_encode($response);
         exit;
     }

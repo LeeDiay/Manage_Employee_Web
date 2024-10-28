@@ -30,13 +30,13 @@ if (isset($_POST['empId'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $leaveTypesOptions = '<option value="" selected="">Select Leave type</option>';
+    $leaveTypesOptions = '<option value="" selected="">Chọn loại nghỉ phép</option>';
     if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $leaveTypesOptions .= '<option value="' . htmlspecialchars($row['leave_type_id']) . '">' . htmlspecialchars($row['leave_type']) . '</option>';
         }
     } else {
-        $leaveTypesOptions .= '<option value="" disabled>No leave types assigned</option>';
+        $leaveTypesOptions .= '<option value="" disabled>Không có loại nghỉ phép nào được giao</option>';
     }
 
     echo $leaveTypesOptions;
@@ -69,8 +69,7 @@ if (isset($_POST['empId'])) {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline">
-                                                   <h4>Leave Portal - Apply leave</h4>
-                                                      <span>Send all your leave request from here</span>
+                                                   <h4>Nộp đơn nghỉ phép</h4>
                                                  </div>
                                             </div>
                                         </div>
@@ -89,7 +88,7 @@ if (isset($_POST['empId'])) {
                                                             <form method="post" class="j-pro" id="j-pro" enctype="multipart/form-data" novalidate="">
                                                                 <div class="j-content">
                                                                     <div class="j-wrapper">
-                                                                        <h4 style="text-align: center;">Create New Leave</h4>
+                                                                        <h4 style="text-align: center;">Tạo đơn mới</h4>
                                                                     </div>
                                                                      <?php
                                                                         // Check if the user role is Admin and designation is Administrator
@@ -131,7 +130,7 @@ if (isset($_POST['empId'])) {
                                                                     <!-- start date -->
                                                                     <div class="j-unit">
                                                                         <div class="j-input">
-                                                                            <span style="margin-bottom: 8px;" class="j-hint">Start Date</span>
+                                                                            <span style="margin-bottom: 8px;" class="j-hint">Ngày bắt đầu</span>
                                                                             <input id="start_date" name="start_date" class="form-control" type="date">
                                                                             <span class="j-tooltip j-tooltip-right-top">Pick your start leave date</span>
                                                                         </div>
@@ -140,7 +139,7 @@ if (isset($_POST['empId'])) {
                                                                     <!-- start date -->
                                                                     <div class="j-unit">
                                                                         <div class="j-input">
-                                                                            <span style="margin-bottom: 8px;" class="j-hint">End Date</span>
+                                                                            <span style="margin-bottom: 8px;" class="j-hint">Ngày kết thúc</span>
                                                                             <input id="end_date" name="end_date" class="form-control" type="date">
                                                                             <span class="j-tooltip j-tooltip-right-top">Pick your end leave date</span>
                                                                         </div>
@@ -159,8 +158,8 @@ if (isset($_POST['empId'])) {
                                                                     <!-- start remarks -->
                                                                     <div class="j-unit">
                                                                         <div class="j-input">
-                                                                            <textarea placeholder="Additional info" spellcheck="true" name="remarks" id="remarks"></textarea>
-                                                                            <span class="j-tooltip j-tooltip-right-top">Any information about the leave</span>
+                                                                            <textarea placeholder="Nhập lí do..." spellcheck="true" name="remarks" id="remarks"></textarea>
+                                                                            <span class="j-tooltip j-tooltip-right-top">Lý do</span>
                                                                         </div>
                                                                     </div>
                                                                     <!-- end remarks -->
@@ -179,8 +178,8 @@ if (isset($_POST['empId'])) {
                                                                 </div>
                                                                  <!-- end /.content -->
                                                                 <div class="j-footer">
-                                                                    <button id="apply-leave" type="submit" class="btn btn-primary">Submit</button>
-                                                                    <button type="reset" class="btn btn-default m-r-20">Reset</button>
+                                                                    <button id="apply-leave" type="submit" class="btn btn-primary">Xác nhận</button>
+                                                                    <button type="reset" class="btn btn-default m-r-20">Xóa</button>
                                                                 </div>
                                                                 <!-- end /.footer -->
                                                             </form>

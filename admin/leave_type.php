@@ -124,7 +124,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline"  id="pnotify-desktop-success">
-                                                    <h4>Leave Types</h4>
+                                                    <h4>Các loại nghỉ phép</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,7 +139,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                 <!-- Product list card start -->
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" data-modal="modal-13"> <i class="icofont icofont-plus m-r-5"></i> New Leave Type
+                                                        <button type="button" class="btn btn-primary waves-effect waves-light f-right d-inline-block md-trigger" data-modal="modal-13"> <i class="icofont icofont-plus m-r-5"></i> Thêm mới
                                                         </button>
                                                     </div>
                                                     <div class="tab-content">
@@ -156,13 +156,13 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                         <table id="simpletable" class="table  table-striped table-bordered nowrap">
                                                                                             <thead>
                                                                                             <tr>
-                                                                                                <th>#</th>
-                                                                                                <th>Leave Type</th>
-                                                                                                <th>Description</th>
-                                                                                                <th>Assign Days</th>
-                                                                                                <th>Status</th>
-                                                                                                <th>Created</th>
-                                                                                                <th>Action</th>
+                                                                                                <th>ID</th>
+                                                                                                <th>Loại nghỉ phép</th>
+                                                                                                <th>Mô tả</th>
+                                                                                                <th>Thời gian</th>
+                                                                                                <th>Trạng thái</th>
+                                                                                                <th>Ngày tạo</th>
+                                                                                                <th>Hành động</th>
                                                                                             </tr>
                                                                                         </thead>
                                                                                         <tbody>
@@ -197,9 +197,9 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                                             ?>
                                                                                                         </td>
                                                                                                         <td class="action-icon">
-                                                                                                            <a href="#" data-modal="modal-13" class="m-r-15 text-muted edit-btn md-trigger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" data-id="<?php echo $row['id']; ?>" data-name="<?php echo $row['leave_type']; ?>" data-description="<?php echo $row['description']; ?>" data-assigned="<?php echo $row['assign_days']; ?>" data-status="<?php echo $row['status']; ?>">
+                                                                                                            <a href="#" data-modal="modal-13" class="m-r-15 text-muted edit-btn md-trigger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Sửa" data-id="<?php echo $row['id']; ?>" data-name="<?php echo $row['leave_type']; ?>" data-description="<?php echo $row['description']; ?>" data-assigned="<?php echo $row['assign_days']; ?>" data-status="<?php echo $row['status']; ?>">
                                                                                                             <i class="icofont icofont-ui-edit"></i></a>
-                                                                                                            <a href="#" class="delete-btn text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" data-id="<?php echo $row['id']; ?>"><i class="icofont icofont-ui-delete"></i></a>
+                                                                                                            <a href="#" class="delete-btn text-muted" data-toggle="tooltip" data-placement="top" title="" data-original-title="Xóa" data-id="<?php echo $row['id']; ?>"><i class="icofont icofont-ui-delete"></i></a>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                     <?php
@@ -235,20 +235,20 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                         <!-- Add Contact Start Model start-->
                                            <div class="md-modal md-effect-13 addcontact" id="modal-13">
                                                 <div class="md-content" style="max-width: 400px;">
-                                                    <h3 class="f-26">Add Leave Type</h3>
+                                                    <h3 class="f-26">Thêm loại nghỉ phép mới</h3>
                                                     <div >
                                                          <input hidden type="text" class="form-control type-id" name="type-id">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="icofont icofont-bank-alt"></i></span>
-                                                            <input type="text" class="form-control dname" name="dname" placeholder="Leave Type">
+                                                            <input type="text" class="form-control dname" name="dname" placeholder="Tên">
                                                         </div>
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="icofont icofont-social-ebuddy"></i></span>
-                                                            <input type="text" class="form-control assigned" name="assigned" placeholder="Available Days">
+                                                            <input type="text" class="form-control assigned" name="assigned" placeholder="Số ngày">
                                                         </div>
                                                         
                                                         <div class="input-group">
-                                                            <textarea class="form-control description" name="description" placeholder="Description here" spellcheck="false" rows="5"></textarea>
+                                                            <textarea class="form-control description" name="description" placeholder="Mô tả" spellcheck="false" rows="5"></textarea>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="col-sm-12">
@@ -256,13 +256,13 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                     <div class="radio radiofill radio-inline">
                                                                         <label>
                                                                             <input type="radio" class="status" name="status" value="1">
-                                                                            <i class="helper"></i>Active
+                                                                            <i class="helper"></i>Hoạt động
                                                                         </label>
                                                                     </div>
                                                                     <div class="radio radiofill radio-inline">
                                                                         <label>
                                                                             <input type="radio" class="status" name="status" value="2">
-                                                                            <i class="helper"></i>Inactive
+                                                                            <i class="helper"></i>Không hoạt động
                                                                         </label>
                                                                     </div>
                                                                     
@@ -271,9 +271,9 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                         </div>
                                                                         
                                                         <div class="text-center">
-                                                            <button type="submit"  id="save-btn" class="btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block save_btn">Save</button>
-                                                            <button type="submit" id="update-btn" class="btn btn-primary waves-effect m-r-20 f-w-600 update_btn" style="display:none;">Update</button>
-                                                            <button type="button" class="btn btn-primary waves-effect m-r-20 f-w-600 md-close d-inline-block close_btn">Close</button>
+                                                            <button type="submit"  id="save-btn" class="btn btn-primary waves-effect m-r-20 f-w-600 d-inline-block save_btn">Lưu</button>
+                                                            <button type="submit" id="update-btn" class="btn btn-primary waves-effect m-r-20 f-w-600 update_btn" style="display:none;">Cập nhật</button>
+                                                            <button type="button" class="btn btn-primary waves-effect m-r-20 f-w-600 md-close d-inline-block close_btn">Đóng</button>
                                                         </div>
                                                     </div>
                                                </div>
@@ -318,7 +318,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (data.dname.trim() === '' || data.description.trim() === '' || data.assigned.trim() === '' || data.status.trim() === '') {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please all fieds are required. Kindly fill all',
+                        text: 'Vui lòng điền đẩy đủ thông tin',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -333,7 +333,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                         if (response.status == 'success') {
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Inserted Successfully',
+                                title: 'Thêm thành công',
                                 html:
                                 'Name : ' + data['dname'],
                                 confirmButtonColor: '#01a9ac',
@@ -403,7 +403,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (data.dname.trim() === '' || data.description.trim() === '' || data.assigned.trim() === '' || data.status.trim() === '') {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please all fieds are required. Kindly fill all',
+                        text: 'Vui lòng điền đầy đủ thông tin',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -418,7 +418,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                         if (response.status == 'success') {
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Updated Successfully',
+                                title: 'Cập nhật thành công',
                                 html:
                                 'Name : ' + data['dname'],
                                 confirmButtonColor: '#01a9ac',
@@ -449,13 +449,13 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
         $('.delete-btn').click(function(){
         (async () => {
             const { value: formValues } = await Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Bạn có chắc không?',
+                text: "Bạn sẽ không thể khôi phục lại nó!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonText: 'Chắc chắn!'
             })
 
             if (formValues) {
@@ -474,8 +474,8 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                     if (response && responseObject.status === 'success') {
                         // Show success message
                         Swal.fire(
-                            'Deleted!',
-                            'Leave type has been deleted.',
+                            'Đã xóa!',
+                            'Xóa nghỉ phép thành công',
                             'success'
                         ).then((result) => {
                                 if (result.isConfirmed) {
@@ -488,7 +488,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                         // Show error message
                         Swal.fire(
                             'Error!',
-                            'Failed to delete leave type.',
+                            'Xóa thất bại',
                             'error'
                         );
                     }

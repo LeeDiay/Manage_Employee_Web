@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Accra');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 session_start();
 include('../includes/config.php');
 
@@ -27,7 +27,7 @@ function updateStaffRecords($edit_id, $firstname, $lastname, $middlename, $conta
     global $conn;
 
     if (empty($department) || empty($firstname) || empty($lastname) || empty($contact) || empty($designation) || empty($email)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all required fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin');
         echo json_encode($response);
         exit;
     }
@@ -40,7 +40,7 @@ function updateStaffRecords($edit_id, $firstname, $lastname, $middlename, $conta
         $image_target_path = $image_upload_dir . $image_name;
 
         if (!move_uploaded_file($image_path['tmp_name'], $image_target_path)) {
-            $response = array('status' => 'error', 'message' => 'Failed to upload the image');
+            $response = array('status' => 'error', 'message' => 'Không thể upload file!');
             echo json_encode($response);
             exit;
         }
@@ -94,11 +94,11 @@ function updateStaffRecords($edit_id, $firstname, $lastname, $middlename, $conta
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Staff member updated successfully');
+        $response = array('status' => 'success', 'message' => 'Cập nhật thông tin nhân viên thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to update staff member');
+        $response = array('status' => 'error', 'message' => 'Cập nhật thông tin thất bại');
         echo json_encode($response);
         exit;
     }
@@ -109,7 +109,7 @@ function addStaffRecord($firstname, $lastname, $middlename, $contact, $designati
 
     if (empty($department) || empty($firstname) || empty($lastname) || empty($contact) ||
         empty($designation) || empty($email) || empty($password) || empty($role) || empty($image_path)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all required fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin');
         echo json_encode($response);
         exit;
     }
@@ -123,7 +123,7 @@ function addStaffRecord($firstname, $lastname, $middlename, $contact, $designati
     mysqli_stmt_close($stmt);
 
     if ($num_rows > 0) {
-        $response = array('status' => 'error', 'message' => 'Staff member with this email already exists');
+        $response = array('status' => 'error', 'message' => 'Email đã tồn tại');
         echo json_encode($response);
         exit;
     }
@@ -134,7 +134,7 @@ function addStaffRecord($firstname, $lastname, $middlename, $contact, $designati
     $image_target_path = $image_upload_dir . $image_name;
 
     if (!move_uploaded_file($image_path['tmp_name'], $image_target_path)) {
-        $response = array('status' => 'error', 'message' => 'Failed to upload the image');
+        $response = array('status' => 'error', 'message' => 'Upload ảnh thất bại');
         echo json_encode($response);
         exit;
     }
@@ -149,11 +149,11 @@ function addStaffRecord($firstname, $lastname, $middlename, $contact, $designati
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Staff member added successfully');
+        $response = array('status' => 'success', 'message' => 'Thêm nhân viên thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to add staff member');
+        $response = array('status' => 'error', 'message' => 'Thêm nhân viên thất bại');
         echo json_encode($response);
         exit;
     }
@@ -182,11 +182,11 @@ function deleteStaff($id) {
             unlink($old_image_path); // Delete the old image
         }
 
-        $response = array('status' => 'success', 'message' => 'Staff Member Deleted Successfully');
+        $response = array('status' => 'success', 'message' => 'Xóa thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to delete staff');
+        $response = array('status' => 'error', 'message' => 'Xóa thất bại');
         echo json_encode($response);
         exit;
     }
@@ -285,7 +285,7 @@ function assignLeaveTypes($employeeId, $leaveTypes) {
         // Commit transaction
         mysqli_commit($conn);
 
-        $response = array('status' => 'success', 'message' => 'Leave types assigned successfully');
+        $response = array('status' => 'success', 'message' => 'Thành công');
         echo json_encode($response);
         exit;
 
@@ -293,7 +293,7 @@ function assignLeaveTypes($employeeId, $leaveTypes) {
         // Rollback transaction on error
         mysqli_rollback($conn);
 
-        $response = array('status' => 'error', 'message' => 'Failed to assign leave types: ' . $e->getMessage());
+        $response = array('status' => 'error', 'message' => 'Thất bại: ' . $e->getMessage());
         echo json_encode($response);
         exit;
     }
@@ -315,9 +315,9 @@ function assignSupervisor($employeeId, $supervisorId) {
 
     // Check the result and return appropriate response
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Supervisor assigned successfully');
+        $response = array('status' => 'success', 'message' => 'Thành công');
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to assign supervisor');
+        $response = array('status' => 'error', 'message' => 'Thất bại');
     }
 
     return json_encode($response);

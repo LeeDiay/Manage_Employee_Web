@@ -133,7 +133,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                     ?>
                                                     <div class="card-block-small">
                                                         <i class="feather icon-user bg-c-blue card1-icon"></i>
-                                                        <span class="text-c-blue f-w-600">Active Staff</span>
+                                                        <span class="text-c-blue f-w-600">Nhân viên đang hoạt động</span>
                                                         <?php if ($total_employee == 0): ?>
                                                             <h4>No</h4>
                                                         <?php else: ?>
@@ -141,7 +141,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <?php endif; ?>
                                                         <div>
                                                             <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-blue f-16 feather icon-user m-r-10"></i>Registered Staff
+                                                                <i class="text-c-blue f-16 feather  m-r-10"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -158,7 +158,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                     ?>
                                                     <div class="card-block-small">
                                                         <i class="feather icon-home bg-c-pink card1-icon"></i>
-                                                        <span class="text-c-pink f-w-600">Departments</span>
+                                                        <span class="text-c-pink f-w-600">Số lượng phòng ban</span>
                                                         <?php if ($total_depart == 0): ?>
                                                             <h4>No</h4>
                                                         <?php else: ?>
@@ -166,7 +166,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <?php endif; ?>
                                                         <div>
                                                             <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-pink f-16 feather icon-home m-r-10"></i>Available Departments
+                                                                <i class="text-c-pink f-16 feather  m-r-10"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -183,7 +183,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                     ?>
                                                     <div class="card-block-small">
                                                         <i class="feather icon-tag bg-c-green card1-icon"></i>
-                                                        <span class="text-c-green f-w-600">Leave Types</span>
+                                                        <span class="text-c-green f-w-600">Số lượng loại nghỉ phép</span>
                                                         <?php if ($total_types == 0): ?>
                                                             <h4>No</h4>
                                                         <?php else: ?>
@@ -191,7 +191,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <?php endif; ?>
                                                         <div>
                                                             <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-green f-16 feather icon-tag m-r-10"></i>Active Leave Types
+                                                                <i class="text-c-green f-16 feather  m-r-10"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -208,7 +208,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                     ?>
                                                     <div class="card-block-small">
                                                         <i class="feather icon-list bg-c-yellow card1-icon"></i>
-                                                        <span class="text-c-yellow f-w-600">Leave</span>
+                                                        <span class="text-c-yellow f-w-600">Tổng số đơn xin nghỉ phép</span>
                                                         <?php if ($total_leave == 0): ?>
                                                             <h4>No</h4>
                                                         <?php else: ?>
@@ -216,7 +216,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <?php endif; ?>
                                                         <div>
                                                             <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-yellow f-16 feather icon-list m-r-10"></i>Leave Application
+                                                                <i class="text-c-yellow f-16 feather m-r-10"></i>
                                                             </span>
                                                         </div>
                                                     </div>
@@ -228,7 +228,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                              <div class="col-xl-3 col-md-6">
                                                 <div class="card statustic-progress-card">
                                                     <div class="card-header">
-                                                        <h5>Pending Leave</h5>
+                                                        <h5>Số đơn chờ duyệt</h5>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
@@ -250,7 +250,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                             <div class="col-xl-3 col-md-6">
                                                 <div class="card statustic-progress-card">
                                                     <div class="card-header">
-                                                        <h5>Approved Leave</h5>
+                                                        <h5>Số đơn chấp nhận</h5>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
@@ -272,7 +272,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                             <div class="col-xl-3 col-md-6">
                                                 <div class="card statustic-progress-card">
                                                     <div class="card-header">
-                                                        <h5>Rejected Leave</h5>
+                                                        <h5>Số đơn từ chối</h5>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
@@ -294,7 +294,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                             <div class="col-xl-3 col-md-6">
                                                 <div class="card statustic-progress-card">
                                                     <div class="card-header">
-                                                        <h5>Recalled Leave</h5>
+                                                        <h5>Số đơn thu hồi</h5>
                                                     </div>
                                                     <div class="card-block">
                                                         <div class="row align-items-center">
@@ -328,7 +328,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                             <?php else: ?>
                                                                 <h5>No</h5>
                                                             <?php endif; ?>
-                                                            <p class="text-muted">Total Staff</p>
+                                                            <p class="text-muted">Tổng số nhân viên</p>
                                                         </div>
                                                         <div class="design-description d-inline-block">
                                                             <?php if ($department['managerCount'] > 0): ?>
@@ -336,7 +336,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                             <?php else: ?>
                                                                 <h5>No</h5>
                                                             <?php endif; ?>
-                                                            <p class="text-muted">Total Managers</p>
+                                                            <p class="text-muted">Số người quản lí</p>
                                                         </div>
                                                         <div class="team-box p-b-20">
                                                             <p class="d-inline-block m-r-20 f-w-400">
@@ -365,7 +365,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                             </div>
                                                         </div>
                                                         <div class="progress-box">
-                                                            <p class="d-inline-block m-r-20 f-w-400">Progress</p>
+                                                            <p class="d-inline-block m-r-20 f-w-400">Tiến độ</p>
                                                             <div class="progress d-inline-block">
                                                                  <?php
                                                                    $staffPercentage = $totalStaff > 0 ? round(($department['staffCount'] / $totalStaff) * 100) : 0;
@@ -394,16 +394,16 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                 ?>
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h5 class="card-header-text">Newest Employees</h5>
+                                                        <h5 class="card-header-text">Nhân viên mới nhất</h5>
                                                     </div>
                                                     <div class="card-block contact-details">
                                                         <div class="data_table_main table-responsive dt-responsive">
                                                             <table class="table table-striped table-bordered nowrap">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Full Name</th>
-                                                                        <th>Designation</th>
-                                                                        <th>Role</th>
+                                                                        <th>Họ và tên</th>
+                                                                        <th>Phòng</th>
+                                                                        <th>Chức vụ</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -441,16 +441,16 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                 ?>
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h5 class="card-header-text">Recent Attendance</h5>
+                                                        <h5 class="card-header-text">Chấm công gần đây</h5>
                                                     </div>
                                                     <div class="card-block contact-details">
                                                         <div class="data_table_main table-responsive dt-responsive">
                                                             <table class="table table-striped table-bordered nowrap">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Full Name</th>
-                                                                        <th>Time In</th>
-                                                                        <th>Time Out</th>
+                                                                        <th>Họ và tên</th>
+                                                                        <th>Giờ vào</th>
+                                                                        <th>Giờ ra</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -491,16 +491,16 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                 ?>
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h5 class="card-header-text">Recent Leave</h5>
+                                                        <h5 class="card-header-text">Nghỉ phép gần đây</h5>
                                                     </div>
                                                     <div class="card-block contact-details">
                                                         <div class="data_table_main table-responsive dt-responsive">
                                                             <table class="table table-striped table-bordered nowrap">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th>Full Name</th>
-                                                                        <th>Start Date</th>
-                                                                        <th>End Date</th>
+                                                                        <th>Họ và tên</th>
+                                                                        <th>Bắt đầu</th>
+                                                                        <th>Kết thúc</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>

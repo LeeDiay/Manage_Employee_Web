@@ -1,12 +1,12 @@
 <?php 
-date_default_timezone_set('Africa/Accra');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 include('../includes/config.php');
 
 function updateDepartment($id, $dname, $description) {
     global $conn;
 
     if (empty($dname) || empty($description)) {
-    $response = array('status' => 'error', 'message' => 'Please fill in all fields');
+    $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin');
     echo json_encode($response);
     exit;
     }
@@ -18,11 +18,11 @@ function updateDepartment($id, $dname, $description) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Department Updated Successfully');
+        $response = array('status' => 'success', 'message' => 'Cập nhật phòng ban thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to update department');
+        $response = array('status' => 'error', 'message' => 'Cập nhật phòng ban thất bại');
         echo json_encode($response);
         exit;
     }
@@ -32,7 +32,7 @@ function saveDepartment($dname, $description) {
     global $conn;
 
     if (empty($dname) || empty($description)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin');
         echo json_encode($response);
         exit;
     }
@@ -45,7 +45,7 @@ function saveDepartment($dname, $description) {
     $count = mysqli_num_rows($result);
 
     if ($count > 0) { 
-        $response = array('status' => 'error', 'message' => 'Department already exists');
+        $response = array('status' => 'error', 'message' => 'Phòng ban đã tồn tại');
         echo json_encode($response);
         exit;
     } else {
@@ -56,11 +56,11 @@ function saveDepartment($dname, $description) {
         mysqli_stmt_execute($stmt);
 
         if (mysqli_stmt_affected_rows($stmt) > 0) {
-            $response = array('status' => 'success', 'message' => 'Department added successfully');
+            $response = array('status' => 'success', 'message' => 'Phòng ban đã được thêm thành công');
             echo json_encode($response);
             exit;
         } else {
-            $response = array('status' => 'error', 'message' => 'Failed to add department');
+            $response = array('status' => 'error', 'message' => 'Không thể thêm phòng ban');
             echo json_encode($response);
             exit;
         }
@@ -75,11 +75,11 @@ function deleteDepartment($id) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Department Deleted Successfully');
+        $response = array('status' => 'success', 'message' => 'Phòng ban đã được xóa thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to delete department');
+        $response = array('status' => 'error', 'message' => 'Không thể xóa phòng ban');
         echo json_encode($response);
         exit;
     }

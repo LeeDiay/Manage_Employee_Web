@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Accra');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 session_start();
 include('../includes/config.php');
 include('../sendmail.php');

@@ -40,7 +40,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline">
-                                                    <h4>New Staff</h4>
+                                                    <h4>Thêm nhân viên</h4>
                                                  </div>
                                             </div>
                                         </div>
@@ -69,12 +69,12 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                     <div class="card-block">
                                                         <div class="row">
                                                             <div class="col-sm-6 mobile-inputs">
-                                                                <h4 class="sub-title">Personal Details</h4>
+                                                                <h4 class="sub-title">Thông tin cá nhân</h4>
                                                                 <input type="hidden" id="edit_id" name="edit_id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : 'null'; ?>">
                                                                 <form enctype="multipart/form-data">
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-12">
-                                                                            <label for="userName-2" class="block">Staff Profile *</label>
+                                                                            <label for="userName-2" class="block">Chọn ảnh đại diện *</label>
                                                                         </div>
                                                                         <div class="col-sm-12">
                                                                             <input type="file" id="image_path" name="image_path" class="form-control">
@@ -83,7 +83,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-12">
-                                                                            <label for="userName-2" class="block">First Name *</label>
+                                                                            <label for="userName-2" class="block">Họ *</label>
                                                                         </div>
                                                                         <div class="col-sm-12">
                                                                             <input type="text" id="firstname" name="firstname" autocomplete="off" class="form-control" placeholder="" value="<?php echo isset($row['first_name']) ? $row['first_name'] : ''; ?>">
@@ -92,7 +92,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-12">
-                                                                            <label for="userName-2" class="block">Middle Name</label>
+                                                                            <label for="userName-2" class="block">Tên đệm</label>
                                                                         </div>
                                                                         <div class="col-sm-12">
                                                                             <input type="text" id="middlename" name="middlename" autocomplete="off" class="form-control" placeholder="" value="<?php echo isset($row['middle_name']) ? $row['middle_name'] : ''; ?>">
@@ -100,7 +100,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-12">
-                                                                            <label for="userName-2" class="block">Last Name *</label>
+                                                                            <label for="userName-2" class="block">Tên *</label>
                                                                         </div>
                                                                         <div class="col-sm-12">
                                                                             <input type="text" id="lastname" name="lastname" autocomplete="off" class="form-control" placeholder="" value="<?php echo isset($row['last_name']) ? $row['last_name'] : ''; ?>">
@@ -108,7 +108,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-12">
-                                                                            <label for="userName-2" class="block">Phone Number *</label>
+                                                                            <label for="userName-2" class="block">Số điện thoại *</label>
                                                                         </div>
                                                                         <div class="col-sm-12">
                                                                             <input type="tel" id="contact" name="contact" autocomplete="off" class="form-control" placeholder="" value="<?php echo isset($row['phone_number']) ? $row['phone_number'] : ''; ?>">
@@ -116,26 +116,26 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-12">
-                                                                            <label for="userName-2" class="block">Designation *</label>
+                                                                            <label for="userName-2" class="block">Vị trí *</label>
                                                                         </div>
                                                                         <div class="col-sm-12">
                                                                             <input type="text" id="designation" name="designation" autocomplete="off" class="form-control" placeholder="" value="<?php echo isset($row['designation']) ? $row['designation'] : ''; ?>">
                                                                         </div>
                                                                     </div>
-                                                                    <h4 class="sub-title">Gender *</h4>
+                                                                    <h4 class="sub-title">Giới tính *</h4>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-12">
                                                                             <div class="form-radio">
                                                                                 <div class="radio radiofill radio-inline">
                                                                                     <label>
                                                                                         <input type="radio" name="gender" value="Female" <?php echo (isset($row['gender']) && $row['gender'] === 'Female') ? 'checked="checked"' : ''; ?>>
-                                                                                        <i class="helper"></i>Female
+                                                                                        <i class="helper"></i>Nữ
                                                                                     </label>
                                                                                 </div>
                                                                                 <div class="radio radiofill radio-inline">
                                                                                     <label>
                                                                                         <input type="radio" name="gender" value="Male" <?php echo (isset($row['gender']) && $row['gender'] === 'Male') ? 'checked="checked"' : ''; ?>>
-                                                                                        <i class="helper"></i>Male
+                                                                                        <i class="helper"></i>Nam
                                                                                     </label>
                                                                                 </div>
                                                                             </div>
@@ -144,10 +144,10 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                 </form>
                                                             </div>
                                                             <div class="col-sm-6 mobile-inputs">
-                                                                <h4 class="sub-title">Company Details</h4>
+                                                                <h4 class="sub-title">Thông tin trong công ty</h4>
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-12">
-                                                                        <label for="userName-2" class="block">Department *</label>
+                                                                        <label for="userName-2" class="block">Phòng ban *</label>
                                                                     </div>
                                                                     <div class="col-sm-12">
                                                                         <select class="js-example-disabled-results col-sm-12" name="department" id="department" required>
@@ -174,7 +174,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                         mysqli_stmt_close($stmt);
                                                                                 } else {
                                                                                     // Output the first option as "Select department" and disabled
-                                                                                        echo '<option value="" disabled selected>Select department</option>';
+                                                                                        echo '<option value="" disabled selected>Chọn phòng ban</option>';
                                                                                         // Output the rest of the options
                                                                                         $stmt = mysqli_prepare($conn, "SELECT id, department_name, department_desc FROM tbldepartments");
                                                                                         mysqli_stmt_execute($stmt);
@@ -191,7 +191,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-12">
-                                                                        <label for="userName-2" class="block">Staff ID *</label>
+                                                                        <label for="userName-2" class="block">Mã nhân viên *</label>
                                                                     </div>
                                                                     <div class="col-sm-10">
                                                                         <input type="text" id="staff_id" name="staff_id" readonly autocomplete="off" class="form-control" placeholder="" value="<?php echo isset($row['staff_id']) ? $row['staff_id'] : ''; ?>">
@@ -211,7 +211,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                 <?php if(!isset($row) || empty($row)): ?>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-12">
-                                                                            <label for="userName-2" class="block">Password *</label>
+                                                                            <label for="userName-2" class="block">Mật khẩu *</label>
                                                                         </div>
                                                                         <div class="col-sm-12">
                                                                             <input type="password" placeholder="**********" id="password" name="password" autocomplete="off" class="form-control">
@@ -222,41 +222,41 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <div class="col-sm-12">
-                                                                            <label for="userName-2" class="block">Confirm Password *</label>
+                                                                            <label for="userName-2" class="block">Xác nhận mật khẩu *</label>
                                                                         </div>
                                                                         <div class="col-sm-12">
                                                                             <input type="password" placeholder="**********" id="c_password" name="c_password" autocomplete="off" class="form-control">
                                                                         </div>
                                                                     </div>
                                                                 <?php endif; ?>               
-                                                                <h4 class="sub-title">Is Supervisor? *</h4>
+                                                                <h4 class="sub-title">Có phải là quản lí? *</h4>
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-12">
                                                                         <div class="form-radio">
                                                                             <div class="radio radiofill radio-inline">
                                                                                 <label>
                                                                                     <input type="radio" name="is_supervisor" value="1" <?php echo (isset($row['is_supervisor']) && $row['is_supervisor'] == 1) ? 'checked="checked"' : ''; ?>>
-                                                                                    <i class="helper"></i>Yes
+                                                                                    <i class="helper"></i>Có
                                                                                 </label>
                                                                             </div>
                                                                             <div class="radio radiofill radio-inline">
                                                                                 <label>
                                                                                     <input type="radio" name="is_supervisor" value="0" <?php echo (isset($row['is_supervisor']) && $row['is_supervisor'] == 0) ? 'checked="checked"' : ''; ?>>
-                                                                                    <i class="helper"></i>No
+                                                                                    <i class="helper"></i>Không
                                                                                 </label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             
-                                                                <h4 class="sub-title">Role Type</h4>
+                                                                <h4 class="sub-title">Chức vụ</h4>
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-12">
                                                                         <div class="form-radio">
                                                                             <div class="radio radiofill radio-inline">
                                                                                 <label>
                                                                                     <input type="radio" name="role" value="Staff" <?php echo (isset($row['role']) && $row['role'] === 'Staff') ? 'checked="checked"' : ''; ?>>
-                                                                                    <i class="helper"></i>Staff
+                                                                                    <i class="helper"></i>Nhân viên
                                                                                 </label>
                                                                             </div>
                                                                             <div class="radio radiofill radio-inline">
