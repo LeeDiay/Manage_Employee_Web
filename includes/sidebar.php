@@ -1,37 +1,35 @@
 <nav class="pcoded-navbar">
     <div class="pcoded-inner-navbar main-menu">
         <?php if ($session_role == 'Manager'  || $session_role == 'Admin') : ?>
-            <div class="pcoded-navigatio-lavel">Navigation</div>
             <ul class="pcoded-item pcoded-left-item">
                 <li class="<?php echo ($page_name == 'dashboard') ? 'active' : ''; ?>">
                     <a href="index.php">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                        <span class="pcoded-mtext">Dashboard</span>
+                        <span class="pcoded-mtext">Trang chủ</span>
                     </a>
                 </li>
             </ul>
-            <div class="pcoded-navigatio-lavel">Appplications</div>
             <ul class="pcoded-item pcoded-left-item">
                 <li class="<?php echo ($page_name == 'department') ? 'active' : ''; ?>">
                     <a href="department.php">
                         <span class="pcoded-micon"><i class="feather icon-monitor"></i></span>
-                        <span class="pcoded-mtext">Department</span>
+                        <span class="pcoded-mtext">Phòng ban</span>
                     </a>
                 </li>
                 <li class="pcoded-hasmenu <?php echo ($page_name == 'staff' || $page_name == 'new_staff' || $page_name == 'staff_list') ? 'active pcoded-trigger' : ''; ?>">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                        <span class="pcoded-mtext">Staff</span>
+                        <span class="pcoded-mtext">Nhân viên</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="<?php echo ($page_name == 'new_staff') ? 'active' : ''; ?>">
                             <a href="new_staff.php">
-                                <span class="pcoded-mtext">New Staff</span>
+                                <span class="pcoded-mtext">Thêm nhân viên mới</span>
                             </a>
                         </li>
                         <li class="<?php echo ($page_name == 'staff_list') ? 'active' : ''; ?>">
                             <a href="staff_list.php">
-                                <span class="pcoded-mtext">Manage Staff</span>
+                                <span class="pcoded-mtext">Quản lí nhân viên</span>
                             </a>
                         </li>
                     </ul>
@@ -39,29 +37,29 @@
                 <li class="<?php echo ($page_name == 'leave_type') ? 'active' : ''; ?>">
                     <a href="leave_type.php">
                         <span class="pcoded-micon"><i class="feather icon-shuffle"></i></span>
-                        <span class="pcoded-mtext">Leave Type</span>
+                        <span class="pcoded-mtext">Loại nghỉ phép</span>
                     </a>
                 </li>
                 <li class="pcoded-hasmenu <?php echo ($page_name == 'leave' || $page_name == 'apply_leave' || $page_name == 'leave_request' || $page_name == 'my_leave') ? 'active pcoded-trigger' : ''; ?>">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-shuffle"></i></span>
-                        <span class="pcoded-mtext">Leave</span>
+                        <span class="pcoded-mtext">Nghỉ phép</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="<?php echo ($page_name == 'apply_leave') ? 'active' : ''; ?>">
                             <a href="apply_leave.php">
-                                <span class="pcoded-mtext">Apply Leave</span>
+                                <span class="pcoded-mtext">Nộp đơn nghỉ phép</span>
                             </a>
                         </li>
                          <li class="<?php echo ($page_name == 'my_leave') ? 'active' : ''; ?>">
                             <a href="my_leave.php">
-                                <span class="pcoded-mtext">My Leave</span>
+                                <span class="pcoded-mtext">Đơn của tôi</span>
                             </a>
                         </li>
                         <?php if ($session_role == 'Manager' || $session_role == 'Admin') : ?>
                             <li class="<?php echo ($page_name == 'leave_request') ? 'active' : ''; ?>">
                                 <a href="leave_request.php?leave_status=0">
-                                    <span class="pcoded-mtext">All Leaves</span>
+                                    <span class="pcoded-mtext">Tất cả các đơn</span>
                                 </a>
                             </li>
                         <?php endif; ?>
@@ -70,17 +68,17 @@
                 <li class="pcoded-hasmenu <?php echo ($page_name == 'task' || $page_name == 'new_task' || $page_name == 'task_list') ? 'active pcoded-trigger' : ''; ?>">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                        <span class="pcoded-mtext">Task Manager</span>
+                        <span class="pcoded-mtext">Quản lí nhiệm vụ</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="<?php echo ($page_name == 'new_task') ? 'active' : ''; ?>">
                             <a href="new_task.php">
-                                <span class="pcoded-mtext">New Task</span>
+                                <span class="pcoded-mtext">Thêm nhiệm vụ mới</span>
                             </a>
                         </li>
                         <li class="<?php echo ($page_name == 'task_list') ? 'active' : ''; ?>">
                             <a href="task_list.php">
-                                <span class="pcoded-mtext">Task List</span>
+                                <span class="pcoded-mtext">Danh sách nhiệm vụ</span>
                             </a>
                         </li>
                     </ul>
@@ -88,17 +86,17 @@
                 <li class="pcoded-hasmenu <?php echo ($page_name == 'attendance' || $page_name == 'my_attendance') ? 'active pcoded-trigger' : ''; ?>">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-clock"></i></span>
-                        <span class="pcoded-mtext">Attendance</span>
+                        <span class="pcoded-mtext">Chấm công</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="<?php echo ($page_name == 'attendance') ? 'active' : ''; ?>">
                             <a href="attendance.php">
-                                <span class="pcoded-mtext">Attendance</span>
+                                <span class="pcoded-mtext">Quản lí công</span>
                             </a>
                         </li>
                         <li class="<?php echo ($page_name == 'my_attendance') ? 'active' : ''; ?>">
                             <a href="my_attendance.php">
-                                <span class="pcoded-mtext">My Attendance</span>
+                                <span class="pcoded-mtext">Công của tôi</span>
                             </a>
                         </li>
                     </ul>
@@ -106,32 +104,30 @@
             </ul>
         <?php endif; ?>   
         <?php if ($session_role == 'Staff') : ?>
-            <div class="pcoded-navigatio-lavel">Navigation</div>
             <ul class="pcoded-item pcoded-left-item">
                 <li class="<?php echo ($page_name == 'dashboard') ? 'active' : ''; ?>">
                     <a href="index.php">
                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                        <span class="pcoded-mtext">Dashboard</span>
+                        <span class="pcoded-mtext">Trang chủ</span>
                     </a>
                 </li>
             </ul>
-            <div class="pcoded-navigatio-lavel">Appplications</div>
             <ul class="pcoded-item pcoded-left-item">
                 <li class="<?php echo ($page_name == 'department') ? 'active' : ''; ?>">
                     <a href="department.php">
                         <span class="pcoded-micon"><i class="feather icon-monitor"></i></span>
-                        <span class="pcoded-mtext">Department</span>
+                        <span class="pcoded-mtext">Phòng ban</span>
                     </a>
                 </li>
                 <li class="pcoded-hasmenu <?php echo ($page_name == 'staff' || $page_name == 'staff_list') ? 'active pcoded-trigger' : ''; ?>">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                        <span class="pcoded-mtext">Staff</span>
+                        <span class="pcoded-mtext">Nhân viên</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="<?php echo ($page_name == 'staff_list') ? 'active' : ''; ?>">
                             <a href="staff_list.php">
-                                <span class="pcoded-mtext">Staff List</span>
+                                <span class="pcoded-mtext">Danh sách nhân viên</span>
                             </a>
                         </li>
                     </ul>
@@ -139,23 +135,23 @@
                 <li class="pcoded-hasmenu <?php echo ($page_name == 'leave' || $page_name == 'apply_leave'|| $page_name == 'my_leave'|| $page_name == 'supervisee_leave_request') ? 'active pcoded-trigger' : ''; ?>">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-shuffle"></i></span>
-                        <span class="pcoded-mtext">Leave</span>
+                        <span class="pcoded-mtext">Nghỉ phép</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <li class="<?php echo ($page_name == 'apply_leave') ? 'active' : ''; ?>">
                             <a href="apply_leave.php">
-                                <span class="pcoded-mtext">Apply Leave</span>
+                                <span class="pcoded-mtext">Nộp đơn nghỉ phép</span>
                             </a>
                         </li>
                          <li class="<?php echo ($page_name == 'my_leave') ? 'active' : ''; ?>">
                             <a href="my_leave.php">
-                                <span class="pcoded-mtext">My Leave</span>
+                                <span class="pcoded-mtext">Đơn của tôi</span>
                             </a>
                         </li>
                         <?php if ($session_role == 'Staff' && $session_supervisor == '1') : ?>
                             <li class="<?php echo ($page_name == 'supervisee_leave_request') ? 'active' : ''; ?>">
                                 <a href="supervisee_leave_request.php?leave_status=0">
-                                    <span class="pcoded-mtext">Supervisee Request</span>
+                                    <span class="pcoded-mtext">Quản lí đơn</span>
                                 </a>
                             </li>
                         <?php endif; ?>
@@ -164,19 +160,19 @@
                 <li class="pcoded-hasmenu <?php echo ($page_name == 'task' || $page_name == 'new_task' || $page_name == 'my_task_list') ? 'active pcoded-trigger' : ''; ?>">
                     <a href="javascript:void(0)">
                         <span class="pcoded-micon"><i class="feather icon-users"></i></span>
-                        <span class="pcoded-mtext">Task Manager</span>
+                        <span class="pcoded-mtext">Quản lí nhiệm vụ</span>
                     </a>
                     <ul class="pcoded-submenu">
                         <?php if ($session_role == 'Staff' && $session_supervisor == '1') : ?>
                          <li class="<?php echo ($page_name == 'new_task') ? 'active' : ''; ?>">
                             <a href="new_task.php">
-                                <span class="pcoded-mtext">New Task</span>
+                                <span class="pcoded-mtext">Thêm nhiệm vụ mới</span>
                             </a>
                         </li>
                         <?php endif; ?>
                         <li class="<?php echo ($page_name == 'my_task_list') ? 'active' : ''; ?>">
                             <a href="my_task_list.php">
-                                <span class="pcoded-mtext">My Task</span>
+                                <span class="pcoded-mtext">Nhiệm vụ của tôi</span>
                             </a>
                         </li>
                     </ul>
@@ -184,25 +180,10 @@
                 <li class="<?php echo ($page_name == 'my_attendance') ? 'active' : ''; ?>">
                     <a href="my_attendance.php">
                         <span class="pcoded-micon"><i class="feather icon-clock"></i></span>
-                        <span class="pcoded-mtext">My Attendance</span>
+                        <span class="pcoded-mtext">Công của tôi</span>
                     </a>
                 </li>
             </ul>
         <?php endif; ?>    
-        <div class="pcoded-navigatio-lavel">Support</div>
-        <ul class="pcoded-item pcoded-left-item">
-            <li class="">
-                <a href="https://kpro.netlify.app/" target="_blank">
-                    <span class="pcoded-micon"><i class="feather icon-monitor"></i></span>
-                    <span class="pcoded-mtext">Portfolio</span>
-                </a>
-            </li>
-            <li class="">
-                <a href="https://www.youtube.com/@codelytical" target="_blank">
-                    <span class="pcoded-micon"><i class="feather icon-monitor"></i></span>
-                    <span class="pcoded-mtext">CodeLytical</span>
-                </a>
-            </li>
-        </ul>
     </div>
 </nav>

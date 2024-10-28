@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Reset Password</title>
+    <title>Lấy lại mật khẩu</title>
+    <link rel="icon" href="uploads\images\logo.avif" type="image/png" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,21 +39,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="password" id="new_password" name="new_password" class="form-control password" required="" placeholder="New Password">
+                                    <input type="password" id="new_password" name="new_password" class="form-control password" required="" placeholder="Nhập mật khẩu mới">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="password" id="confirm_password" name="confirm_password" class="form-control password" required="" placeholder="Confirm Password">
+                                    <input type="password" id="confirm_password" name="confirm_password" class="form-control password" required="" placeholder="Nhập lại mật khẩu">
                                     <span class="form-bar"></span>
                                 </div>
                                 <input type="hidden" id="token" name="token" value="<?php echo $_GET['token']; ?>">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button id="reset-password" type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><i class="icofont icofont-lock"></i> Reset Password </button>
+                                        <button id="reset-password" type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><i class="icofont icofont-lock"></i> Xác nhận </button>
                                     </div>
                                 </div>
 
-                                <p class="text-inverse text-right">Back to <a href="index.php">Login</a></p>
+                                <p class="text-inverse text-right">Quay lại <a href="index.php">Đăng nhập</a></p>
 
                             </div>
                         </div>

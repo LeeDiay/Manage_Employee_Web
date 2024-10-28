@@ -13,13 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     $email = $_SESSION['semail'];
 
     if (empty($newPassword) || empty($confirmPassword)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền vào tất cả các trường');
         echo json_encode($response);
         exit();
     }
 
     if ($newPassword !== $confirmPassword) {
-        $response = array('status' => 'error', 'message' => 'Passwords do not match');
+        $response = array('status' => 'error', 'message' => 'Mật khẩu không khớp');
         echo json_encode($response);
         exit();
     }
@@ -34,9 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['action']) && $_POST['a
     if (mysqli_stmt_affected_rows($stmt) > 0) {
         // Automatically log the user in after password reset
         $_SESSION['password_reset'] = true; // Set password_reset session variable
-        $response = array('status' => 'success', 'message' => 'Password reset successfully', 'role' => $_SESSION['srole']);
+        $response = array('status' => 'success', 'message' => 'Đổi mật khẩu thành công!', 'role' => $_SESSION['srole']);
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to reset password');
+        $response = array('status' => 'error', 'message' => 'Đổi mật khẩu thất bại!');
     }
 
     echo json_encode($response);

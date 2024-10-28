@@ -2,10 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Adminty - Premium Admin Template by Colorlib</title>
+    <title>Hệ thống quản lí nhân viên</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="uploads\images\logo.avif" type="image/png" />
     <meta name="description" content="#">
     <meta name="keywords" content="Admin, Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
     <meta name="author" content="#">
@@ -46,19 +47,19 @@
                             <div class="card-block">
                                 <div class="row m-b-20">
                                     <div class="col-md-12">
-                                        <h3 class="text-left">Recover your password</h3>
+                                        <h3 class="text-left">Khôi phục mật khẩu</h3>
                                     </div>
                                 </div>
                                 <div class="form-group form-primary">
-                                    <input type="email" name="email" class="form-control" required="" placeholder="Your Email Address">
+                                    <input type="email" name="email" class="form-control" required="" placeholder="Nhập email của bạn">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Reset Password</button>
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Xác nhận</button>
                                     </div>
                                 </div>
-                                <p class="f-w-600 text-right"><a href="index.php">Back to Login.</a></p>
+                                <p class="f-w-600 text-right"><a href="index.php">Quay lại Đăng nhập.</a></p>
                             </div>
                         </div>
                     </form>
@@ -89,8 +90,8 @@
 
                 // Hiển thị cảnh chờ (loading) bằng SweetAlert
                 Swal.fire({
-                    title: 'Please wait...',
-                    text: 'Processing your request',
+                    title: 'Vui lòng chờ...',
+                    text: 'Đang thực hiện gửi email',
                     allowOutsideClick: false,
                     didOpen: () => {
                         Swal.showLoading(); // Hiển thị loader
@@ -111,14 +112,14 @@
                         // Hiển thị thông báo kết quả bằng SweetAlert
                         if (response.status === 'success') {
                             Swal.fire({
-                                title: 'Success!',
+                                title: 'Thành công!',
                                 text: response.message,
                                 icon: 'success',
                                 confirmButtonText: 'OK'
                             });
                         } else {
                             Swal.fire({
-                                title: 'Error!',
+                                title: 'Lỗi!',
                                 text: response.message,
                                 icon: 'error',
                                 confirmButtonText: 'OK'
@@ -130,7 +131,7 @@
 
                         Swal.fire({
                             title: 'Error!',
-                            text: 'An error occurred while processing your request.',
+                            text: 'Có lỗi xảy ra.',
                             icon: 'error',
                             confirmButtonText: 'OK'
                         });

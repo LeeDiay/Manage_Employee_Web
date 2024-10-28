@@ -31,16 +31,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Gửi email đặt lại mật khẩu
             if (sendPasswordResetEmail($email, $resetToken)) {
                 // Phản hồi JSON cho yêu cầu AJAX
-                echo json_encode(["status" => "success", "message" => "Check your email to reset your password."]);
+                echo json_encode(["status" => "success", "message" => "Vui lòng kiểm tra email để khôi phục mật khẩu"]);
             } else {
                 // Phản hồi JSON cho yêu cầu AJAX
-                echo json_encode(["status" => "error", "message" => "Failed to send reset password email."]);
+                echo json_encode(["status" => "error", "message" => "Gửi email thất bại."]);
             }
             
             mysqli_stmt_close($updateStmt); // Đóng câu lệnh chuẩn bị
         } else {
             // Nếu email không tồn tại
-            echo json_encode(["status" => "error", "message" => "Email not found in our records."]);
+            echo json_encode(["status" => "error", "message" => "Không tìm thấy email của bạn trong hệ thống"]);
         }
 
     } elseif ($action === 'reset_password') {
@@ -59,9 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updateStmt = mysqli_prepare($conn, "UPDATE tblemployees SET password = ?, token = NULL WHERE token = ?");
             mysqli_stmt_bind_param($updateStmt, "ss", $newPassword, $token);
             mysqli_stmt_execute($updateStmt);
-            echo json_encode(["status" => "success", "message" => "Password has been reset successfully."]);
+            echo json_encode(["status" => "success", "message" => "Khôi phục mật khẩu thành công."]);
         } else {
-            echo json_encode(["status" => "error", "message" => "Invalid or expired token."]);
+            echo json_encode(["status" => "error", "message" => "Token không hợp lệ hoặc hết hạn"]);
         }
         
         mysqli_stmt_close($stmt); // Đóng câu lệnh chuẩn bị
@@ -87,7 +87,7 @@ function sendPasswordResetEmail($email, $resetToken) {
         $mail->isHTML(true);
         $mail->Subject = 'Password Reset Request';
         $resetLink = "http://127.0.0.1/Management/forgot_password_token.php?token=$resetToken";
-        $mail->Body = "<p>Click <a href='$resetLink'>here</a> to reset your password.</p>";
+        $mail->Body = "<p>Bấm vào <a href='$resetLink'>đây</a> để khôi phục mật khẩu.</p>";
 
         $mail->send();
         return true;
