@@ -402,7 +402,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                                 <thead>
                                                                     <tr>
                                                                         <th>Họ và tên</th>
-                                                                        <th>Phòng</th>
+                                                                        <th>Vị trí</th>
                                                                         <th>Chức vụ</th>
                                                                     </tr>
                                                                 </thead>
