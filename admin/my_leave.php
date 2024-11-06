@@ -138,7 +138,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                             <div class="col-lg-8">
                                                 <div class="page-header-title">
                                                     <div class="d-inline">
-                                                        <h4>Leave Portal - My Leave Request</h4>
+                                                        <h4>Yêu cầu nghỉ phép của tôi</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,7 +151,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                             <!-- My leave start -->
                                             <div class="card col-xl-12 col-md-12">
                                                 <div class="card-header">
-                                                    <h5>Summary Leave Request <?php echo $leaveTypeCount; ?></h5>
+                                                    <h5>Tóm tắt <?php echo $leaveTypeCount; ?></h5>
                                                     <div class="card-header-right">
                                                         <ul class="list-unstyled card-option">
                                                             <li><i class="feather icon-maximize full-card"></i></li>
@@ -172,15 +172,15 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                                         <div class="row">
                                                                             <div class="col">
                                                                                 <span class="d-block text-c-blue f-30" style="font-weight: bold;"><?= $summary['total'] ?></span>
-                                                                                <p class="m-b-0 text-c-blue">Total</p>
+                                                                                <p class="m-b-0 text-c-blue">Tổng</p>
                                                                             </div>
                                                                             <div class="col">
                                                                                 <span class="d-block text-c-green f-30" style="font-weight: bold;"><?= $summary['remaining'] ?></span>
-                                                                                <p class="m-b-0 text-c-green">Remaining</p>
+                                                                                <p class="m-b-0 text-c-green">Còn lại</p>
                                                                             </div>
                                                                             <div class="col">
                                                                                 <span class="d-block text-c-pink f-30" style="font-weight: bold;"><?= $summary['used'] ?></span>
-                                                                                <p class="m-b-0 text-c-pink">Used</p>
+                                                                                <p class="m-b-0 text-c-pink">Đã sử dụng</p>
                                                                             </div>
                                                                         </div>
                                                                         <div class="progress">
@@ -195,7 +195,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                         <div class="col-12 text-center">
                                                             <div class="alert" style="color: #0c5460; background-color: #d1ecf1; border-color: #bee5eb;" role="alert">
                                                                 <i class="fa fa-info-circle fa-3x"></i>
-                                                                <p class="m-b-0">No summary of leave request</p>
+                                                                <p class="m-b-0">Chưa có loại nghỉ phép nào!</p>
                                                             </div>
                                                         </div>
                                                     <?php endif; ?>
@@ -208,7 +208,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                 <nav class="navbar navbar-light bg-faded m-b-30 p-10">
                                                     <ul class="nav navbar-nav">
                                                         <li class="nav-item active">
-                                                            <a class="nav-link" href="#!">Filter By Status: <span class="sr-only">(current)</span></a>
+                                                            <a class="nav-link" href="#!">Lọc theo trạng thái: <span class="sr-only">(current)</span></a>
                                                         </li>
                                                         <!-- Your existing HTML for the dropdown -->
                                                         <li class="nav-item dropdown">
@@ -216,7 +216,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                                 <i class="icofont icofont-home"></i> <?php echo $selectedLeaveStatusName; ?>
                                                             </a>
                                                             <div class="dropdown-menu" aria-labelledby="bystatus">
-                                                                <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Show all') ? 'active' : ''; ?>" href="?leave_status=Show all">Show all</a>
+                                                                <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Show all') ? 'active' : ''; ?>" href="?leave_status=Show all">Xem tất cả</a>
                                                                 <div class="dropdown-divider"></div>
                                                                 <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Pending') ? 'active' : ''; ?>" href="?leave_status=0">Pending</a>
                                                                 <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Approved') ? 'active' : ''; ?>" href="?leave_status=1">Approved</a>
@@ -228,7 +228,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                     </ul>
                                                     <div class="nav-item nav-grid">
                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="searchInput" placeholder="Search here...">
+                                                            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm...">
                                                             <span class="input-group-addon" id="basic-addon1"><i class="icofont icofont-search"></i></span>
                                                         </div>
                                                     </div>
@@ -249,17 +249,17 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                                 <div class="auth-box card-block">
                                                                 <div class="row m-b-20">
                                                                     <div class="col-md-12 confirm">
-                                                                        <h3 class="text-center txt-primary"><i class="icofont icofont-check-circled text-primary"></i>  Leave Request Details</h3>
+                                                                        <h3 class="text-center txt-primary"><i class="icofont icofont-check-circled text-primary"></i>  Chi tiết</h3>
                                                                     </div>
                                                                 </div>
                                                                 <input hidden type="text" class="form-control leave-id" name="leave-id">
-                                                                <p class="text-inverse text-left m-t-15 f-16"><b>Dear <span id="modalReviewer"></span></b>, </p>
+                                                                <p class="text-inverse text-left m-t-15 f-16"><b>Xin chào <span id="modalReviewer"></span></b>, </p>
                                                                 <p id="modalMessage" class="text-inverse text-left m-b-20"></p>
                                                                 <ul class="text-inverse text-left m-b-30">
-                                                                    <li><strong>Leave Type: </strong> <span id="modalLeaveType"></span></li>
-                                                                    <li><strong>Requested Days: </strong> <span id="modalRequestedDays"></span></li>
-                                                                    <li><strong>Remaining Days: </strong> <span id="modalRemaing"></span></li>
-                                                                    <li><strong>Leave Current Status: </strong> <span id="modalLeaveStatus"></span></li>
+                                                                    <li><strong>Loại nghỉ phép: </strong> <span id="modalLeaveType"></span></li>
+                                                                    <li><strong>Số ngày yêu cầu: </strong> <span id="modalRequestedDays"></span></li>
+                                                                    <li><strong>Số ngày còn lại: </strong> <span id="modalRemaing"></span></li>
+                                                                    <li><strong>Trạng thái đơn: </strong> <span id="modalLeaveStatus"></span></li>
                                                                 </ul>
                                                                 <div class="card-block">
                                                                     <div class="row" id="radioButtonsContainer">
@@ -457,31 +457,31 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                 switch (leaveStatusValue) {
                     case 0: // Pending
                         if (today > endDate) {
-                            modalMessage = "Your leave request submitted on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> is pending, but the requested leave period has already passed. It is too late to approve or reject this request.";
+                            modalMessage = "Yêu cầu nghỉ phép của bạn được nộp vào <b>" + formattedSubmissionDate + "</b> từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đang chờ xử lý nhưng thời gian nghỉ phép được yêu cầu đã trôi qua. Đã quá muộn để phê duyệt hoặc từ chối yêu cầu này.";
                         } else {
-                            modalMessage = "This is your pending leave request submitted on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b>. Please you can prompt your supervisor, if this leave request is taking time for review.";
+                            modalMessage = "Đây là yêu cầu nghỉ phép đang chờ xử lý của bạn được gửi vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b>. Vui lòng nhắc nhở người giám sát của bạn nếu yêu cầu nghỉ phép này cần thời gian để xem xét.";
                         }
                         break;
                     case 1: // Approved
                         if (today < startDate) {
-                            modalMessage = "Your leave request submitted on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been approved. You can choose to recall the approval if needed.";
+                            modalMessage = "Yêu cầu nghỉ phép của bạn được nộp vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã được phê duyệt. Bạn có thể chọn thu hồi phê duyệt nếu cần.";
                         } else if (today >= startDate && today <= endDate) {
-                            modalMessage = "Your leave request submitted on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> is currently in progress.";
+                            modalMessage = "Yêu cầu nghỉ phép của bạn được nộp vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> hiện đang được tiến hành.";
                         } else {
-                            modalMessage = "Your leave request submitted on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been completed.";
+                            modalMessage = "Yêu cầu nghỉ phép của bạn được nộp vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã được hoàn thành.";
                         }
                         break;
                     case 2: // Cancelled
-                        modalMessage = "Your leave request submitted on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been cancelled.";
+                        modalMessage = "Yêu cầu nghỉ phép của bạn được nộp vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị hủy bỏ.";
                         break;
                     case 3: // Recalled
-                        modalMessage = "The approved leave request submitted on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been recalled.";
+                        modalMessage = "The approved leave request submitted on <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã được thu hồi.";
                         break;
                     case 4: // Rejected
-                        modalMessage = "Your leave request submitted on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been rejected.";
+                        modalMessage = "Yêu cầu nghỉ phép của bạn được nộp vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị từ chối.";
                         break;
                     default:
-                        modalMessage = "You are about to review the leave request submitted on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b>. Please review the details carefully and decide whether to approve or reject the request.";
+                        modalMessage = "You are about to review the leave request submitted on <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b>. Vui lòng xem xét cẩn thận các chi tiết và quyết định xem nên chấp thuận hay từ chối yêu cầu.";
                 }
                 $('#modalMessage').html(modalMessage);
                 
@@ -515,28 +515,28 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                 var updateButtonHTML;
                 if (leaveStatusValue === 0) { // Pending
                     if (today > endDate) {
-                        updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request was <b style="color: #eb3422;"> PASSED </b></button>';
+                        updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã được <b style="color: #eb3422;"> thông qua </b></button>';
                     } else {
-                        updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Update</button>';
+                        updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                     }
                 } else if (leaveStatusValue === 1) { // Approved
                     if (today >= startDate && today <= endDate) {
-                        updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Update</button>';
+                        updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                     } else if (today < startDate) {
-                        updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Update</button>';
+                        updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                     } else {
-                        updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request has <b style="color: #eb3422;"> EXPIRED </b></button>';
+                        updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu đã <b style="color: #eb3422;"> hết hạn </b></button>';
                     }
                 } else if (leaveStatusValue === 2) { // Cancelled
                     if (today < startDate) {
-                        updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Update</button>';
+                        updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                     } else {
-                        updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request was <b style="color: #eb3422;"> CANCELLED </b></button>';
+                        updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu đã <b style="color: #eb3422;"> bị hủy bỏ. </b></button>';
                     }
                 } else if (leaveStatusValue === 4) { // Rejected
-                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request was <b style="color: #eb3422;"> REJECTED </b></button>';
+                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu đã <b style="color: #eb3422;"> bị từ chối </b></button>';
                 } else if (leaveStatusValue === 3) { // Recalled
-                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request was <b style="color: #eb3422;"> RECALLED </b></button>';
+                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu đã <b style="color: #eb3422;"> bị thu hồi </b></button>';
                 }
 
                 // Update the button in the modal

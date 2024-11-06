@@ -35,7 +35,7 @@ function login($email, $password) {
 
 function checkAndSetSession($userRecord) {
     if ($userRecord['lock_unlock'] == "true") {
-        return array('status' => 'error', 'message' => 'Your account is locked. Please unlock it using your email or contact an admin for assistance.');
+        return array('status' => 'error', 'message' => 'Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.');
     }
 
     // Set session variables and redirect based on user type
@@ -64,7 +64,7 @@ function checkAndSetSession($userRecord) {
         $_SESSION['department'] = $userRecord['department'];
         $userType = 'staff';
     } else {
-        return array('status' => 'error', 'message' => 'Invalid user type');
+        return array('status' => 'error', 'message' => 'Không thể xác định vai trò người dùng');
     }
 
     return array(
@@ -92,7 +92,7 @@ if (isset($_POST['action'])) {
             ob_end_clean();
             error_log("Exception: " . $e->getMessage());
             header('Content-Type: application/json');
-            echo json_encode(array('status' => 'error', 'message' => 'Internal Server Error', 'error' => $e->getMessage()));
+            echo json_encode(array('status' => 'error', 'message' => 'Lỗi xảy ra', 'error' => $e->getMessage()));
         }
         exit;
     }

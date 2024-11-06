@@ -80,14 +80,17 @@ function sendPasswordResetEmail($email, $resetToken) {
         $mail->Password = PASS;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
+        $mail->CharSet = 'UTF-8';
 
-        $mail->setFrom(EMAIL, 'Employee Management System');
+
+        $mail->setFrom(EMAIL, 'Hệ thống quản lí nhân viên Đức Anh');
         $mail->addAddress($email);
 
         $mail->isHTML(true);
-        $mail->Subject = 'Password Reset Request';
+        $mail->CharSet = 'UTF-8'; // Thêm dòng này để thiết lập mã hóa UTF-8
+        $mail->Subject = 'Yêu cầu khôi phục mật khẩu';
         $resetLink = "http://127.0.0.1/Management/forgot_password_token.php?token=$resetToken";
-        $mail->Body = "<p>Bấm vào <a href='$resetLink'>đây</a> để khôi phục mật khẩu.</p>";
+        $mail->Body = "Xin chào bạn, có phải bạn vừa thực hiện khôi phục mật khẩu?<p>Bấm vào <a href='$resetLink'>đây</a> để khôi phục mật khẩu.</p>";
 
         $mail->send();
         return true;

@@ -44,7 +44,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                 <div class="d-inline">
                                                     <?php
                                                         $get_id = isset($_GET['id']) ? $_GET['id'] : null;
-                                                        $profileText = ($session_id == $get_id) ? "My Profile" : "Staff Profile";
+                                                        $profileText = ($session_id == $get_id) ? "Trang cá nhân" : "Thông tin nhân viên";
                                                     ?>
                                                     <h4><?= htmlspecialchars($profileText) ?></h4>
                                                 </div>
@@ -261,11 +261,33 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                                                     </tr>
                                                                                                                     <tr>
                                                                                                                         <th scope="row">Giới tính</th>
-                                                                                                                        <td><?php echo htmlspecialchars($row['gender']); ?></td>
+                                                                                                                        <td>
+                                                                                                                            <?php 
+                                                                                                                                echo htmlspecialchars($row['gender']) === 'Male' ? 'Nam' : 'Nữ'; 
+                                                                                                                            ?>
+                                                                                                                        </td>
                                                                                                                     </tr>
+                                                                                                                    <?php
+                                                                                                                        // Mảng tên tháng bằng tiếng Việt
+                                                                                                                        $months = [
+                                                                                                                            'January' => 'Tháng 1', 'February' => 'Tháng 2', 'March' => 'Tháng 3',
+                                                                                                                            'April' => 'Tháng 4', 'May' => 'Tháng 5', 'June' => 'Tháng 6',
+                                                                                                                            'July' => 'Tháng 7', 'August' => 'Tháng 8', 'September' => 'Tháng 9',
+                                                                                                                            'October' => 'Tháng 10', 'November' => 'Tháng 11', 'December' => 'Tháng 12'
+                                                                                                                        ];
+                                                                                                                        
+                                                                                                                        // Định dạng ngày tạo
+                                                                                                                        $dateCreated = date('j F, Y', strtotime($row['date_created']));
+                                                                                                                        
+                                                                                                                        // Thay thế tháng bằng tiếng Việt
+                                                                                                                        foreach ($months as $english => $vietnamese) {
+                                                                                                                            $dateCreated = str_replace($english, $vietnamese, $dateCreated);
+                                                                                                                        }
+                                                                                                                    ?>
+
                                                                                                                     <tr>
                                                                                                                         <th scope="row">Ngày tạo</th>
-                                                                                                                        <td><?php echo htmlspecialchars(date('jS F, Y', strtotime($row['date_created']))); ?></td>
+                                                                                                                        <td><?php echo htmlspecialchars($dateCreated); ?></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
                                                                                                                         <th scope="row">Vị trí</th>

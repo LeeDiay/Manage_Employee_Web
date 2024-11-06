@@ -39,7 +39,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline">
-                                                    <h4>Attendance</h4>
+                                                    <h4>Quản lí công</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -72,21 +72,21 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                      ?>
                                                                     <div class="card">
                                                                         <div class="card-header">
-                                                                            <h5 class="card-header-text">Attendance Records</h5>
+                                                                            <h5 class="card-header-text">Các bản ghi chấm công</h5>
                                                                         </div>
                                                                         <div class="card-block contact-details">
                                                                             <div class="data_table_main table-responsive dt-responsive">
                                                                                 <table id="simpletable" class="table  table-striped table-bordered nowrap">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>Date</th>
-                                                                                            <th>Staff ID</th>
-                                                                                            <th>Full Name</th>
-                                                                                            <th>Time In</th>
-                                                                                            <th>Time Out</th>
-                                                                                            <th>Total Hours</th>
-                                                                                            <th>Status(In/Out)</th>
-                                                                                            <th>Action</th>
+                                                                                            <th>Ngày</th>
+                                                                                            <th>Mã nhân viên</th>
+                                                                                            <th>Họ và tên</th>
+                                                                                            <th>Giờ vào</th>
+                                                                                            <th>Giờ ra</th>
+                                                                                            <th>Tổng thời gian</th>
+                                                                                            <th>Trạng thái (Ra/Vào)</th>
+                                                                                            <th>Hành động</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
@@ -105,13 +105,13 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 
                                                                                                     $total_hours = '';
                                                                                                     if ($hours > 0) {
-                                                                                                        $total_hours .= $hours . ' hr' . ($hours > 1 ? 's ' : ' ');
+                                                                                                        $total_hours .= $hours . ' giờ' . ($hours > 1 ? ' ' : ' ');
                                                                                                     }
                                                                                                     if ($minutes > 0) {
-                                                                                                        $total_hours .= $minutes . ' min' . ($minutes > 1 ? 's ' : ' ');
+                                                                                                        $total_hours .= $minutes . ' phút' . ($minutes > 1 ? ' ' : ' ');
                                                                                                     }
                                                                                                     if ($seconds > 0) {
-                                                                                                        $total_hours .= $seconds . ' sec' . ($seconds > 1 ? 's' : '');
+                                                                                                        $total_hours .= $seconds . ' giây' . ($seconds > 1 ? '' : '');
                                                                                                     }
 
                                                                                                     $total_hours = trim($total_hours);
@@ -123,9 +123,9 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 
                                                                                                 // Split and color the status
                                                                                                 if ($status == 'In/Out') {
-                                                                                                    $formatted_status = '<span style="color: green;">In</span>/<span style="color: orange;">Out</span>';
+                                                                                                    $formatted_status = '<span style="color: green;">Vào</span>/<span style="color: orange;">Ra</span>';
                                                                                                 } else {
-                                                                                                    $formatted_status = '<span style="color: green;">In</span>';
+                                                                                                    $formatted_status = '<span style="color: green;">Vào</span>';
                                                                                                 }
                                                                                             ?>
                                                                                             <tr>
@@ -137,23 +137,12 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                                 <td><strong><?php echo htmlspecialchars($total_hours); ?></strong></td>
                                                                                                 <td><?php echo $formatted_status; ?></td>
                                                                                                 <td class="dropdown">
-                                                                                                    <button id="btn_delete" type="submit" class="btn btn-primary" data-id="<?php echo $row['attendance_id']; ?>"><i class="icofont icofont-ui-delete" aria-hidden="true"></i>Delete</button>
+                                                                                                    <button id="btn_delete" type="submit" class="btn btn-primary" data-id="<?php echo $row['attendance_id']; ?>"><i class="icofont icofont-ui-delete" aria-hidden="true"></i>Xóa</button>
                                                                                                 </td>
                                                                                             </tr>
                                                                                         <?php endwhile; ?>
                                                                                     </tbody>
-                                                                                    <tfoot>
-                                                                                        <tr>
-                                                                                            <th>Date</th>
-                                                                                            <th>Staff ID</th>
-                                                                                            <th>Full Name</th>
-                                                                                            <th>Time In</th>
-                                                                                            <th>Time Out</th>
-                                                                                            <th>Total Hours</th>
-                                                                                            <th>Status(In/Out)</th>
-                                                                                            <th>Action</th>
-                                                                                        </tr>
-                                                                                    </tfoot>
+                                                                                    
                                                                                 </table>
                                                                             </div>
                                                                         </div>
@@ -207,13 +196,13 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 var attendanceId = $(this).data('id');
 
                 Swal.fire({
-                    title: 'Are you sure?',
-                    text: "Do you really want to delete this record?",
+                    title: 'Bạn chắc chứ?',
+                    text: "Bạn có chắc muốn xóa?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Chắc chắn!'
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
@@ -227,8 +216,8 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                 response = JSON.parse(response);
                                 if(response.status === 'success') {
                                     Swal.fire(
-                                        'Deleted!',
-                                        'The record has been deleted.',
+                                        'Thành công!',
+                                        'Đã xóa bản ghi.',
                                         'success'
                                     ).then(() => {
                                         location.reload(); // Refresh the page to reflect changes
@@ -236,7 +225,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                 } else {
                                     Swal.fire(
                                         'Failed!',
-                                        'Failed to delete record: ' + response.message,
+                                        'Xóa bản ghi thất bại: ' + response.message,
                                         'error'
                                     );
                                 }
@@ -245,7 +234,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                 console.error('Error:', errorThrown);
                                 Swal.fire(
                                     'Error!',
-                                    'Error deleting record',
+                                    'Có lỗi xảy ra',
                                     'error'
                                 );
                             }

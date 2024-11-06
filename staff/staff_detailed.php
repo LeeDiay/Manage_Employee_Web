@@ -44,7 +44,7 @@ if ($userRole !== 'Staff') {
                                                 <div class="d-inline">
                                                     <?php
                                                         $get_id = isset($_GET['id']) ? $_GET['id'] : null;
-                                                        $profileText = ($session_id == $get_id) ? "My Profile" : "Staff Profile";
+                                                        $profileText = ($session_id == $get_id) ? "Trang cá nhân" : "Thông tin nhân viên";
                                                     ?>
                                                     <h4><?= htmlspecialchars($profileText) ?></h4>
                                                 </div>

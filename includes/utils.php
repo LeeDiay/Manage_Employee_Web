@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Accra');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 function calculate_time_ago($date_created) {
     $now = time();
     $created_at = strtotime($date_created);

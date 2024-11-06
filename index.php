@@ -326,7 +326,7 @@
             dataType: 'json',
             success: function (response) {
                 if (response.status === 'success') {
-                    let titleMessage = response.message + " với vai trò " + response.role;
+                    let titleMessage = response.message;
                     if (!response.password_reset) {
                         titleMessage = "Vui lòng đặt lại mật khẩu để tiếp tục.";
                     }

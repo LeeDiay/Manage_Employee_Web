@@ -17,7 +17,7 @@ if (time() - $lastActivity > $sessionExpiration) {
     session_unset();
     session_destroy();
     
-    echo "<script>alert('Your session has expired. Please log in again.');</script>";
+    echo "<script>alert('Phiên đăng nhập của bạn đã hết, vui lòng đăng nhập lại');</script>";
 
     // Redirect to the login page
     echo "<script>window.location = '../index.php';</script>";

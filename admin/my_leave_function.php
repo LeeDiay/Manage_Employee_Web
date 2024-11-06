@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Accra');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 session_start();
 include('../includes/config.php');
 
@@ -140,7 +140,7 @@ if (empty($leaveData)) {
                                 <div class="media-body media-middle">
                                     <div class="company-name">
                                         <p>' . $leaveTypeName . '</p>
-                                        <span class="text-muted f-14">Created on ' . $postingDate . '</span>
+                                        <span class="text-muted f-14">Tạo vào ngày ' . $postingDate . '</span>
                                     </div>
                                     <div class="job-badge">
                                         <label class="label ' . $badgeClass . '">' . $leaveStatusText . '</label>
@@ -149,16 +149,16 @@ if (empty($leaveData)) {
                             </div>
                         </div>
                         <div class="card-block">
-                            <p class="text-muted">This leave request is for the period from: <strong>' . $fromDate . '</strong> to: <strong>' . $toDate . '</strong></p>
-                            <div class="job-meta-data"><i class="icofont icofont-safety"></i>Requested Days: ' . $leave['requested_days'] . '</div>
+                            <p class="text-muted">Yêu cầu nghỉ phép này dành cho khoảng thời gian từ: <strong>' . $fromDate . '</strong> đến: <strong>' . $toDate . '</strong></p>
+                            <div class="job-meta-data"><i class="icofont icofont-safety"></i>Số ngày yêu cầu: ' . $leave['requested_days'] . '</div>
                             <div class="text-right">
                                <div class="dropdown-secondary dropdown">
-                                    <button class="btn btn-primary btn-mini dropdown-toggle waves-effect waves-light" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                    <button class="btn btn-primary btn-mini dropdown-toggle waves-effect waves-light" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hành động</button>
                                     <div class="dropdown-menu" aria-labelledby="dropdown1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                        <a class="dropdown-item waves-light waves-effect review-btn" href="#" data-toggle="modal" data-target="#detailed-leave" data-submission-date="' . $leave['created_date'] . '" data-expiry-date="' . $leave['to_date'] . '" data-start-date="' . $leave['from_date'] . '" data-leave-reason="' . $leave['remarks'] . '" data-leave-remaing="' . $leave['available_days'] . '" data-leave-staff="' . $leave['first_name'] . ' ' . $leave['middle_name'] . ' ' . $leave['last_name'] . '" data-leave-type="' . $leaveTypeName . '" data-leave-status="' . $leaveStatusText . '" data-leave-id="' . $leave['id'] . '" data-requested-days="' . $leave['requested_days'] . '">
-                                            <span class="point-marker bg-danger"></span>Review
+                                            <span class="point-marker bg-danger"></span>Xem chi tiết
                                         </a>
-                                        <a class="dropdown-item waves-light waves-effect" href="apply_leave.php?id=' . $leave['id'] . '&edit=1"><span class="point-marker bg-danger"></span>Edit Request</a>
+                                        <a class="dropdown-item waves-light waves-effect" href="apply_leave.php?id=' . $leave['id'] . '&edit=1"><span class="point-marker bg-danger"></span>Sửa yêu cầu</a>
                                     </div>
                                     <!-- end of dropdown menu -->
                                 </div>

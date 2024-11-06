@@ -73,7 +73,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline">
-                                                    <h4>Task Management Section</h4>
+                                                    <h4>Quản lí nhiệm vụ</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -100,26 +100,26 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                     <div class="card-block p-t-10">
                                                         <div class="task-right">
                                                             <div class="task-right-header-status">
-                                                                <span data-toggle="collapse">Task Status</span>
+                                                                <span data-toggle="collapse">Trạng thái</span>
                                                                 <i class="icofont icofont-rounded-down f-right"></i>
                                                             </div>
                                                             <!-- end of sidebar-header completed status-->
                                                             <div class="taskboard-right-progress">
-                                                                <h6>High Priority</h6>
+                                                                <h6>Ưu tiên cao</h6>
                                                                 <div class="faq-progress">
                                                                     <div class="progress">
                                                                         <!-- <span class="faq-text1"></span> -->
                                                                         <div class="faq-test3 faq-bar-high" style="width: 70%;"></div>
                                                                     </div>
                                                                 </div>
-                                                                <h6>Medium Priority</h6>
+                                                                <h6>Ưu tiên trung bình</h6>
                                                                 <div class="faq-progress">
                                                                     <div class="progress">
                                                                         <!-- <span class="faq-text2"></span> -->
                                                                         <div class="faq-test3 faq-bar-normal" style="width: 50%;"></div>
                                                                     </div>
                                                                 </div>
-                                                                <h6>Low Priority</h6>
+                                                                <h6>Ưu tiên thấp</h6>
                                                                 <div class="faq-progress">
                                                                     <div class="progress">
                                                                         <!-- <span class="faq-text4"></span> -->
@@ -239,29 +239,29 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                 <nav class="navbar navbar-light bg-faded m-b-30 p-10">
                                                     <ul class="nav navbar-nav">
                                                         <li class="nav-item active">
-                                                            <a class="nav-link" href="#!">Filter: <span class="sr-only">(current)</span></a>
+                                                            <a class="nav-link" href="#!">Lọc : <span class="sr-only">(current)</span></a>
                                                         </li>
                                                         <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#!" id="bydate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-clock-time"></i> By Date</a>
+                                                            <a class="nav-link dropdown-toggle" href="#!" id="bydate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-clock-time"></i> Theo thời gian</a>
                                                             <div class="dropdown-menu" aria-labelledby="bydate">
                                                                 <?php if (!$timeRange): ?>
-                                                                    <a class="dropdown-item active" href="#">Show all</a>
+                                                                    <a class="dropdown-item active" href="#">Xem tất cả</a>
                                                                 <?php else: ?>
                                                                     <a class="dropdown-item <?php echo (!$timeRange) ? 'active' : ''; ?>" href="?">Show all</a>
                                                                 <?php endif; ?>
                                                                 <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'today' ? 'active' : ''; ?>" href="?timeRange=today">Today</a>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'yesterday' ? 'active' : ''; ?>" href="?timeRange=yesterday">Yesterday</a>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'this-week' ? 'active' : ''; ?>" href="?timeRange=this-week">This week</a>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'this-month' ? 'active' : ''; ?>" href="?timeRange=this-month">This month</a>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'this-year' ? 'active' : ''; ?>" href="?timeRange=this-year">This year</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'today' ? 'active' : ''; ?>" href="?timeRange=today">Hôm nay</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'yesterday' ? 'active' : ''; ?>" href="?timeRange=yesterday">Hôm qua</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'this-week' ? 'active' : ''; ?>" href="?timeRange=this-week">Tuần này</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'this-month' ? 'active' : ''; ?>" href="?timeRange=this-month">Tháng này</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'this-year' ? 'active' : ''; ?>" href="?timeRange=this-year">Năm nay</a>
                                                             </div>
                                                         </li>
                                                         <!-- end of by date dropdown -->
                                                         <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#!" id="bystatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-chart-histogram-alt"></i> By Status</a>
+                                                            <a class="nav-link dropdown-toggle" href="#!" id="bystatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-chart-histogram-alt"></i> Theo trạng thái</a>
                                                             <div class="dropdown-menu" aria-labelledby="bystatus">
-                                                                <a class="dropdown-item <?php echo !isset($_GET['status']) ? 'active' : ''; ?>" href="?">Show all</a>
+                                                                <a class="dropdown-item <?php echo !isset($_GET['status']) ? 'active' : ''; ?>" href="?">Xem tất cả</a>
                                                                 <div class="dropdown-divider"></div>
                                                                 <a class="dropdown-item <?php echo isset($_GET['status']) && $_GET['status'] === 'Pending' ? 'active' : ''; ?>" href="?status=Pending">Pending</a>
                                                                 <a class="dropdown-item <?php echo isset($_GET['status']) && $_GET['status'] === 'In Progress' ? 'active' : ''; ?>" href="?status=In Progress">In Progress</a>
@@ -347,7 +347,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                         </div>
                                                                     </div>
                                                                     <div class="card-block">
-                                                                        <h6 class="job-card-desc">Subject: <?php echo $result['title']; ?></h6>
+                                                                        <h6 class="job-card-desc">Tiêu đề: <?php echo $result['title']; ?></h6>
                                                                         <p class="text-muted">
                                                                              <?php
                                                                                 $description = htmlspecialchars_decode($result['description']);
@@ -358,11 +358,11 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                         </p>
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="job-meta-data me-3" style="margin-right: 40px;">
-                                                                                <strong>Start Date:</strong>
+                                                                                <strong>Ngày bắt đầu:</strong>
                                                                                 <label class="label badge-default" style="color: black !important;"><?php echo date('d F, Y', strtotime($result['start_date'])); ?></label>
                                                                             </div>
                                                                             <div class="job-meta-data">
-                                                                                <strong>Due Date:</strong>
+                                                                                <strong>Ngày kết thúc:</strong>
                                                                                 <label class="label badge-default" style="color: black !important;"><?php echo date('d F, Y', strtotime($result['due_date'])); ?></label>
                                                                             </div>
                                                                         </div>
@@ -373,9 +373,9 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                         <?php echo $result['priority']; ?>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" aria-labelledby="dropdown1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                                                                        <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'High' ? 'active' : ''; ?>" href="#!" data-priority="High" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-warning"></span>High priority</a>
-                                                                                        <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'Medium' ? 'active' : ''; ?>" href="#!" data-priority="Medium" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-success"></span>Medium priority</a>
-                                                                                        <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'Low' ? 'active' : ''; ?>" href="#!" data-priority="Low" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-info"></span>Low priority</a>
+                                                                                        <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'High' ? 'active' : ''; ?>" href="#!" data-priority="High" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-warning"></span>Ưu tiên cao</a>
+                                                                                        <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'Medium' ? 'active' : ''; ?>" href="#!" data-priority="Medium" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-success"></span>Ưu tiên trung bình</a>
+                                                                                        <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'Low' ? 'active' : ''; ?>" href="#!" data-priority="Low" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-info"></span>Ưu tiên thấp</a>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="dropdown-secondary dropdown">
@@ -392,10 +392,10 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                 <div class="dropdown-secondary dropdown">
                                                                                     <button class="btn btn-default btn-mini dropdown-toggle waves-light b-none txt-muted" type="button" id="dropdown3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-navigation-menu"></i></button>
                                                                                     <div class="dropdown-menu" aria-labelledby="dropdown3" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                                                                        <a class="dropdown-item waves-light waves-effect" href="new_task.php?id=<?php echo $result['id']; ?>&edit=1"><i class="icofont icofont-ui-edit"></i> Edit Task</a>
+                                                                                        <a class="dropdown-item waves-light waves-effect" href="new_task.php?id=<?php echo $result['id']; ?>&edit=1"><i class="icofont icofont-ui-edit"></i> Chỉnh sửa</a>
                                                                                         <div class="dropdown-divider"></div>
-                                                                                        <a class="dropdown-item waves-light waves-effect" href="task_details.php?id=<?php echo $result['id']; ?>&edit=1"><i class="icofont icofont-spinner-alt-5"></i> View Task</a>
-                                                                                        <a class="remove-task dropdown-item waves-light waves-effect" href="#!" data-task-id="<?php echo $result['id']; ?>"><i class="icofont icofont-close-line"></i> Remove</a>
+                                                                                        <a class="dropdown-item waves-light waves-effect" href="task_details.php?id=<?php echo $result['id']; ?>&edit=1"><i class="icofont icofont-spinner-alt-5"></i> Xem chi tiết</a>
+                                                                                        <a class="remove-task dropdown-item waves-light waves-effect" href="#!" data-task-id="<?php echo $result['id']; ?>"><i class="icofont icofont-close-line"></i> Xóa</a>
                                                                                     </div>
                                                                                     <!-- end of dropdown menu -->
                                                                                 </div>
@@ -483,13 +483,13 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 event.preventDefault();
                 (async () => {
                     const { value: formValues } = await Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You want to update this!",
+                        title: 'Bạn chắc chứ?',
+                        text: "Bạn có muốn cập nhật nó?!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, update it!'
+                        confirmButtonText: 'Chắc chắn!'
                     });
 
                     var selectedPriority = $(this).data('priority');
@@ -540,7 +540,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                             error: function(xhr, status, error) {
                                 console.log("AJAX error: " + error);
                                 console.log('Data HERE: ' + JSON.stringify(data));
-                                Swal.fire('Error!', 'Failed to update priority.', 'error');
+                                Swal.fire('Error!', 'Có lỗi xảy ra.', 'error');
                             }
 
                         });
@@ -558,13 +558,13 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 event.preventDefault();
                 (async () => {
                     const { value: formValues } = await Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You want to update this status!",
+                        title: 'Bạn chắc chứ?',
+                        text: "Bạn có muốn cập nhật trạng thái!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, update it!'
+                        confirmButtonText: 'Chắc chắn!'
                     });
 
                     var selectedStatus = $(this).data('status');
@@ -615,7 +615,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                             error: function(xhr, status, error) {
                                 console.log("AJAX error: " + error);
                                 console.log('Data HERE: ' + JSON.stringify(data));
-                                Swal.fire('Error!', 'Failed to update status.', 'error');
+                                Swal.fire('Error!', 'Có lỗi xảy ra', 'error');
                             }
 
                         });
@@ -630,13 +630,13 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
         $('.remove-task').click(function(){
             (async () => {
                 const { value: formValues } = await Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: 'Bạn chắc chứ?',
+                    text: "Bạn sẽ không thể hoàn nguyên điều này!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Chắc chắn!'
                 })
                 
                 var taskId = $(this).data('task-id');
@@ -683,7 +683,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                     error: function(xhr, status, error) {
                         console.log("AJAX error: " + error);
                         console.log('Data HERE: ' + JSON.stringify(data));
-                        Swal.fire('Error!', 'Failed to delete task.', 'error');
+                        Swal.fire('Error!', 'Có lỗi xảy ra.', 'error');
                     }
 
                 });

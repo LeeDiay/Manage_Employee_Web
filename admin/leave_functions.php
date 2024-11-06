@@ -405,7 +405,7 @@ if (empty($leaveData)) {
                                 <div class="media-body media-middle">
                                     <div class="company-name">
                                         <p>' . $leave['first_name'] . ' ' . $leave['middle_name'] . ' ' . $leave['last_name'] . '</p>
-                                        <span class="text-muted f-14">Created on ' . $postingDate . '</span>
+                                        <span class="text-muted f-14">Tạo vào ngày ' . $postingDate . '</span>
                                     </div>
                                     <div class="job-badge">
                                         <label class="label ' . $badgeClass . '">' . $leaveStatusText . '</label>
@@ -414,10 +414,10 @@ if (empty($leaveData)) {
                             </div>
                         </div>
                         <div class="card-block">
-                            <h6 class="job-card-desc">Leave Type: ' . $leaveTypeName . '</h6>
-                            <p class="text-muted">This leave request is for the period from: <strong>' . $fromDate . '</strong> to: <strong>' . $toDate . '</strong></p>
-                            <div class="job-meta-data"><i class="icofont icofont-safety"></i>Requested Days: ' . $leave['requested_days'] . '</div>
-                            <div class="job-meta-data"><i class="icofont icofont-university"></i>Remaining Days: ' . $leave['available_days'] . '</div>
+                            <h6 class="job-card-desc">Kiểu nghỉ phép: ' . $leaveTypeName . '</h6>
+                            <p class="text-muted">Yêu cầu nghỉ phép này dành cho khoảng thời gian từ: <strong>' . $fromDate . '</strong> đến: <strong>' . $toDate . '</strong></p>
+                            <div class="job-meta-data"><i class="icofont icofont-safety"></i>Số ngày yêu cầu: ' . $leave['requested_days'] . '</div>
+                            <div class="job-meta-data"><i class="icofont icofont-university"></i>Số ngày còn lại: ' . $leave['available_days'] . '</div>
                             <div class="text-right">
                                <div class="dropdown-secondary dropdown">
                                     <button class="btn btn-primary btn-mini waves-effect waves-light review-btn" 
@@ -434,7 +434,7 @@ if (empty($leaveData)) {
                                         data-leave-status="' . $leaveStatusText . '" 
                                         data-leave-id="' . $leave['id'] . '" 
                                         data-requested-days="' . $leave['requested_days'] . '">
-                                        Review
+                                        Xem chi tiết
                                     </button>
                                     <!-- end of dropdown menu -->
                                 </div>

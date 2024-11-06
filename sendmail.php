@@ -19,8 +19,9 @@ function setupMailer()
         $mail->Password = PASS;
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
-        $mail->setFrom(EMAIL, 'Employee Management System');
+        $mail->setFrom(EMAIL, 'Hệ thống quản lí nhân viên Đức Anh');
         $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
         return $mail;
     } catch (Exception $e) {
         error_log("Mailer setup failed: {$mail->ErrorInfo}");
@@ -39,7 +40,7 @@ function sendEmail($mail, $to, $subject, $body)
         $mail->send();
         return true;
     } catch (Exception $e) {
-        error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+        error_log("Không thể gửi mail. Mailer Error: {$mail->ErrorInfo}");
         return false;
     }
 }
@@ -50,7 +51,7 @@ function sendPasswordResetEmail($email, $resetToken)
     if (!$mail) {
         return false;
     }
-    $resetLink = "https://yourwebsite.com/reset_password.php?token=$resetToken";
+    $resetLink = "http://localhost/Management/reset_password.php?token=$resetToken";
     $subject = "Password Reset Request";
     $body = "
         <p>Hello,</p>
@@ -68,16 +69,17 @@ function sendLeaveApplicationEmail($supervisorEmail, $name, $from, $to, $type, $
     if (!$mail) {
         return false;
     }
-    $redirectLink = "http://localhost/leave_portal/index.php";
-    $subject = "$type Leave Application";
+    $redirectLink = "http://localhost/Management/index.php";
+    $subject = "Đơn xin nghỉ phép $type";
     $body = "
-        <p>Hello $supervisorName,</p>
-        <p>$name has applied for $type leave from $from to $to.</p>
-        <p>Please log into the Leave Application Portal and review using</p><p><a href='$redirectLink'>Redirect Link</a></p>
-        <p>Thank you.</p>
+        <p>Chào $supervisorName,</p>
+        <p>$name đã nộp đơn xin nghỉ phép $type từ $from đến $to.</p>
+        <p>Vui lòng đăng nhập vào Cổng Đăng ký Nghỉ phép để duyệt đơn tại</p><p><a href='$redirectLink'>Đường dẫn</a></p>
+        <p>Xin cảm ơn.</p>
     ";
     return sendEmail($mail, $supervisorEmail, $subject, $body);
 }
+
 
 function sendLeaveNotification($employeeEmails, $employeeName, $fromDate, $toDate, $leaveType, $status)
 {
@@ -86,22 +88,23 @@ function sendLeaveNotification($employeeEmails, $employeeName, $fromDate, $toDat
         return false;
     }
 
-    $subject = $status == 1 ? "Leave Approval Notification" : "Leave Recall Notification";
+    $subject = $status == 1 ? "Thông báo phê duyệt nghỉ phép" : "Thông báo thu hồi nghỉ phép";
     $body = $status == 1 ? "
-        <p>Hello,</p>
-        <p>We are pleased to inform you that $employeeName's $leaveType leave from $fromDate to $toDate has been approved.</p>
-        <p>Thank you.</p>
+        <p>Xin chào,</p>
+        <p>Chúng tôi vui mừng thông báo rằng đơn xin nghỉ phép $leaveType của $employeeName từ $fromDate đến $toDate đã được phê duyệt.</p>
+        <p>Xin cảm ơn.</p>
     " : "
-        <p>Hello,</p>
-        <p>We regret to inform you that $employeeName's $leaveType leave from $fromDate to $toDate has been recalled.</p>
-        <p>Thank you.</p>
+        <p>Xin chào,</p>
+        <p>Chúng tôi rất tiếc thông báo rằng đơn xin nghỉ phép $leaveType của $employeeName từ $fromDate đến $toDate đã bị thu hồi.</p>
+        <p>Xin cảm ơn.</p>
     ";
     $success = true;
     foreach ($employeeEmails as $email) {
         if (!sendEmail($mail, $email, $subject, $body)) {
             $success = false;
-            error_log("Failed to send leave notification to: $email");
+            error_log("Không thể gửi thông báo nghỉ phép tới: $email");
         }
     }
     return $success;
 }
+

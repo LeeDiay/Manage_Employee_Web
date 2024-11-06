@@ -226,9 +226,9 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <p class="d-inline-block m-r-20 f-w-400">
                                                             <?php
                                                             if ($department['staffCount'] > 0) {
-                                                                echo "Team";
+                                                                echo "Thành viên";
                                                             } else {
-                                                                echo "No Staff";
+                                                                echo "Chưa có thành viên";
                                                             }
                                                             ?>
                                                         </p>

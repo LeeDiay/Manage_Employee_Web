@@ -47,20 +47,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-primary">
-                                   <input type="password" id="new_password" name="new_password" class="form-control password" required="" placeholder="New Password">
+                                   <input type="password" id="new_password" name="new_password" class="form-control password" required="" placeholder="Nhập mật khẩu mới">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="form-group form-primary">
-                                   <input type="password" id="confirm_password" name="confirm_password" class="form-control password" required="" placeholder="Confirm Password">
+                                   <input type="password" id="confirm_password" name="confirm_password" class="form-control password" required="" placeholder="Xác nhận mật khẩu">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button id="reset-password" type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><i class="icofont icofont-lock"></i> Reset Password </button>
+                                        <button id="reset-password" type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20"><i class="icofont icofont-lock"></i> Đổi mật khẩu </button>
                                     </div>
                                 </div>
                                 
-                                <p class="text-inverse text-right">Back to <a href="index.php">Login</a></p>
+                                <p class="text-inverse text-right">Quay lại <a href="index.php">Đăng nhập</a></p>
                                 
                             </div>
                         </div>
@@ -115,7 +115,7 @@
         if (newPassword.trim() === '' || confirmPassword.trim() === '') {
             Swal.fire({
                 icon: 'warning',
-                text: 'Please fill in all fields',
+                text: 'Vui lòng nhập mật khẩu mới và xác nhận mật khẩu',
                 confirmButtonColor: '#ffc107',
                 confirmButtonText: 'OK'
             });
@@ -125,7 +125,7 @@
         if (newPassword !== confirmPassword) {
             Swal.fire({
                 icon: 'warning',
-                text: 'Passwords do not match',
+                text: 'Mật khẩu không khớp',
                 confirmButtonColor: '#ffc107',
                 confirmButtonText: 'OK'
             });
@@ -163,7 +163,7 @@
                             } else {
                                 Swal.fire({
                                     icon: 'error',
-                                    text: 'Invalid user type or error',
+                                    text: 'Không thể xác định vai trò người dùng',
                                     confirmButtonColor: '#eb3422',
                                     confirmButtonText: 'OK'
                                 });

@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set('Africa/Accra');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 include('../includes/config.php');
 include('../includes/session.php');
 
@@ -7,7 +7,7 @@ function updateCustomerRecords($id, $firstname, $lastname, $middlename, $contact
     global $conn;
 
     if (empty($firstname) || empty($lastname) || empty($contact) || empty($address) || empty($email)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all required fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin');
         echo json_encode($response);
         exit;
     }
@@ -25,11 +25,11 @@ function updateCustomerRecords($id, $firstname, $lastname, $middlename, $contact
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Customer member updated successfully');
+        $response = array('status' => 'success', 'message' => 'Khách hàng đã được cập nhật');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to update Customer member');
+        $response = array('status' => 'error', 'message' => 'Cập nhật khách hàng thất bại');
         echo json_encode($response);
         exit;
     }
@@ -39,7 +39,7 @@ function addTaskRecord($title, $description, $assigned_to, $assigned_by, $priori
     global $conn;
 
     if (empty($title) || empty($description) || empty($assigned_to) || empty($assigned_by) || empty($priority) || empty($start_date) || empty($due_date)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all required fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin');
         echo json_encode($response);
         exit;
     }
@@ -50,11 +50,11 @@ function addTaskRecord($title, $description, $assigned_to, $assigned_by, $priori
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Task added successfully');
+        $response = array('status' => 'success', 'message' => 'Thêm thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to add task');
+        $response = array('status' => 'error', 'message' => 'Thêm thất bại');
         echo json_encode($response);
         exit;
     }
@@ -64,7 +64,7 @@ function updatePriority($id, $priority) {
     global $conn;
 
     if (empty($id) || empty($priority)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all required fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin');
         echo json_encode($response);
         exit;
     }
@@ -75,11 +75,11 @@ function updatePriority($id, $priority) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Priority updated successfully');
+        $response = array('status' => 'success', 'message' => 'Cập nhật thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to update priority');
+        $response = array('status' => 'error', 'message' => 'Câp nhật thất bại');
         echo json_encode($response);
         exit;
     }
@@ -89,7 +89,7 @@ function updateStatus($id, $status) {
     global $conn;
 
     if (empty($id)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all required fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin');
         echo json_encode($response);
         exit;
     }
@@ -100,11 +100,11 @@ function updateStatus($id, $status) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Status updated successfully');
+        $response = array('status' => 'success', 'message' => 'Cập nhật trạng thái thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to update status');
+        $response = array('status' => 'error', 'message' => 'Cập nhật trạng thái thất bại');
         echo json_encode($response);
         exit;
     }
@@ -119,11 +119,11 @@ function deleteTask($id) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Task Deleted Successfully');
+        $response = array('status' => 'success', 'message' => 'Xóa thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to delete task');
+        $response = array('status' => 'error', 'message' => 'Xóa thất bại');
         echo json_encode($response);
         exit;
     }
@@ -143,11 +143,11 @@ function updateTaskRecord($id, $title, $description, $assigned_to, $priority, $s
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Task updated successfully');
+        $response = array('status' => 'success', 'message' => 'Cập nhật thành công');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to update task');
+        $response = array('status' => 'error', 'message' => 'Cập nhật thất bại');
         echo json_encode($response);
         exit;
     }

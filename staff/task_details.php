@@ -98,7 +98,7 @@ if ($userRole !== 'Staff') {
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Created On:</td>
+                                                                    <td>Tạo vào ngày:</td>
                                                                     <td class="text-right"> 
                                                                         <?php 
                                                                         echo isset($row['created_at']) ? date('d F, Y', strtotime($row['created_at'])) : ''; 

@@ -166,8 +166,8 @@ foreach ($leaveData as $leave) {
                                           <div class="col-lg-8">
                                               <div class="page-header-title">
                                                   <div class="d-inline">
-                                                      <h4>Leave Portal - All Leaves</h4>
-                                                      <span>Verify and respond to leave request</span>
+                                                      <h4>Quản lí đơn nghỉ phép</h4>
+                                                      <span>Xác minh và phản hồi yêu cầu nghỉ phép</span>
                                                   </div>
                                               </div>
                                           </div>
@@ -182,7 +182,7 @@ foreach ($leaveData as $leave) {
                                                 <nav class="navbar navbar-light bg-faded m-b-30 p-10">
                                                     <ul class="nav navbar-nav">
                                                         <li class="nav-item active">
-                                                            <a class="nav-link" href="#!">Filter By Status: <span class="sr-only">(current)</span></a>
+                                                            <a class="nav-link" href="#!">Lọc theo trạng thái: <span class="sr-only">(current)</span></a>
                                                         </li>
                                                         <!-- Your existing HTML for the dropdown -->
                                                         <li class="nav-item dropdown">
@@ -190,7 +190,7 @@ foreach ($leaveData as $leave) {
                                                                 <i class="icofont icofont-home"></i> <?php echo $selectedLeaveStatusName; ?>
                                                             </a>
                                                             <div class="dropdown-menu" aria-labelledby="bystatus">
-                                                                <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Show all') ? 'active' : ''; ?>" href="?leave_status=Show all">Show all</a>
+                                                                <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Show all') ? 'active' : ''; ?>" href="?leave_status=Show all">Xem tất cả</a>
                                                                 <div class="dropdown-divider"></div>
                                                                 <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Pending') ? 'active' : ''; ?>" href="?leave_status=0">Pending</a>
                                                                 <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Approved') ? 'active' : ''; ?>" href="?leave_status=1">Approved</a>
@@ -202,7 +202,7 @@ foreach ($leaveData as $leave) {
                                                     </ul>
                                                     <div class="nav-item nav-grid">
                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="searchInput" placeholder="Search here...">
+                                                            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm...">
                                                             <span class="input-group-addon" id="basic-addon1"><i class="icofont icofont-search"></i></span>
                                                         </div>
                                                     </div>
@@ -223,7 +223,7 @@ foreach ($leaveData as $leave) {
                                                 <!-- Leave Status card start -->
                                                 <div class="card job-right-header">
                                                     <div class="card-header">
-                                                        <h5>Leave Status Information</h5>
+                                                        <h5>Thông tin trạng thái nghỉ phép</h5>
                                                         <!-- <div class="card-header-right">
                                                             <label class="label label-danger">Add</label>
                                                         </div> -->
@@ -267,17 +267,17 @@ foreach ($leaveData as $leave) {
                                                             <div class="auth-box card-block">
                                                             <div class="row m-b-20">
                                                                 <div class="col-md-12 confirm">
-                                                                    <h3 class="text-center txt-primary"><i class="icofont icofont-check-circled text-primary"></i>  Leave Review</h3>
+                                                                    <h3 class="text-center txt-primary"><i class="icofont icofont-check-circled text-primary"></i>  Xem chi tiết</h3>
                                                                 </div>
                                                             </div>
                                                             <input hidden type="text" class="form-control leave-id" name="leave-id">
-                                                            <p class="text-inverse text-left m-t-15 f-16"><b>Dear <span id="modalReviewer"></span></b>, </p>
+                                                            <p class="text-inverse text-left m-t-15 f-16"><b>Xin chào <span id="modalReviewer"></span></b>, </p>
                                                             <p id="modalMessage" class="text-inverse text-left m-b-20"></p>
                                                             <ul class="text-inverse text-left m-b-30">
-                                                                <li><strong>Leave Type: </strong> <span id="modalLeaveType"></span></li>
-                                                                <li><strong>Requested Days: </strong> <span id="modalRequestedDays"></span></li>
-                                                                <li><strong>Remaining Days: </strong> <span id="modalRemaing"></span></li>
-                                                                <li><strong>Leave Current Status: </strong> <span id="modalLeaveStatus"></span></li>
+                                                                <li><strong>Kiểu nghỉ phép: </strong> <span id="modalLeaveType"></span></li>
+                                                                <li><strong>Số ngày yêu cầu: </strong> <span id="modalRequestedDays"></span></li>
+                                                                <li><strong>Số ngày còn lại: </strong> <span id="modalRemaing"></span></li>
+                                                                <li><strong>Trạng thái: </strong> <span id="modalLeaveStatus"></span></li>
                                                             </ul>
                                                             <div class="card-block">
                                                                 <div class="row" id="radioButtonsContainer">
@@ -288,7 +288,7 @@ foreach ($leaveData as $leave) {
                                                             </div>
                                                             <div class="row m-t-15">
                                                                 <div class="col-md-12">
-                                                                    <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center">Update</button>
+                                                                    <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center">Cập nhật</button>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -342,13 +342,13 @@ foreach ($leaveData as $leave) {
 
             (async () => {
                 const { value: formValues } = await Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You want to update this status!",
+                    title: 'Bạn chắc chứ?',
+                    text: "Bạn muốn cập nhật lại trạng thái!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, update it!'
+                    confirmButtonText: 'Chắc chắn!'
                 });
 
                 var selectedStatus = $('#select').val();
@@ -400,7 +400,7 @@ foreach ($leaveData as $leave) {
                         error: function(xhr, status, error) {
                             console.log("AJAX error: " + error);
                             console.log('Data HERE: ' + JSON.stringify(data));
-                            Swal.fire('Error!', 'Failed to delete department.', 'error');
+                            Swal.fire('Error!', 'Có lỗi xảy ra.', 'error');
                         }
 
                     });
@@ -424,7 +424,7 @@ foreach ($leaveData as $leave) {
             if (leaveStatus !== "Pending" && leaveStatus !== "Cancelled") {
                 Swal.fire({
                     icon: 'warning',
-                    text: 'Please you are only allowed to delete leave request that are pending or cancelled.',
+                    text: 'Xin vui lòng, bạn chỉ được phép xóa yêu cầu nghỉ phép đang chờ xử lý hoặc bị hủy.',
                     confirmButtonColor: '#ffc107',
                     confirmButtonText: 'OK'
                 });
@@ -433,13 +433,13 @@ foreach ($leaveData as $leave) {
 
             (async () => {
                 const { value: formValues } = await Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
+                    title: 'Bạn có chắc không??',
+                    text: "Bạn sẽ không thể khôi phục điều này!",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Chắc chắn!'
                 });
 
                 if (formValues) {
@@ -477,7 +477,7 @@ foreach ($leaveData as $leave) {
                         },
                         error: function(xhr, status, error) {
                             console.log("AJAX error: " + error);
-                            Swal.fire('Error!', 'Failed to delete leave request.', 'error');
+                            Swal.fire('Error!', 'Có lỗi xảy ra.', 'error');
                         }
                     });
                 }
@@ -641,34 +641,35 @@ foreach ($leaveData as $leave) {
 
             var modalMessage;
             switch (leaveStatusValue) {
-                case 0: // Pending
+                case 0: // Đang chờ
                     if (today > endDate) {
-                        modalMessage = "The leave request submitted by <b>" + staff + "</b> on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> is pending, but the requested leave period has already passed. It is too late to approve or reject this request.";
+                        modalMessage = "Yêu cầu nghỉ phép do <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đang chờ xử lý, nhưng thời gian nghỉ phép đã qua. Đã quá muộn để phê duyệt hoặc từ chối yêu cầu này.";
                     } else {
-                        modalMessage = "You are about to review the pending leave request submitted by <b>" + staff + "</b> on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b>. Please review the details carefully and decide whether to approve or reject the request.";
+                        modalMessage = "Bạn sắp xem xét yêu cầu nghỉ phép đang chờ xử lý của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b>. Hãy xem xét kỹ chi tiết và quyết định phê duyệt hoặc từ chối yêu cầu.";
                     }
                     break;
-                case 1: // Approved
+                case 1: // Đã phê duyệt
                     if (today < startDate) {
-                        modalMessage = "The leave request submitted by <b>" + staff + "</b> on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been approved. You can choose to recall the approval if needed.";
+                        modalMessage = "Yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã được phê duyệt. Bạn có thể thu hồi phê duyệt nếu cần.";
                     } else if (today >= startDate && today <= endDate) {
-                        modalMessage = "The leave request submitted by <b>" + staff + "</b> on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> is currently in progress.";
+                        modalMessage = "Yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> hiện đang trong quá trình nghỉ.";
                     } else {
-                        modalMessage = "The leave request submitted by <b>" + staff + "</b> on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been completed.";
+                        modalMessage = "Yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã hoàn thành.";
                     }
                     break;
-                case 2: // Cancelled
-                    modalMessage = "The leave request submitted by <b>" + staff + "</b> on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been cancelled.";
+                case 2: // Đã hủy
+                    modalMessage = "Yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị hủy.";
                     break;
-                case 3: // Recalled
-                    modalMessage = "The approved leave request submitted by <b>" + staff + "</b> on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been recalled.";
+                case 3: // Đã thu hồi
+                    modalMessage = "Yêu cầu nghỉ phép đã phê duyệt của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị thu hồi.";
                     break;
-                case 4: // Rejected
-                    modalMessage = "The leave request submitted by <b>" + staff + "</b> on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b> has been rejected.";
+                case 4: // Đã từ chối
+                    modalMessage = "Yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị từ chối.";
                     break;
                 default:
-                    modalMessage = "You are about to review the leave request submitted by <b>" + staff + "</b> on <b>" + formattedSubmissionDate + "</b> for the period from <b>" + formattedStartDate + "</b> to <b>" + formattedEndDate + "</b>. Please review the details carefully and decide whether to approve or reject the request.";
+                    modalMessage = "Bạn sắp xem xét yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b>. Hãy xem xét kỹ chi tiết và quyết định phê duyệt hoặc từ chối yêu cầu.";
             }
+
             $('#modalMessage').html(modalMessage);
             
             // Determine if options should be shown based on leave status and dates
@@ -731,30 +732,30 @@ foreach ($leaveData as $leave) {
 
             // Update the button based on the status and date
             var updateButtonHTML;
-            if (leaveStatusValue === 0) { // Pending
+            if (leaveStatusValue === 0) { // Đang chờ
                 if (today > endDate) {
-                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request was <b style="color: #eb3422;"> PASSED </b></button>';
+                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> HẾT HẠN </b></button>';
                 } else {
-                    updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Update</button>';
+                    updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                 }
-            } else if (leaveStatusValue === 1) { // Approved
+            } else if (leaveStatusValue === 1) { // Đã phê duyệt
                 if (today >= startDate && today <= endDate) {
-                    updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Update</button>';
+                    updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                 } else if (today < startDate) {
-                    updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Update</button>';
+                    updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                 } else {
-                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request has <b style="color: #eb3422;"> EXPIRED </b></button>';
+                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> HẾT HẠN </b></button>';
                 }
-            } else if (leaveStatusValue === 2) { // Cancelled
+            } else if (leaveStatusValue === 2) { // Đã hủy
                 if (today < startDate) {
-                    updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Update</button>';
+                    updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                 } else {
-                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request was <b style="color: #eb3422;"> CANCELLED </b></button>';
+                    updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> BỊ HỦY </b></button>';
                 }
-            } else if (leaveStatusValue === 4) { // Rejected
-                updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request was <b style="color: #eb3422;"> REJECTED </b></button>';
-            } else if (leaveStatusValue === 3) { // Recalled
-                updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>This request was <b style="color: #eb3422;"> RECALLED </b></button>';
+            } else if (leaveStatusValue === 4) { // Đã từ chối
+                updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> BỊ TỪ CHỐI </b></button>';
+            } else if (leaveStatusValue === 3) { // Đã thu hồi
+                updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> BỊ THU HỒI </b></button>';
             }
 
             // Update the button in the modal

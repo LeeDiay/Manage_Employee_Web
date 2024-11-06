@@ -1,5 +1,5 @@
 <?php 
-date_default_timezone_set('Africa/Accra');
+date_default_timezone_set('Asia/Ho_Chi_Minh');
 session_start();
 include('../includes/config.php');
 
@@ -7,7 +7,7 @@ function clockIn($staff_id) {
     global $conn;
 
     if ($staff_id !== $_SESSION['sstaff_id']) {
-        $response = array('status' => 'error', 'message' => 'Staff ID does not match session ID');
+        $response = array('status' => 'error', 'message' => 'Mã nhân viên không khớp với phiên của bạn');
         echo json_encode($response);
         exit;
     }
@@ -22,7 +22,7 @@ function clockIn($staff_id) {
     $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) === 0) {
-        $response = array('status' => 'error', 'message' => 'Invalid Staff ID');
+        $response = array('status' => 'error', 'message' => 'Mã nhân viên không hợp lệ');
         echo json_encode($response);
         exit;
     }
@@ -34,7 +34,7 @@ function clockIn($staff_id) {
     $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) > 0) {
-        $response = array('status' => 'error', 'message' => 'You have already clocked in today.');
+        $response = array('status' => 'error', 'message' => 'Bạn đã chấm công hôm nay rồi.');
         echo json_encode($response);
         exit;
     }
@@ -45,11 +45,11 @@ function clockIn($staff_id) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Clocked in successfully.');
+        $response = array('status' => 'success', 'message' => 'Check in thành công.');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to clock in.');
+        $response = array('status' => 'error', 'message' => 'Check in thất bại.');
         echo json_encode($response);
         exit;
     }
@@ -59,7 +59,7 @@ function clockOut($staff_id) {
     global $conn;
 
     if ($staff_id !== $_SESSION['sstaff_id']) {
-        $response = array('status' => 'error', 'message' => 'Staff ID does not match session ID');
+        $response = array('status' => 'error', 'message' => 'Mã nhân viên không khớp với phiên');
         echo json_encode($response);
         exit;
     }
@@ -74,7 +74,7 @@ function clockOut($staff_id) {
     $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) === 0) {
-        $response = array('status' => 'error', 'message' => 'Invalid Staff ID');
+        $response = array('status' => 'error', 'message' => 'Mã nhân viên không hợp lệ');
         echo json_encode($response);
         exit;
     }
@@ -86,7 +86,7 @@ function clockOut($staff_id) {
     $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) === 0) {
-        $response = array('status' => 'error', 'message' => 'You must clock in before clocking out.');
+        $response = array('status' => 'error', 'message' => 'Bạn phải Check in trước khi Check out.');
         echo json_encode($response);
         exit;
     }
@@ -97,11 +97,11 @@ function clockOut($staff_id) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Clocked out successfully.');
+        $response = array('status' => 'success', 'message' => 'Check out thành công!');
         echo json_encode($response);
         exit;
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to clock out.');
+        $response = array('status' => 'error', 'message' => 'Check out thất bại!');
         echo json_encode($response);
         exit;
     }
@@ -115,9 +115,9 @@ function deleteAttendance($attendanceId) {
     $result = mysqli_stmt_execute($stmt);
 
     if ($result) {
-        $response = array('status' => 'success', 'message' => 'Attendance record deleted successfully');
+        $response = array('status' => 'success', 'message' => 'Xóa thành công');
     } else {
-        $response = array('status' => 'error', 'message' => 'Failed to delete attendance record');
+        $response = array('status' => 'error', 'message' => 'Xóa thất bại');
     }
     echo json_encode($response);
     exit;
