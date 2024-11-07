@@ -101,6 +101,12 @@
                         </li>
                     </ul>
                 </li>
+                <li class="<?php echo ($page_name == 'salary_list') ? 'active' : ''; ?>">
+                    <a href="my_salary.php">
+                        <span class="pcoded-micon"><i class="feather icon-bell"></i></span>
+                        <span class="pcoded-mtext">Quản lí lương</span>
+                    </a>
+                </li>
             </ul>
         <?php endif; ?>   
         <?php if ($session_role == 'Staff') : ?>
@@ -181,6 +187,12 @@
                     <a href="my_attendance.php">
                         <span class="pcoded-micon"><i class="feather icon-clock"></i></span>
                         <span class="pcoded-mtext">Công của tôi</span>
+                    </a>
+                </li>
+                <li class="<?php echo ($page_name == 'salary_list') ? 'active' : ''; ?>">
+                    <a href="my_salary.php">
+                        <span class="pcoded-micon"><i class="feather icon-bell"></i></span>
+                        <span class="pcoded-mtext">Lương của tôi</span>
                     </a>
                 </li>
             </ul>
