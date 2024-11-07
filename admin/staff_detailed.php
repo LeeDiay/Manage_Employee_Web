@@ -785,7 +785,7 @@ gtag('config', 'UA-23581568-13');
                 $('.modal').css('z-index', '1050');
                 Swal.fire({
                     icon: 'success',
-                    text: 'Supervisor assigned successfully!',
+                    text: 'Thành công!',
                     confirmButtonColor: '#01a9ac',
                     confirmButtonText: 'OK'
                 }).then((result) => {
@@ -798,7 +798,7 @@ gtag('config', 'UA-23581568-13');
                 $('.modal').css('z-index', '1050');
                 Swal.fire({
                     icon: 'error',
-                    text: 'An error occurred while assigning supervisor',
+                    text: 'Đã có lỗi xảy ra',
                     confirmButtonColor: '#eb3422',
                     confirmButtonText: 'OK',
                     didClose: () => {
@@ -812,7 +812,7 @@ gtag('config', 'UA-23581568-13');
              $('.modal').css('z-index', '1050');
             Swal.fire({
                 icon: 'error',
-                text: 'An error occurred while assigning supervisor',
+                text: 'Có lỗi xảy ra',
                 confirmButtonColor: '#eb3422',
                 confirmButtonText: 'OK',
                 didClose: () => {
@@ -840,7 +840,7 @@ gtag('config', 'UA-23581568-13');
             if (data.old_password.trim() === '' || data.new_password.trim() === '' || data.confirm_password.trim() === '') {
                 Swal.fire({
                     icon: 'warning',
-                    text: 'Please fill in all fields.',
+                    text: 'Vui lòng điền đầy đủ tất cả các trường.',
                     confirmButtonColor: '#ffc107',
                     confirmButtonText: 'OK'
                 });
@@ -850,7 +850,7 @@ gtag('config', 'UA-23581568-13');
             if (data.new_password !== data.confirm_password) {
                 Swal.fire({
                     icon: 'warning',
-                    text: 'New password and confirmation password do not match.',
+                    text: 'Mật khẩu không khớp.',
                     confirmButtonColor: '#ffc107',
                     confirmButtonText: 'OK'
                 });
@@ -866,8 +866,8 @@ gtag('config', 'UA-23581568-13');
                     if (response.status == 'success') {
                         Swal.fire({
                             icon: 'success',
-                            title: 'Password Reset Successfully',
-                            text: 'Your password has been changed successfully. Kindly login again',
+                            title: 'Đổi mật khẩu thành công!',
+                            text: 'Vui lòng đăng nhập lại',
                             confirmButtonColor: '#01a9ac',
                             confirmButtonText: 'OK'
                         }).then((result) => {

@@ -133,7 +133,7 @@ function updateTaskRecord($id, $title, $description, $assigned_to, $priority, $s
     global $conn;
 
     if (empty($title) || empty($description) || empty($assigned_to) || empty($priority) || empty($start_date) || empty($due_date)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all required fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ thông tin!');
         echo json_encode($response);
         exit;
     }

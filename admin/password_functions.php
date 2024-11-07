@@ -7,7 +7,7 @@ function changePassword($email, $oldPassword, $newPassword) {
     global $conn;
 
     if (empty($oldPassword) || empty($newPassword)) {
-        $response = array('status' => 'error', 'message' => 'Please fill in all fields');
+        $response = array('status' => 'error', 'message' => 'Vui lòng điền đầy đủ các trường');
         echo json_encode($response);
         exit;
     }
@@ -20,7 +20,7 @@ function changePassword($email, $oldPassword, $newPassword) {
     $count = mysqli_num_rows($result);
 
     if ($count == 0) {
-        $response = array('status' => 'error', 'message' => 'Email not found');
+        $response = array('status' => 'error', 'message' => 'Không tìm thấy email');
         echo json_encode($response);
         exit;
     } else {
@@ -29,7 +29,7 @@ function changePassword($email, $oldPassword, $newPassword) {
 
         // Verify the old password using MD5
         if (md5($oldPassword) !== $currentPasswordHash) {
-            $response = array('status' => 'error', 'message' => 'Old password is incorrect');
+            $response = array('status' => 'error', 'message' => 'Mật khẩu cũ không đúng');
             echo json_encode($response);
             exit;
         }
@@ -39,7 +39,7 @@ function changePassword($email, $oldPassword, $newPassword) {
 
         // Check if the new password is the same as the old password
         if ($hashedNewPassword === $currentPasswordHash) {
-            $response = array('status' => 'error', 'message' => 'New password cannot be the same as the old password');
+            $response = array('status' => 'error', 'message' => 'Mật khẩu mới phải khác mật khẩu cũ');
             echo json_encode($response);
             exit;
         }
@@ -50,11 +50,11 @@ function changePassword($email, $oldPassword, $newPassword) {
         mysqli_stmt_execute($stmt);
 
         if (mysqli_stmt_affected_rows($stmt) > 0) {
-            $response = array('status' => 'success', 'message' => 'Password reset successfully');
+            $response = array('status' => 'success', 'message' => 'Đổi mật khẩu thành công!');
             echo json_encode($response);
             exit;
         } else {
-            $response = array('status' => 'error', 'message' => 'Failed to reset password');
+            $response = array('status' => 'error', 'message' => 'Đổi mật khẩu thất bại!');
             echo json_encode($response);
             exit;
         }
@@ -69,7 +69,7 @@ if ($_POST['action'] === 'change_password') {
         $response = changePassword($email, $oldPassword, $newPassword);
         echo $response;
     } else {
-        $response = array('status' => 'error', 'message' => 'User not logged in');
+        $response = array('status' => 'error', 'message' => 'Người dùng chưa đăng nhập!');
         echo json_encode($response);
         exit;
     }

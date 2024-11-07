@@ -196,7 +196,7 @@ function assignLeaveTypes($employeeId, $leaveTypes) {
     global $conn;
 
     if (empty($employeeId) || empty($leaveTypes) || !is_array($leaveTypes)) {
-        $response = array('status' => 'error', 'message' => 'Please provide valid employee ID and leave types');
+        $response = array('status' => 'error', 'message' => 'Vui lòng cung cấp ID nhân viên hợp lệ và loại nghỉ phép!');
         echo json_encode($response);
         exit;
     }
@@ -304,7 +304,7 @@ function assignSupervisor($employeeId, $supervisorId) {
 
     // Check for empty inputs
     if (empty($employeeId) || empty($supervisorId)) {
-        $response = array('status' => 'error', 'message' => 'Please provide both employee ID and supervisor ID');
+        $response = array('status' => 'error', 'message' => 'Vui lòng cung cấp cả ID nhân viên và ID người giám sát!');
         return json_encode($response);
     }
 

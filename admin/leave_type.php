@@ -420,7 +420,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                 icon: 'success',
                                 title: 'Cập nhật thành công',
                                 html:
-                                'Name : ' + data['dname'],
+                                'Tên : ' + data['dname'],
                                 confirmButtonColor: '#01a9ac',
                                 confirmButtonText: 'OK'
                             }).then((result) => {
@@ -495,7 +495,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 },
                 error: function(xhr, status, error) {
                     console.log("AJAX error: " + error);
-                    Swal.fire('Error!', 'Failed to delete leave type.', 'error');
+                    Swal.fire('Error!', 'Xóa thất bại.', 'error');
                 }
 
             });

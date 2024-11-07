@@ -269,7 +269,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                                 </div>
                                                                 <div class="row m-t-15">
                                                                     <div class="col-md-12">
-                                                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center">Update</button>
+                                                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center">Cập nhật</button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -475,13 +475,13 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                         modalMessage = "Yêu cầu nghỉ phép của bạn được nộp vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị hủy bỏ.";
                         break;
                     case 3: // Recalled
-                        modalMessage = "The approved leave request submitted on <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã được thu hồi.";
+                        modalMessage = "Yêu cầu nghỉ phép của bạn được nộp vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã được thu hồi.";
                         break;
                     case 4: // Rejected
                         modalMessage = "Yêu cầu nghỉ phép của bạn được nộp vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị từ chối.";
                         break;
                     default:
-                        modalMessage = "You are about to review the leave request submitted on <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b>. Vui lòng xem xét cẩn thận các chi tiết và quyết định xem nên chấp thuận hay từ chối yêu cầu.";
+                        modalMessage = "Bạn sắp xem xét yêu cầu nghỉ phép đã gửi vào <b>" + formattedSubmissionDate + "</b> trong khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b>. Vui lòng xem xét cẩn thận các chi tiết và quyết định xem nên chấp thuận hay từ chối yêu cầu.";
                 }
                 $('#modalMessage').html(modalMessage);
                 

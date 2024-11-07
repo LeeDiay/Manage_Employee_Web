@@ -99,7 +99,7 @@ if (isset($_POST['empId'])) {
                                                                         $sql = "SELECT emp_id, first_name, middle_name, last_name FROM tblemployees";
                                                                         $result = mysqli_query($conn, $sql);
 
-                                                                        $employeeOptions = '<option value="" disabled selected>Select Employee</option>';
+                                                                        $employeeOptions = '<option value="" disabled selected>Chọn nhân viên</option>';
                                                                         if ($result && mysqli_num_rows($result) > 0) {
                                                                             while ($row = mysqli_fetch_assoc($result)) {
                                                                                 $employeeOptions .= '<option value="' . htmlspecialchars($row['emp_id']) . '">' . htmlspecialchars($row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name']) . '</option>';
@@ -132,7 +132,7 @@ if (isset($_POST['empId'])) {
                                                                         <div class="j-input">
                                                                             <span style="margin-bottom: 8px;" class="j-hint">Ngày bắt đầu</span>
                                                                             <input id="start_date" name="start_date" class="form-control" type="date">
-                                                                            <span class="j-tooltip j-tooltip-right-top">Pick your start leave date</span>
+                                                                            <span class="j-tooltip j-tooltip-right-top">Chọn ngày bắt đầu nghỉ phép của bạn</span>
                                                                         </div>
                                                                     </div>
                                                                     <!-- end start date -->
@@ -141,7 +141,7 @@ if (isset($_POST['empId'])) {
                                                                         <div class="j-input">
                                                                             <span style="margin-bottom: 8px;" class="j-hint">Ngày kết thúc</span>
                                                                             <input id="end_date" name="end_date" class="form-control" type="date">
-                                                                            <span class="j-tooltip j-tooltip-right-top">Pick your end leave date</span>
+                                                                            <span class="j-tooltip j-tooltip-right-top">Chọn ngày nghỉ phép kết thúc của bạn</span>
                                                                         </div>
                                                                     </div>
                                                                     <!-- end start date -->
@@ -170,7 +170,7 @@ if (isset($_POST['empId'])) {
                                                                                 Browse
                                                                                 <input type="file" name="sick_file" id="sick_file" accept=".pdf, .jpg, .jpeg, .png" onchange="validateFile(this)">
                                                                             </div>
-                                                                            <input type="text" id="sick_file_input" readonly="" placeholder="For sick leave only">
+                                                                            <input type="text" id="sick_file_input" readonly="" placeholder="Chỉ dành cho nghỉ ốm">
                                                                              <span class="j-hint">Only: pdf, jpg, jpeg, png, less than 2MB</span>
                                                                         </div>
                                                                     </div>
@@ -228,7 +228,7 @@ if (isset($_POST['empId'])) {
                 if (!empId || !leaveType || !startDate || !endDate || !numberDays || numberDays <= 0) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please fill in all required fields.',
+                        text: 'Vui lòng điền vào tất cả các trường bắt buộc.',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -239,7 +239,7 @@ if (isset($_POST['empId'])) {
                 if ((selectedLeaveType.includes('sick') || selectedLeaveType === 'sick leave') && !sickFile) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please upload a file for sick leave.',
+                        text: 'Vui lòng tải lên tệp xin nghỉ ốm.',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -293,7 +293,7 @@ if (isset($_POST['empId'])) {
                             console.error("Received response:", response);
                             Swal.fire({
                                 icon: 'error',
-                                text: 'An unexpected error occurred. Please try again.',
+                                text: 'Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.',
                                 confirmButtonColor: '#eb3422',
                                 confirmButtonText: 'OK'
                             });
@@ -364,7 +364,7 @@ if (isset($_POST['empId'])) {
             if (!allowedTypes.includes(fileType)) {
                 Swal.fire({
                     icon: 'error',
-                    text: 'Invalid file type. Please select a PDF, JPG, or PNG file.',
+                    text: 'Loại tệp không hợp lệ. Vui lòng chọn tệp PDF, JPG hoặc PNG.',
                     confirmButtonColor: '#dc3545',
                     confirmButtonText: 'OK'
                 });
@@ -375,7 +375,7 @@ if (isset($_POST['empId'])) {
             if (fileSize > maxSize) {
                 Swal.fire({
                     icon: 'error',
-                    text: 'File size exceeds the limit of 2MB. Please select a smaller file.',
+                    text: 'Kích thước tệp vượt quá giới hạn 2MB. Vui lòng chọn tệp nhỏ hơn.',
                     confirmButtonColor: '#dc3545',
                     confirmButtonText: 'OK'
                 });
@@ -408,7 +408,7 @@ if (isset($_POST['empId'])) {
                     if (day === 0 || day === 6) { // 0 for Sunday and 6 for Saturday
                         Swal.fire({
                             icon: 'warning',
-                            text: 'Weekends are not allowed. Please select a weekday.',
+                            text: 'Không được phép vào cuối tuần. Vui lòng chọn một ngày trong tuần.',
                             confirmButtonColor: '#ffc107',
                             confirmButtonText: 'OK'
                         });
@@ -420,7 +420,7 @@ if (isset($_POST['empId'])) {
                     if (input.id === 'end_date' && startDateInput.value && new Date(this.value) < new Date(startDateInput.value)) {
                         Swal.fire({
                             icon: 'warning',
-                            text: 'End date cannot be earlier than start date. Please select a valid date.',
+                            text: 'Ngày kết thúc không thể sớm hơn ngày bắt đầu. Vui lòng chọn ngày hợp lệ.',
                             confirmButtonColor: '#ffc107',
                             confirmButtonText: 'OK'
                         });
@@ -432,7 +432,7 @@ if (isset($_POST['empId'])) {
                     if (input.id === 'start_date' && endDateInput.value && new Date(this.value) > new Date(endDateInput.value)) {
                         Swal.fire({
                             icon: 'warning',
-                            text: 'Start date cannot be later than end date. Please select a valid date.',
+                            text: 'Ngày bắt đầu không được muộn hơn ngày kết thúc. Vui lòng chọn ngày hợp lệ.',
                             confirmButtonColor: '#ffc107',
                             confirmButtonText: 'OK'
                         });
