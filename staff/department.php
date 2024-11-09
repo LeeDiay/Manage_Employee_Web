@@ -168,7 +168,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline"  id="pnotify-desktop-success">
-                                                    <h4>Department List</h4>
+                                                    <h4>Danh sách phòng ban</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -187,7 +187,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <div class="dropdown-secondary dropdown">
                                                             <button class="btn btn-primary btn-mini dropdown-toggle waves-effect waves-light" type="button" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?= $department['name'] ?></button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdown1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                                                <a class="dropdown-item waves-light waves-effect" href="staff_list.php?department=<?= urlencode($department['name']) ?>"><span class="point-marker bg-danger"></span>View Staff</a>
+                                                                <a class="dropdown-item waves-light waves-effect" href="staff_list.php?department=<?= urlencode($department['name']) ?>"><span class="point-marker bg-danger"></span>Xem tất cả nhân viên</a>
                                                             </div>
                                                             <!-- end of dropdown menu -->
                                                         </div>
@@ -205,7 +205,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <?php else: ?>
                                                             <h5>No</h5>
                                                         <?php endif; ?>
-                                                        <p class="text-muted">Total Staff</p>
+                                                        <p class="text-muted">Tổng số nhân viên</p>
                                                     </div>
                                                     <div class="design-description d-inline-block">
                                                         <?php if ($department['managerCount'] > 0): ?>
@@ -213,15 +213,15 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         <?php else: ?>
                                                             <h5>No</h5>
                                                         <?php endif; ?>
-                                                        <p class="text-muted">Total Managers</p>
+                                                        <p class="text-muted">Số người quản lí</p>
                                                     </div>
                                                     <div class="team-box p-b-20">
                                                         <p class="d-inline-block m-r-20 f-w-400">
                                                             <?php
                                                             if ($department['staffCount'] > 0) {
-                                                                echo "Team";
+                                                                echo "Thành viên";
                                                             } else {
-                                                                echo "No Staff";
+                                                                echo "Chưa có thành viên";
                                                             }
                                                             ?>
                                                         </p>
@@ -242,7 +242,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         </div>
                                                     </div>
                                                     <div class="progress-box">
-                                                        <p class="d-inline-block m-r-20 f-w-400">Progress</p>
+                                                        <p class="d-inline-block m-r-20 f-w-400">Tiến độ</p>
                                                         <div class="progress d-inline-block">
                                                                 <?php
                                                                 $staffPercentage = $totalStaff > 0 ? round(($department['staffCount'] / $totalStaff) * 100) : 0;

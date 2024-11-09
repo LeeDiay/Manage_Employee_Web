@@ -39,7 +39,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline">
-                                                    <h4>My Attendance</h4>
+                                                    <h4>Công của tôi</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -64,12 +64,12 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                                     <ul class="nav nav-tabs nav-justified" role="tablist">
                                                                         <li class="nav-item">
                                                                             <a class="nav-link active" data-toggle="tab" href="#clock_in" role="tab">
-                                                                                <h6>Clock In</h6>
+                                                                                <h6>Check In</h6>
                                                                             </a>
                                                                         </li>
                                                                         <li class="nav-item">
                                                                             <a class="nav-link" data-toggle="tab" href="#clock_out" role="tab">
-                                                                                <h6>Clock Out</h6>
+                                                                                <h6>Check Out</h6>
                                                                             </a>
                                                                         </li>
                                                                     </ul>
@@ -94,7 +94,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                                                 </div>
                                                                                 <div class="row m-t-15">
                                                                                     <div class="col-md-12">
-                                                                                        <button id="btn_clock_in" type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center">CONFIRM</button>
+                                                                                        <button id="btn_clock_in" type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center">XÁC NHẬN</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -118,7 +118,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                                                 </div>
                                                                                 <div class="row m-t-15">
                                                                                     <div class="col-md-12">
-                                                                                        <button id="btn_clock_out" type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center">CONFIRM</button>
+                                                                                        <button id="btn_clock_out" type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center">XÁC NHẬN</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -146,23 +146,24 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                                      ?>
                                                                     <div class="card">
                                                                         <div class="card-header">
-                                                                            <h5 class="card-header-text">Attendance Records</h5>
+                                                                            <h5 class="card-header-text">Các bản ghi</h5>
                                                                         </div>
                                                                         <div class="card-block contact-details">
                                                                             <div class="data_table_main table-responsive dt-responsive">
                                                                                 <table id="simpletable" class="table  table-striped table-bordered nowrap">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>Date</th>
-                                                                                            <th>Time In</th>
-                                                                                            <th>Time Out</th>
-                                                                                            <th>Total Hours</th>
-                                                                                            <th>Status(In/Out)</th>
+                                                                                            <th>Ngày</th>
+                                                                                            <th>Giờ vào</th>
+                                                                                            <th>Giờ ra</th>
+                                                                                            <th>Tổng thời gian</th>
+                                                                                            <th>Trạng thái (Vào/Ra)</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <?php while ($row = mysqli_fetch_assoc($result)): ?>
                                                                                             <?php
+                                                                                            
                                                                                                 $time_in = new DateTime($row['time_in']);
                                                                                                 $time_out = $row['time_out'] ? new DateTime($row['time_out']) : null;
                                                                                                 // Calculate and format total hours
@@ -176,13 +177,13 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
 
                                                                                                     $total_hours = '';
                                                                                                     if ($hours > 0) {
-                                                                                                        $total_hours .= $hours . ' hr' . ($hours > 1 ? 's ' : ' ');
+                                                                                                        $total_hours .= $hours . ' giờ' . ($hours > 1 ? ' ' : ' ');
                                                                                                     }
                                                                                                     if ($minutes > 0) {
-                                                                                                        $total_hours .= $minutes . ' min' . ($minutes > 1 ? 's ' : ' ');
+                                                                                                        $total_hours .= $minutes . ' phút' . ($minutes > 1 ? ' ' : ' ');
                                                                                                     }
                                                                                                     if ($seconds > 0) {
-                                                                                                        $total_hours .= $seconds . ' sec' . ($seconds > 1 ? 's' : '');
+                                                                                                        $total_hours .= $seconds . ' giây' . ($seconds > 1 ? '' : '');
                                                                                                     }
 
                                                                                                     $total_hours = trim($total_hours);
@@ -194,9 +195,9 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
 
                                                                                                 // Split and color the status
                                                                                                 if ($status == 'In/Out') {
-                                                                                                    $formatted_status = '<span style="color: green;">In</span>/<span style="color: orange;">Out</span>';
+                                                                                                    $formatted_status = '<span style="color: green;">Vào</span>/<span style="color: orange;">Ra</span>';
                                                                                                 } else {
-                                                                                                    $formatted_status = '<span style="color: green;">In</span>';
+                                                                                                    $formatted_status = '<span style="color: green;">Vào</span>';
                                                                                                 }
                                                                                             ?>
                                                                                             <tr>
@@ -208,15 +209,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                                                             </tr>
                                                                                         <?php endwhile; ?>
                                                                                     </tbody>
-                                                                                    <tfoot>
-                                                                                        <tr>
-                                                                                            <th>Date</th>
-                                                                                            <th>Time In</th>
-                                                                                            <th>Time Out</th>
-                                                                                            <th>Total Hours</th>
-                                                                                            <th>Status(In/Out)</th>
-                                                                                        </tr>
-                                                                                    </tfoot>
+                                                                                    
                                                                                 </table>
                                                                             </div>
                                                                         </div>

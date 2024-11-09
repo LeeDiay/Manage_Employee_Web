@@ -28,13 +28,13 @@ if (isset($_POST['empId'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    $leaveTypesOptions = '<option value="" selected="">Select Leave type</option>';
+    $leaveTypesOptions = '<option value="" selected="">Chọn loại nghỉ phép</option>';
     if ($result && mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $leaveTypesOptions .= '<option value="' . htmlspecialchars($row['leave_type_id']) . '">' . htmlspecialchars($row['leave_type']) . '</option>';
         }
     } else {
-        $leaveTypesOptions .= '<option value="" disabled>No leave types assigned</option>';
+        $leaveTypesOptions .= '<option value="" disabled>Không có loại nghỉ phép nào được chỉ định</option>';
     }
 
     echo $leaveTypesOptions;
@@ -67,8 +67,8 @@ if (isset($_POST['empId'])) {
                                             <div class="col-lg-8">
                                                 <div class="page-header-title">
                                                     <div class="d-inline">
-                                                        <h4>Leave Portal - Apply leave</h4>
-                                                        <span>Send all your leave request from here</span>
+                                                        <h4>Cổng thông tin nghỉ phép - Nộp đơn xin nghỉ phép</h4>
+                                                        <span></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -87,7 +87,7 @@ if (isset($_POST['empId'])) {
                                                             <form method="post" class="j-pro" id="j-pro" enctype="multipart/form-data" novalidate="">
                                                                 <div class="j-content">
                                                                     <div class="j-wrapper">
-                                                                        <h4 style="text-align: center;">Create New Leave</h4>
+                                                                        <h4 style="text-align: center;">Tạo đơn xin nghỉ phép mới</h4>
                                                                     </div>
                                                                     <?php
                                                                     // Check if the user role is Admin and designation is Administrator
@@ -120,7 +120,7 @@ if (isset($_POST['empId'])) {
                                                                     <div class="j-unit">
                                                                         <label class="j-input j-select">
                                                                             <select name="leave_type" id="leave_type">
-                                                                                <option value="" selected="">Select Leave type</option>
+                                                                                <option value="" selected="">Chọn loại nghỉ phép</option>
                                                                             </select>
                                                                             <i></i>
                                                                         </label>
@@ -129,18 +129,18 @@ if (isset($_POST['empId'])) {
                                                                     <!-- start date -->
                                                                     <div class="j-unit">
                                                                         <div class="j-input">
-                                                                            <span style="margin-bottom: 8px;" class="j-hint">Start Date</span>
+                                                                            <span style="margin-bottom: 8px;" class="j-hint">Ngày bắt đầu</span>
                                                                             <input id="start_date" name="start_date" class="form-control" type="date">
-                                                                            <span class="j-tooltip j-tooltip-right-top">Pick your start leave date</span>
+                                                                            <span class="j-tooltip j-tooltip-right-top">Chọn ngày bắt đầu nghỉ phép của bạn</span>
                                                                         </div>
                                                                     </div>
                                                                     <!-- end start date -->
                                                                     <!-- start date -->
                                                                     <div class="j-unit">
                                                                         <div class="j-input">
-                                                                            <span style="margin-bottom: 8px;" class="j-hint">End Date</span>
+                                                                            <span style="margin-bottom: 8px;" class="j-hint">Ngày kết thúc</span>
                                                                             <input id="end_date" name="end_date" class="form-control" type="date">
-                                                                            <span class="j-tooltip j-tooltip-right-top">Pick your end leave date</span>
+                                                                            <span class="j-tooltip j-tooltip-right-top">Chọn ngày nghỉ phép kết thúc của bạn</span>
                                                                         </div>
                                                                     </div>
                                                                     <!-- end start date -->
@@ -158,7 +158,7 @@ if (isset($_POST['empId'])) {
                                                                     <div class="j-unit">
                                                                         <div class="j-input">
                                                                             <textarea placeholder="Additional info" spellcheck="true" name="remarks" id="remarks"></textarea>
-                                                                            <span class="j-tooltip j-tooltip-right-top">Any information about the leave</span>
+                                                                            <span class="j-tooltip j-tooltip-right-top">Mọi thông tin về nghỉ phép</span>
                                                                         </div>
                                                                     </div>
                                                                     <!-- end remarks -->
@@ -166,7 +166,7 @@ if (isset($_POST['empId'])) {
                                                                     <div class="j-unit" id="sick_file_container" style="display: none;">
                                                                         <div class="j-input j-append-small-btn">
                                                                             <div class="j-file-button">
-                                                                                Browse
+                                                                                Chọn ảnh
                                                                                 <input type="file" name="sick_file" id="sick_file" accept=".pdf, .jpg, .jpeg, .png" onchange="validateFile(this)">
                                                                             </div>
                                                                             <input type="text" id="sick_file_input" readonly="" placeholder="For sick leave only">
@@ -185,8 +185,8 @@ if (isset($_POST['empId'])) {
                                                                             <div class="circ4"></div>
                                                                         </div>
                                                                     </div>
-                                                                    <button id="apply-leave" type="submit" class="btn btn-primary">Submit</button>
-                                                                    <button type="reset" class="btn btn-default m-r-20">Reset</button>
+                                                                    <button id="apply-leave" type="submit" class="btn btn-primary">Nộp</button>
+                                                                    <button type="reset" class="btn btn-default m-r-20">Đặt lại từ đầu</button>
                                                                 </div>
                                                                 <!-- end /.footer -->
                                                             </form>

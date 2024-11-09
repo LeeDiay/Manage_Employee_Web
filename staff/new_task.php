@@ -39,7 +39,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline">
-                                                    <h4>Assigned Task</h4>
+                                                    <h4>Nhiệm vụ được giao</h4>
                                                  </div>
                                             </div>
                                         </div>
@@ -72,7 +72,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                             <form>
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-12">
-                                                                        <label for="userName-2" class="block">Title</label>
+                                                                        <label for="userName-2" class="block">Tiêu đề</label>
                                                                     </div>
                                                                     <div class="col-sm-12">
                                                                         <input type="text" id="title" name="title"autocomplete="off" class="form-control" placeholder="" value="<?php echo isset($row['title']) ? $row['title'] : ''; ?>">
@@ -80,7 +80,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-12">
-                                                                        <label for="userName-2" class="block">Assign To</label>
+                                                                        <label for="userName-2" class="block">Giao cho</label>
                                                                     </div>
                                                                     <div class="col-sm-12">
                                                                         <select class="js-example-disabled-results col-sm-12" name="assigned_to" id="assigned_to" required>
@@ -139,7 +139,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
 
                                                                             } else {
                                                                                 // Output the first option as "Select employee" and disabled
-                                                                                echo '<option value="" disabled selected>Select employee</option>';
+                                                                                echo '<option value="" disabled selected>Chọn nhân viên</option>';
 
                                                                                 // Prepare the base query to fetch employees
                                                                                 $query = "SELECT emp_id, first_name, middle_name, last_name, designation, department, role, is_supervisor 
@@ -185,11 +185,11 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                             <h4 class="sub-title"></h4>
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-6">
-                                                                        <label for="start_date" class="block">Start Date</label>
+                                                                        <label for="start_date" class="block">Ngày bắt đầu</label>
                                                                         <input name="start_date" id="dropper-animation" class="form-control start_date" type="text" autocomplete="off" placeholder="" value="<?php echo isset($row['start_date']) ? $row['start_date'] : ''; ?>">
                                                                     </div>
                                                                     <div class="col-sm-6">
-                                                                        <label for="due_date" class="block">End Date</label>
+                                                                        <label for="due_date" class="block">Ngày kết thúc</label>
                                                                          <input id="dropper-default" class="form-control due_date" name="due_date" type="text" autocomplete="off" placeholder="" value="<?php echo isset($row['due_date']) ? $row['due_date'] : ''; ?>">
                                                                     </div>
                                                                 </div>
@@ -199,50 +199,50 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                                 ?>
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-12">
-                                                                        <h4 class="sub-title">Priority</h4>
+                                                                        <h4 class="sub-title">Sự ưu tiên</h4>
                                                                         <div class="form-radio">
                                                                             <div class="radio radiofill radio-inline">
                                                                                 <label>
                                                                                     <input type="radio" name="priority" value="High" <?php echo $selected_priority == 'High' ? 'checked' : ''; ?>>
-                                                                                    <i class="helper"></i>High
+                                                                                    <i class="helper"></i>Cao
                                                                                 </label>
                                                                             </div>
                                                                             <div class="radio radiofill radio-inline">
                                                                                 <label>
                                                                                     <input type="radio" name="priority" value="Medium" <?php echo $selected_priority == 'Medium' ? 'checked' : ''; ?>>
-                                                                                    <i class="helper"></i>Medium
+                                                                                    <i class="helper"></i>Trung bình
                                                                                 </label>
                                                                             </div>
                                                                             <div class="radio radiofill radio-inline">
                                                                                 <label>
                                                                                     <input type="radio" name="priority" value="Low" <?php echo $selected_priority == 'Low' ? 'checked' : ''; ?>>
-                                                                                    <i class="helper"></i>Low
+                                                                                    <i class="helper"></i>Thấp
                                                                                 </label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             <?php else: ?>
-                                                                <h4 class="sub-title">Priority</h4>
+                                                                <h4 class="sub-title">Sự ưu tiên</h4>
                                                                 <div class="form-group row">
                                                                     <div class="col-sm-12">
                                                                         <div class="form-radio">
                                                                             <div class="radio radiofill radio-inline">
                                                                                 <label>
                                                                                     <input type="radio" name="priority" value="High">
-                                                                                    <i class="helper"></i>High
+                                                                                    <i class="helper"></i>Cao
                                                                                 </label>
                                                                             </div>
                                                                             <div class="radio radiofill radio-inline">
                                                                                 <label>
                                                                                     <input type="radio" name="priority" value="Medium">
-                                                                                    <i class="helper"></i>Medium
+                                                                                    <i class="helper"></i>Trung bình
                                                                                 </label>
                                                                             </div>
                                                                             <div class="radio radiofill radio-inline">
                                                                                 <label>
                                                                                     <input type="radio" name="priority" value="Low">
-                                                                                    <i class="helper"></i>Low
+                                                                                    <i class="helper"></i>Thấp
                                                                                 </label>
                                                                             </div>
                                                                         </div>
@@ -259,9 +259,9 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                                                         <label class="col-sm-5"></label>
                                                         <div class="col-sm-5">
                                                             <?php if(isset($row) && !empty($row)): ?>
-                                                                <button id="tasks-update" type="submit" class="btn btn-primary m-b-0">Update</button>
+                                                                <button id="tasks-update" type="submit" class="btn btn-primary m-b-0">Cập nhật</button>
                                                             <?php else: ?>
-                                                                <button id="tasks-add" type="submit" class="btn btn-primary m-b-0">Submit</button>
+                                                                <button id="tasks-add" type="submit" class="btn btn-primary m-b-0">Nộp</button>
                                                             <?php endif; ?>
                                                         </div>
                                                     </div>
@@ -317,7 +317,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                 if (!startDate || !dueDate) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please fill in all required fields.',
+                        text: 'Vui lòng điền vào tất cả các trường bắt buộc.',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -340,7 +340,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                     data.due_date === '' || data.id === 'null') {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please all fieds are required. Kindly fill all',
+                        text: 'Xin vui lòng tất cả các lĩnh vực được yêu cầu. Vui lòng điền vào tất cả',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -407,7 +407,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                 if (!startDate || !dueDate) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please fill in all required fields.',
+                        text: 'Vui lòng điền vào tất cả các trường bắt buộc.',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -430,7 +430,7 @@ if ($userRole !== 'Staff' && $_SESSION['is_supervisor'] !== 1) {
                     data.due_date === '') {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please all fieds are required. Kindly fill all',
+                        text: 'Vui lòng điền vào tất cả các trường bắt buộc.',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });

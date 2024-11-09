@@ -100,7 +100,7 @@ mysqli_stmt_close($stmt);
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline">
-                                                    <h4>Staff List</h4>
+                                                    <h4>Danh sách nhân viên</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -116,7 +116,7 @@ mysqli_stmt_close($stmt);
                                                 <nav class="navbar navbar-light bg-faded m-b-30 p-10">
                                                     <ul class="nav navbar-nav">
                                                         <li class="nav-item active">
-                                                            <a class="nav-link" href="#!">Filter By Department: <span class="sr-only">(current)</span></a>
+                                                            <a class="nav-link" href="#!">Lọc theo phòng ban: <span class="sr-only">(current)</span></a>
                                                         </li>
                                                         <!-- Your existing HTML for the dropdown -->
                                                         <li class="nav-item dropdown">
@@ -124,7 +124,7 @@ mysqli_stmt_close($stmt);
                                                                 <i class="icofont icofont-home"></i> <?php echo $departmentFilter; ?>
                                                             </a>
                                                             <div class="dropdown-menu" aria-labelledby="bydepartment">
-                                                                <a class="dropdown-item <?php echo ($selectedDepartmentName === 'Show all') ? 'active' : ''; ?>" href="?department=Show all">Show all</a>
+                                                                <a class="dropdown-item <?php echo ($selectedDepartmentName === 'Show all') ? 'active' : ''; ?>" href="?department=Show all">Xem tất cả</a>
                                                                 <div class="dropdown-divider"></div>
                                                                 <?php
                                                                 $departmentLookup = [];
@@ -147,7 +147,7 @@ mysqli_stmt_close($stmt);
                                                     </ul>
                                                     <div class="nav-item nav-grid">
                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="searchInput" placeholder="Search here...">
+                                                            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm...">
                                                             <span class="input-group-addon" id="basic-addon1"><i class="icofont icofont-search"></i></span>
                                                         </div>
                                                     </div>

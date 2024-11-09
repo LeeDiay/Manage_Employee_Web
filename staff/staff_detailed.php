@@ -92,7 +92,7 @@ if ($userRole !== 'Staff') {
                                                                     </div>
                                                                     <?php if ($session_id == $get_id): ?>
                                                                         <div class="pull-right cover-btn">
-                                                                            <button type="button" class="btn btn-primary m-r-10 m-b-5" data-toggle="modal" data-target="#change-password-dialog"> Change Password</button>
+                                                                            <button type="button" class="btn btn-primary m-r-10 m-b-5" data-toggle="modal" data-target="#change-password-dialog"> Đổi mật khẩu</button>
                                                                         </div>
                                                                     <?php endif; ?>  
                                                                 </div>
@@ -109,7 +109,7 @@ if ($userRole !== 'Staff') {
                                                 <div class="tab-header card">
                                                     <ul class="nav nav-tabs md-tabs tab-timeline" role="tablist" id="mytab">
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" data-toggle="tab" href="#personal" role="tab">Personal Info</a>
+                                                            <a class="nav-link active" data-toggle="tab" href="#personal" role="tab">Thông tin cá nhân</a>
                                                             <div class="slide"></div>
                                                         </li>
                                                     </ul>
@@ -158,7 +158,7 @@ if ($userRole !== 'Staff') {
                                                                             $designation = $result->fetch_assoc()['designation'];
                                                                         ?>
                                                                         <div class="card-header">
-                                                                            <h5 class="card-header-text">Assigned Supervisor</h5>
+                                                                            <h5 class="card-header-text">Giám sát viên được chỉ định</h5>
                                                                             <?php if (($userRole === 'Admin' || $userRole === 'Manager') && !($userRole === 'Manager' && $designation === 'Administrator')): ?>
                                                                                 <button data-toggle="modal" data-target="#edit-supervisor" type="button" class="btn btn-sm btn-primary waves-effect waves-light f-right">
                                                                                     <i class="icofont icofont-settings"></i>
@@ -172,7 +172,7 @@ if ($userRole !== 'Staff') {
                                                                                 </li>
                                                                             <?php else: ?>
                                                                                 <li class="list-group-item justify-content-between">
-                                                                                    No supervisor assigned.
+                                                                                Không có người giám sát được chỉ định.
                                                                                 </li>
                                                                             <?php endif; ?>
                                                                         </ul>
@@ -198,7 +198,7 @@ if ($userRole !== 'Staff') {
                                                                             }
                                                                         ?>
                                                                         <div class="card-header">
-                                                                            <h5 class="card-header-text">Leave Credits</h5>
+                                                                            <h5 class="card-header-text">Nghỉ phép</h5>
                                                                             <?php if (($userRole === 'Admin' || $userRole === 'Manager') && !($userRole === 'Manager' && $designation === 'Administrator')): ?>
                                                                                 <button data-toggle="modal" data-target="#edit-leave-type" type="button" class="btn btn-sm btn-primary waves-effect waves-light f-right">
                                                                                     <i class="icofont icofont-settings"></i>
@@ -210,9 +210,9 @@ if ($userRole !== 'Staff') {
                                                                                 <table class="table">
                                                                                     <thead>
                                                                                         <tr>
-                                                                                            <th>Leave Type</th>
-                                                                                            <th>Allowed</th>
-                                                                                            <th>Available</th>
+                                                                                            <th>Loại nghỉ phép</th>
+                                                                                            <th>Cho phép</th>
+                                                                                            <th>Có sẵn</th>
                                                                                         </tr>
                                                                                     </thead>
                                                                                     <tbody>
@@ -226,7 +226,7 @@ if ($userRole !== 'Staff') {
                                                                                             <?php endforeach; ?>
                                                                                         <?php else: ?>
                                                                                             <tr>
-                                                                                                <td colspan="3" class="text-center">No leave types assigned yet.</td>
+                                                                                                <td colspan="3" class="text-center">Chưa có loại nghỉ phép nào được chỉ định.</td>
                                                                                             </tr>
                                                                                         <?php endif; ?>
                                                                                     </tbody>
@@ -243,7 +243,7 @@ if ($userRole !== 'Staff') {
                                                                         <!-- contact data table card start -->
                                                                         <div class="card">
                                                                             <div class="card-header">
-                                                                                <h5 class="card-header-text">About Staff</h5>
+                                                                                <h5 class="card-header-text">Giới thiệu nhân viên</h5>
                                                                             </div>
                                                                              <div class="card-block">
                                                                                 <div class="view-info">
@@ -256,24 +256,24 @@ if ($userRole !== 'Staff') {
                                                                                                             <table class="table m-0">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <th scope="row">Full Name</th>
+                                                                                                                        <th scope="row">Họ và tên</th>
                                                                                                                         <td><?php echo htmlspecialchars($row['first_name'] . ' '.$row['middle_name'] . ' ' . $row['last_name']); ?></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
-                                                                                                                        <th scope="row">Gender</th>
+                                                                                                                        <th scope="row">Giới tính</th>
                                                                                                                         <td><?php echo htmlspecialchars($row['gender']); ?></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
-                                                                                                                        <th scope="row">Date Created</th>
+                                                                                                                        <th scope="row">Ngày tạo</th>
                                                                                                                         <td><?php echo htmlspecialchars(date('jS F, Y', strtotime($row['date_created']))); ?></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
-                                                                                                                        <th scope="row">Designation</th>
+                                                                                                                        <th scope="row">Chức vụ</th>
                                                                                                                         <td><?php echo htmlspecialchars($row['designation']); ?></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
-                                                                                                                        <th scope="row">Is Supervisor?</th>
-                                                                                                                       <td><?php echo htmlspecialchars($row['is_supervisor'] == 1 ? 'Yes' : 'No'); ?></td>
+                                                                                                                        <th scope="row">Là người giám sát?</th>
+                                                                                                                       <td><?php echo htmlspecialchars($row['is_supervisor'] == 1 ? 'Có' : 'Không'); ?></td>
                                                                                                                     </tr>
                                                                                                                 </tbody>
                                                                                                             </table>
@@ -289,19 +289,19 @@ if ($userRole !== 'Staff') {
                                                                                                                         <td><a href="#!"><span class="__cf_email__" data-cfemail="4206272f2d02273a232f322e276c212d2f"><?php echo htmlspecialchars($row['email_id']); ?>&#160;</span></a></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
-                                                                                                                        <th scope="row">Mobile Number</th>
+                                                                                                                        <th scope="row">Số điện thoại</th>
                                                                                                                         <td><?php echo htmlspecialchars($row['phone_number']); ?></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
-                                                                                                                        <th scope="row">Staff ID</th>
+                                                                                                                        <th scope="row">Mã nhân viên</th>
                                                                                                                         <td><?php echo htmlspecialchars($row['staff_id']); ?></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
-                                                                                                                        <th scope="row">Role</th>
+                                                                                                                        <th scope="row">Vai trò</th>
                                                                                                                         <td><?php echo htmlspecialchars($row['role']); ?></td>
                                                                                                                     </tr>
                                                                                                                     <tr>
-                                                                                                                        <th scope="row">Department</th>
+                                                                                                                        <th scope="row">Phòng ban</th>
                                                                                                                           <?php
                                                                                                                             $stmt = mysqli_prepare($conn, "SELECT id, department_name FROM tbldepartments WHERE id = ?");
                                                                                                                             mysqli_stmt_bind_param($stmt, "i", $row['department']);
@@ -362,7 +362,7 @@ if ($userRole !== 'Staff') {
                                                                 <div class="auth-box card-block">
                                                                     <div class="row m-b-20">
                                                                         <div class="col-md-12">
-                                                                            <h5 class="text-center txt-primary">Manage Leave Credits of <strong><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name']); ?></strong></h5>
+                                                                            <h5 class="text-center txt-primary">Quản lý Tín dụng Nghỉ phép của <strong><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name']); ?></strong></h5>
                                                                         </div>
                                                                     </div>
                                                                     <hr>
@@ -376,9 +376,9 @@ if ($userRole !== 'Staff') {
                                                                                             <i class="cr-icon icofont icofont-ui-check txt-primary"></i>
                                                                                         </span>
                                                                                     </label>
-                                                                                    <span class="text" style="margin-left: 15px;">Leave Types</span>
+                                                                                    <span class="text" style="margin-left: 15px;">Các loại nghỉ phép</span>
                                                                                 </div>
-                                                                                <span class="text" style="margin-left: 15px;">Leave Credits</span>
+                                                                                <span class="text" style="margin-left: 15px;">Nghỉ phép</span>
                                                                             </li>
                                                                             <?php while ($leaveType = mysqli_fetch_assoc($leaveTypesResult)): ?>
                                                                                 <?php
@@ -410,8 +410,8 @@ if ($userRole !== 'Staff') {
                                                                     <hr>
                                                                     <div class="row">
                                                                         <div class="col-md-10">
-                                                                             <p class="text-inverse text-center m-b-0">You can assign different types of leave to your staff members.</p>
-                                                                            <p class="text-inverse text-left text-warning"><b>Note:</b> Leave types that have been used by the employee cannot be reassigned and will be disabled.</p>
+                                                                             <p class="text-inverse text-center m-b-0">Bạn có thể chỉ định các loại nghỉ phép khác nhau cho nhân viên của mình.</p>
+                                                                            <p class="text-inverse text-left text-warning"><b>Chú ý:</b> Các loại nghỉ phép đã được nhân viên sử dụng không thể được chỉ định lại và sẽ bị vô hiệu hóa.</p>
                                                                         </div>
                                                                         <div class="col-md-2">
                                                                             <!-- <img src="..\files\assets\images\auth\Logo-small-bottom.png" alt="small-logo.png"> -->
@@ -435,12 +435,12 @@ if ($userRole !== 'Staff') {
                                                                 <div class="auth-box card-block">
                                                                     <div class="row m-b-20">
                                                                         <div class="col-md-12">
-                                                                            <h5 class="text-center txt-primary">Manage Supervisor <strong><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name']); ?></strong></h5>
+                                                                            <h5 class="text-center txt-primary">Quản lý giám sát <strong><?php echo htmlspecialchars($row['first_name'] . ' ' . $row['middle_name'] . ' ' . $row['last_name']); ?></strong></h5>
                                                                         </div>
                                                                     </div>
                                                                     <hr>
                                                                     <select name="supervisor" class="form-control form-control-info">
-                                                                        <option value="">Select One Value Only</option>
+                                                                        <option value="">Chỉ chọn một giá trị</option>
                                                                         <?php
                                                                             $employeeId = $row['emp_id'];
                                                                             
@@ -482,8 +482,8 @@ if ($userRole !== 'Staff') {
                                                                     <hr>
                                                                     <div class="row">
                                                                         <div class="col-md-10">
-                                                                            <p class="text-inverse text-left m-b-0">You can assign supervisors to your staff members.</p>
-                                                                            <p class="text-inverse text-left"><b>Please select the appropriate supervisor for each employee.</b></p>
+                                                                            <p class="text-inverse text-left m-b-0">Bạn có thể chỉ định người giám sát cho các nhân viên của bạn.</p>
+                                                                            <p class="text-inverse text-left"><b>Hãy lựa chọn người giám sát phù hợp cho từng nhân viên.</b></p>
                                                                         </div>
                                                                         <div class="col-md-2">
                                                                             <!-- <img src="..\files\assets\images\auth\Logo-small-bottom.png" alt="small-logo.png"> -->
@@ -513,31 +513,31 @@ if ($userRole !== 'Staff') {
                                                 <div class="auth-box card-block">
                                                 <div class="row m-b-20">
                                                     <div class="col-md-12">
-                                                        <h3 class="text-center txt-primary">Change your Password</h3>
+                                                        <h3 class="text-center txt-primary">Thay đổi mật khẩu của bạn</h3>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="input-group">
-                                                    <input id="old_password" type="password" class="form-control" placeholder="Old Password">
+                                                    <input id="old_password" type="password" class="form-control" placeholder="Mật khẩu cũ">
                                                     <span class="md-line"></span>
                                                 </div>
                                                 <div class="input-group">
-                                                    <input id="new_password" type="password" class="form-control" placeholder="New Password">
+                                                    <input id="new_password" type="password" class="form-control" placeholder="Mật khẩu mới">
                                                     <span class="md-line"></span>
                                                 </div>
                                                 <div class="input-group">
-                                                    <input id="confirm_password" type="password" class="form-control" placeholder="Confirm New Password">
+                                                    <input id="confirm_password" type="password" class="form-control" placeholder="Xác nhận mật khẩu mới">
                                                     <span class="md-line"></span>
                                                 </div>
                                                 <div class="row m-t-15">
                                                     <div class="col-md-12">
-                                                        <button id="change_password" type="button" class="btn btn-primary btn-md btn-block waves-effect text-center">Change</button>
+                                                        <button id="change_password" type="button" class="btn btn-primary btn-md btn-block waves-effect text-center">Thay đổi</button>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-10">
-                                                        <p class="text-inverse text-left"><b>You will be authenticated after password reset.</b></p>
+                                                        <p class="text-inverse text-left"><b>Bạn sẽ được xác thực sau khi đặt lại mật khẩu.</b></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -588,7 +588,7 @@ if ($userRole !== 'Staff') {
                 if (data.old_password.trim() === '' || data.new_password.trim() === '' || data.confirm_password.trim() === '') {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please fill in all fields.',
+                        text: 'Vui lòng điền vào tất cả các trường.',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -598,7 +598,7 @@ if ($userRole !== 'Staff') {
                 if (data.new_password !== data.confirm_password) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'New password and confirmation password do not match.',
+                        text: 'Mật khẩu mới và mật khẩu xác nhận không khớp.',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -614,8 +614,8 @@ if ($userRole !== 'Staff') {
                         if (response.status == 'success') {
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Password Reset Successfully',
-                                text: 'Your password has been reset successfully. Kindly login again',
+                                title: 'Đặt lại mật khẩu thành công',
+                                text: ' Vui lòng đăng nhập lại với mật khẩu mới của bạn.',
                                 confirmButtonColor: '#01a9ac',
                                 confirmButtonText: 'OK'
                             }).then((result) => {

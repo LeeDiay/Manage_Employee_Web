@@ -136,7 +136,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                             <div class="col-lg-8">
                                                 <div class="page-header-title">
                                                     <div class="d-inline">
-                                                        <h4>Leave Portal - My Leave Request</h4>
+                                                        <h4>Cổng thông tin nghỉ phép - Yêu cầu nghỉ phép của tôi</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,7 +149,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                             <!-- My leave start -->
                                             <div class="card col-xl-12 col-md-12">
                                                 <div class="card-header">
-                                                    <h5>Summary Leave Request <?php echo $leaveTypeCount; ?></h5>
+                                                    <h5>Tóm tắt <?php echo $leaveTypeCount; ?></h5>
                                                     <div class="card-header-right">
                                                         <ul class="list-unstyled card-option">
                                                             <li><i class="feather icon-maximize full-card"></i></li>
@@ -170,15 +170,15 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                                         <div class="row">
                                                                             <div class="col">
                                                                                 <span class="d-block text-c-blue f-30" style="font-weight: bold;"><?= $summary['total'] ?></span>
-                                                                                <p class="m-b-0 text-c-blue">Total</p>
+                                                                                <p class="m-b-0 text-c-blue">Tổng số ngày</p>
                                                                             </div>
                                                                             <div class="col">
                                                                                 <span class="d-block text-c-green f-30" style="font-weight: bold;"><?= $summary['remaining'] ?></span>
-                                                                                <p class="m-b-0 text-c-green">Remaining</p>
+                                                                                <p class="m-b-0 text-c-green">Còn lại</p>
                                                                             </div>
                                                                             <div class="col">
                                                                                 <span class="d-block text-c-pink f-30" style="font-weight: bold;"><?= $summary['used'] ?></span>
-                                                                                <p class="m-b-0 text-c-pink">Used</p>
+                                                                                <p class="m-b-0 text-c-pink">Đã dùng</p>
                                                                             </div>
                                                                         </div>
                                                                         <div class="progress">
@@ -193,7 +193,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                         <div class="col-12 text-center">
                                                             <div class="alert" style="color: #0c5460; background-color: #d1ecf1; border-color: #bee5eb;" role="alert">
                                                                 <i class="fa fa-info-circle fa-3x"></i>
-                                                                <p class="m-b-0">No summary of leave request</p>
+                                                                <p class="m-b-0">Không có bản tóm tắt yêu cầu nghỉ phép</p>
                                                             </div>
                                                         </div>
                                                     <?php endif; ?>
@@ -206,7 +206,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                 <nav class="navbar navbar-light bg-faded m-b-30 p-10">
                                                     <ul class="nav navbar-nav">
                                                         <li class="nav-item active">
-                                                            <a class="nav-link" href="#!">Filter By Status: <span class="sr-only">(current)</span></a>
+                                                            <a class="nav-link" href="#!">Lọc theo trạng thái: <span class="sr-only">(current)</span></a>
                                                         </li>
                                                         <!-- Your existing HTML for the dropdown -->
                                                         <li class="nav-item dropdown">
@@ -214,7 +214,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                                 <i class="icofont icofont-home"></i> <?php echo $selectedLeaveStatusName; ?>
                                                             </a>
                                                             <div class="dropdown-menu" aria-labelledby="bystatus">
-                                                                <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Show all') ? 'active' : ''; ?>" href="?leave_status=Show all">Show all</a>
+                                                                <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Show all') ? 'active' : ''; ?>" href="?leave_status=Show all">Xem tất cả</a>
                                                                 <div class="dropdown-divider"></div>
                                                                 <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Pending') ? 'active' : ''; ?>" href="?leave_status=0">Pending</a>
                                                                 <a class="dropdown-item <?php echo ($selectedLeaveStatusName === 'Approved') ? 'active' : ''; ?>" href="?leave_status=1">Approved</a>
@@ -226,7 +226,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                     </ul>
                                                     <div class="nav-item nav-grid">
                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="searchInput" placeholder="Search here...">
+                                                            <input type="text" class="form-control" id="searchInput" placeholder="Tìm kiếm...">
                                                             <span class="input-group-addon" id="basic-addon1"><i class="icofont icofont-search"></i></span>
                                                         </div>
                                                     </div>
@@ -247,17 +247,17 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                                 <div class="auth-box card-block">
                                                                 <div class="row m-b-20">
                                                                     <div class="col-md-12 confirm">
-                                                                        <h3 class="text-center txt-primary"><i class="icofont icofont-check-circled text-primary"></i>  Leave Request Details</h3>
+                                                                        <h3 class="text-center txt-primary"><i class="icofont icofont-check-circled text-primary"></i>  Chi tiết</h3>
                                                                     </div>
                                                                 </div>
                                                                 <input hidden type="text" class="form-control leave-id" name="leave-id">
                                                                 <p class="text-inverse text-left m-t-15 f-16"><b>Dear <span id="modalReviewer"></span></b>, </p>
                                                                 <p id="modalMessage" class="text-inverse text-left m-b-20"></p>
                                                                 <ul class="text-inverse text-left m-b-30">
-                                                                    <li><strong>Leave Type: </strong> <span id="modalLeaveType"></span></li>
-                                                                    <li><strong>Requested Days: </strong> <span id="modalRequestedDays"></span></li>
-                                                                    <li><strong>Remaining Days: </strong> <span id="modalRemaing"></span></li>
-                                                                    <li><strong>Leave Current Status: </strong> <span id="modalLeaveStatus"></span></li>
+                                                                    <li><strong>Loại nghỉ phép: </strong> <span id="modalLeaveType"></span></li>
+                                                                    <li><strong>Ngày yêu cầu: </strong> <span id="modalRequestedDays"></span></li>
+                                                                    <li><strong>Số ngày còn lại: </strong> <span id="modalRemaing"></span></li>
+                                                                    <li><strong>Trạng thái: </strong> <span id="modalLeaveStatus"></span></li>
                                                                 </ul>
                                                                 <div class="card-block">
                                                                     <div class="row" id="radioButtonsContainer">
@@ -267,7 +267,7 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                                                                 </div>
                                                                 <div class="row m-t-15">
                                                                     <div class="col-md-12">
-                                                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center">Update</button>
+                                                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center">Cập nhật</button>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">

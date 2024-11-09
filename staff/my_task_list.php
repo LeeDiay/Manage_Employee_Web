@@ -74,7 +74,7 @@ if ($userRole !== 'Staff') {
                                         <div class="col-lg-8">
                                             <div class="page-header-title">
                                                 <div class="d-inline">
-                                                    <h4>My Task List</h4>
+                                                    <h4>Danh sách nhiệm vụ của tôi</h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,26 +101,26 @@ if ($userRole !== 'Staff') {
                                                     <div class="card-block p-t-10">
                                                         <div class="task-right">
                                                             <div class="task-right-header-status">
-                                                                <span data-toggle="collapse">Task Status</span>
+                                                                <span data-toggle="collapse">Trạng thái nhiệm vụ</span>
                                                                 <i class="icofont icofont-rounded-down f-right"></i>
                                                             </div>
                                                             <!-- end of sidebar-header completed status-->
                                                             <div class="taskboard-right-progress">
-                                                                <h6>High Priority</h6>
+                                                                <h6>Ưu tiên cao</h6>
                                                                 <div class="faq-progress">
                                                                     <div class="progress">
                                                                         <!-- <span class="faq-text1"></span> -->
                                                                         <div class="faq-test3 faq-bar-high" style="width: 70%;"></div>
                                                                     </div>
                                                                 </div>
-                                                                <h6>Medium Priority</h6>
+                                                                <h6>Ưu tiên trung bình</h6>
                                                                 <div class="faq-progress">
                                                                     <div class="progress">
                                                                         <!-- <span class="faq-text2"></span> -->
                                                                         <div class="faq-test3 faq-bar-normal" style="width: 50%;"></div>
                                                                     </div>
                                                                 </div>
-                                                                <h6>Low Priority</h6>
+                                                                <h6>Ưu tiên thấp</h6>
                                                                 <div class="faq-progress">
                                                                     <div class="progress">
                                                                         <!-- <span class="faq-text4"></span> -->
@@ -267,29 +267,29 @@ if ($userRole !== 'Staff') {
                                                 <nav class="navbar navbar-light bg-faded m-b-30 p-10">
                                                     <ul class="nav navbar-nav">
                                                         <li class="nav-item active">
-                                                            <a class="nav-link" href="#!">Filter: <span class="sr-only">(current)</span></a>
+                                                            <a class="nav-link" href="#!">Lọc: <span class="sr-only">(current)</span></a>
                                                         </li>
                                                         <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#!" id="bydate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-clock-time"></i> By Date</a>
+                                                            <a class="nav-link dropdown-toggle" href="#!" id="bydate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-clock-time"></i> Theo thời gian</a>
                                                             <div class="dropdown-menu" aria-labelledby="bydate">
                                                                 <?php if (!$timeRange): ?>
-                                                                    <a class="dropdown-item active" href="#">Show all</a>
+                                                                    <a class="dropdown-item active" href="#">Xem tất cả</a>
                                                                 <?php else: ?>
-                                                                    <a class="dropdown-item <?php echo (!$timeRange) ? 'active' : ''; ?>" href="?">Show all</a>
+                                                                    <a class="dropdown-item <?php echo (!$timeRange) ? 'active' : ''; ?>" href="?">Xem tất cả</a>
                                                                 <?php endif; ?>
                                                                 <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'today' ? 'active' : ''; ?>" href="?timeRange=today">Today</a>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'yesterday' ? 'active' : ''; ?>" href="?timeRange=yesterday">Yesterday</a>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'this-week' ? 'active' : ''; ?>" href="?timeRange=this-week">This week</a>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'this-month' ? 'active' : ''; ?>" href="?timeRange=this-month">This month</a>
-                                                                <a class="dropdown-item <?php echo $timeRange === 'this-year' ? 'active' : ''; ?>" href="?timeRange=this-year">This year</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'today' ? 'active' : ''; ?>" href="?timeRange=today">Hôm nay</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'yesterday' ? 'active' : ''; ?>" href="?timeRange=yesterday">Hôm qua</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'this-week' ? 'active' : ''; ?>" href="?timeRange=this-week">Tuần này</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'this-month' ? 'active' : ''; ?>" href="?timeRange=this-month">Tháng này</a>
+                                                                <a class="dropdown-item <?php echo $timeRange === 'this-year' ? 'active' : ''; ?>" href="?timeRange=this-year">Năm nay</a>
                                                             </div>
                                                         </li>
                                                         <!-- end of by date dropdown -->
                                                         <li class="nav-item dropdown">
-                                                            <a class="nav-link dropdown-toggle" href="#!" id="bystatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-chart-histogram-alt"></i> By Status</a>
+                                                            <a class="nav-link dropdown-toggle" href="#!" id="bystatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-chart-histogram-alt"></i> Theo trạng thái</a>
                                                             <div class="dropdown-menu" aria-labelledby="bystatus">
-                                                                <a class="dropdown-item <?php echo !isset($_GET['status']) ? 'active' : ''; ?>" href="?">Show all</a>
+                                                                <a class="dropdown-item <?php echo !isset($_GET['status']) ? 'active' : ''; ?>" href="?">Xem tất cả</a>
                                                                 <div class="dropdown-divider"></div>
                                                                 <a class="dropdown-item <?php echo isset($_GET['status']) && $_GET['status'] === 'Pending' ? 'active' : ''; ?>" href="?status=Pending">Pending</a>
                                                                 <a class="dropdown-item <?php echo isset($_GET['status']) && $_GET['status'] === 'In Progress' ? 'active' : ''; ?>" href="?status=In Progress">In Progress</a>
@@ -366,7 +366,7 @@ if ($userRole !== 'Staff') {
                                                                             <div class="media-body media-middle">
                                                                                 <div class="company-name">
                                                                                     <?php if ($isSupervisor && $result['assigned_to'] === $_SESSION['sfirstname'] . ' ' . $_SESSION['smiddlename'] . ' ' . $_SESSION['slastname']): ?>
-                                                                                        <p>Myself</p>
+                                                                                        <p>Tôi</p>
                                                                                     <?php else: ?>
                                                                                         <p><?php echo $result['assigned_to']; ?></p>
                                                                                     <?php endif; ?>
@@ -379,7 +379,7 @@ if ($userRole !== 'Staff') {
                                                                         </div>
                                                                     </div>
                                                                     <div class="card-block">
-                                                                        <h6 class="job-card-desc">Subject: <?php echo $result['title']; ?></h6>
+                                                                        <h6 class="job-card-desc">Tiêu đề: <?php echo $result['title']; ?></h6>
                                                                         <p class="text-muted">
                                                                              <?php
                                                                                 $description = htmlspecialchars_decode($result['description']);
@@ -390,11 +390,11 @@ if ($userRole !== 'Staff') {
                                                                         </p>
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="job-meta-data me-3" style="margin-right: 40px;">
-                                                                                <strong>Start Date:</strong>
+                                                                                <strong>Ngày bắt đầu:</strong>
                                                                                 <label class="label badge-default" style="color: black !important;"><?php echo date('d F, Y', strtotime($result['start_date'])); ?></label>
                                                                             </div>
                                                                             <div class="job-meta-data">
-                                                                                <strong>Due Date:</strong>
+                                                                                <strong>Ngày đến hạn:</strong>
                                                                                 <label class="label badge-default" style="color: black !important;"><?php echo date('d F, Y', strtotime($result['due_date'])); ?></label>
                                                                             </div>
                                                                         </div>
@@ -406,9 +406,9 @@ if ($userRole !== 'Staff') {
                                                                                     </button>
                                                                                     <div class="dropdown-menu" aria-labelledby="dropdown1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                                                                         <?php if (($result['supervisor_id'] == $sessionEmpId && $result['assigned_to_emp_id'] != $sessionEmpId)): ?>
-                                                                                            <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'High' ? 'active' : ''; ?>" href="#!" data-priority="High" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-warning"></span>High priority</a>
-                                                                                            <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'Medium' ? 'active' : ''; ?>" href="#!" data-priority="Medium" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-success"></span>Medium priority</a>
-                                                                                            <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'Low' ? 'active' : ''; ?>" href="#!" data-priority="Low" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-info"></span>Low priority</a>
+                                                                                            <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'High' ? 'active' : ''; ?>" href="#!" data-priority="High" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-warning"></span>Mức độ ưu tiên cao</a>
+                                                                                            <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'Medium' ? 'active' : ''; ?>" href="#!" data-priority="Medium" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-success"></span>Mức độ ưu tiên trung bình</a>
+                                                                                            <a class="dropdown-priority dropdown-item waves-light waves-effect <?php echo $result['priority'] == 'Low' ? 'active' : ''; ?>" href="#!" data-priority="Low" data-task-id="<?php echo $result['id']; ?>"><span class="point-marker bg-info"></span>Mức độ ưu tiên thấp</a>
                                                                                         <?php endif; ?>
                                                                                     </div>
                                                                                 </div>
@@ -417,20 +417,20 @@ if ($userRole !== 'Staff') {
                                                                                         <?php echo $result['status'] == "Pending" ? 'Pending' : ($result['status'] == "In Progress" ? 'In Progress' : ($result['status'] == "Completed" ? 'Completed' : 'Pending')); ?>
                                                                                     </button>
                                                                                     <div class="dropdown-menu" aria-labelledby="dropdown2" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                                                                        <a class="dropdown-status dropdown-item waves-light waves-effect <?php echo $result['status'] == "Pending" ? 'active' : ''; ?>" href="#!" data-status="Pending" data-task-id="<?php echo $result['id']; ?>">Pending</a>
-                                                                                        <a class="dropdown-status dropdown-item waves-light waves-effect <?php echo $result['status'] == "In Progress" ? 'active' : ''; ?>" href="#!" data-status="In Progress" data-task-id="<?php echo $result['id']; ?>">In Progress</a>
-                                                                                        <a class="dropdown-status dropdown-item waves-light waves-effect <?php echo $result['status'] == "Completed" ? 'active' : ''; ?>" href="#!" data-status="Completed" data-task-id="<?php echo $result['id']; ?>">Completed</a>
+                                                                                        <a class="dropdown-status dropdown-item waves-light waves-effect <?php echo $result['status'] == "Pending" ? 'active' : ''; ?>" href="#!" data-status="Pending" data-task-id="<?php echo $result['id']; ?>">Chưa giải quyết</a>
+                                                                                        <a class="dropdown-status dropdown-item waves-light waves-effect <?php echo $result['status'] == "In Progress" ? 'active' : ''; ?>" href="#!" data-status="In Progress" data-task-id="<?php echo $result['id']; ?>">Đang tiến hành</a>
+                                                                                        <a class="dropdown-status dropdown-item waves-light waves-effect <?php echo $result['status'] == "Completed" ? 'active' : ''; ?>" href="#!" data-status="Completed" data-task-id="<?php echo $result['id']; ?>">Hoàn thành</a>
                                                                                     </div>
                                                                                 </div>
                                                                                 <!-- end of dropdown-secondary -->
                                                                                 <div class="dropdown-secondary dropdown">
                                                                                     <button class="btn btn-default btn-mini dropdown-toggle waves-light b-none txt-muted" type="button" id="dropdown3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="icofont icofont-navigation-menu"></i></button>
                                                                                     <div class="dropdown-menu" aria-labelledby="dropdown3" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                                                                        <a class="dropdown-item waves-light waves-effect" href="task_details.php?id=<?php echo $result['id']; ?>&edit=1"><i class="icofont icofont-spinner-alt-5"></i> View Task</a>
+                                                                                        <a class="dropdown-item waves-light waves-effect" href="task_details.php?id=<?php echo $result['id']; ?>&edit=1"><i class="icofont icofont-spinner-alt-5"></i> Xem nhiệm vụ</a>
                                                                                         <?php if (($result['supervisor_id'] == $sessionEmpId && $result['assigned_to_emp_id'] != $sessionEmpId)): ?>
                                                                                             <div class="dropdown-divider"></div>
-                                                                                            <a class="dropdown-item waves-light waves-effect" href="new_task.php?id=<?php echo $result['id']; ?>&edit=1"><i class="icofont icofont-ui-edit"></i> Edit Task</a>
-                                                                                            <a class="remove-ticket dropdown-item waves-light waves-effect" href="#!" data-task-id="<?php echo $result['id']; ?>"><i class="icofont icofont-close-line"></i> Remove</a>
+                                                                                            <a class="dropdown-item waves-light waves-effect" href="new_task.php?id=<?php echo $result['id']; ?>&edit=1"><i class="icofont icofont-ui-edit"></i> Sửa đổi</a>
+                                                                                            <a class="remove-ticket dropdown-item waves-light waves-effect" href="#!" data-task-id="<?php echo $result['id']; ?>"><i class="icofont icofont-close-line"></i> Xóa</a>
                                                                                         <?php endif; ?>    
                                                                                     </div>
                                                                                     <!-- end of dropdown menu -->
