@@ -519,13 +519,13 @@ if ($userRole !== 'Staff') {
                 event.preventDefault();
                 (async () => {
                     const { value: formValues } = await Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You want to update this!",
+                        title: 'Bạn chắc chứ?',
+                        text: "Bạn muốn cập nhật điều này!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, update it!'
+                        confirmButtonText: 'Chắc chắn!'
                     });
 
                     var selectedPriority = $(this).data('priority');
@@ -576,7 +576,7 @@ if ($userRole !== 'Staff') {
                             error: function(xhr, status, error) {
                                 console.log("AJAX error: " + error);
                                 console.log('Data HERE: ' + JSON.stringify(data));
-                                Swal.fire('Error!', 'Failed to update priority.', 'error');
+                                Swal.fire('Error!', 'Có lỗi xảy ra.', 'error');
                             }
 
                         });
@@ -594,13 +594,13 @@ if ($userRole !== 'Staff') {
                 event.preventDefault();
                 (async () => {
                     const { value: formValues } = await Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You want to update this status!",
+                        title: 'Bạn chắc chứ?',
+                        text: "Bạn muốn cập nhật trạng thái này!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, update it!'
+                        confirmButtonText: 'Có!'
                     });
 
                     var selectedStatus = $(this).data('status');
@@ -651,7 +651,7 @@ if ($userRole !== 'Staff') {
                             error: function(xhr, status, error) {
                                 console.log("AJAX error: " + error);
                                 console.log('Data HERE: ' + JSON.stringify(data));
-                                Swal.fire('Error!', 'Failed to update status.', 'error');
+                                Swal.fire('Error!', 'Có lỗi xảy ra.', 'error');
                             }
 
                         });

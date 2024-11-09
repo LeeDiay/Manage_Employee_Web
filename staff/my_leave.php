@@ -309,13 +309,13 @@ $leaveTypeCount = !empty($leaveSummary) ? '(' . count($leaveSummary) . ')' : '';
                 
                 (async () => {
                     const { value: formValues } = await Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You want to update this status!",
+                        title: 'Bạn chắc chứ?',
+                        text: "Bạn muốn cập nhật trạng thái này!",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, update it!'
+                        confirmButtonText: 'Có!'
                     });
                     var selectedStatus = $('#select').val();
                     const leaveId = $('.leave-id').val();
