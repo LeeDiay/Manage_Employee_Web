@@ -199,7 +199,7 @@
             <div class="service-item d-flex">
             <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
             <div>
-                <h4 class="title"><a href="service-details.html" class="stretched-link">Phát Triển Phần Mềm</a></h4>
+                <h4 class="title"><a href="index.php" class="stretched-link">Phát Triển Phần Mềm</a></h4>
                 <p class="description">Chúng tôi cung cấp các giải pháp phần mềm tùy chỉnh, phù hợp với từng yêu cầu cụ thể của khách hàng.</p>
             </div>
             </div>
@@ -209,7 +209,7 @@
             <div class="service-item d-flex">
             <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
             <div>
-                <h4 class="title"><a href="service-details.html" class="stretched-link">Tư Vấn Công Nghệ</a></h4>
+                <h4 class="title"><a href="index.php" class="stretched-link">Tư Vấn Công Nghệ</a></h4>
                 <p class="description">Chúng tôi cung cấp dịch vụ tư vấn công nghệ, giúp khách hàng lựa chọn giải pháp tối ưu cho doanh nghiệp của mình.</p>
             </div>
             </div>
@@ -219,7 +219,7 @@
             <div class="service-item d-flex">
             <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
             <div>
-                <h4 class="title"><a href="service-details.html" class="stretched-link">Quản Lý Dự Án</a></h4>
+                <h4 class="title"><a href="index.php" class="stretched-link">Quản Lý Dự Án</a></h4>
                 <p class="description">Chúng tôi giúp bạn quản lý các dự án phần mềm từ giai đoạn lập kế hoạch đến khi hoàn thành, đảm bảo chất lượng và tiến độ.</p>
             </div>
             </div>
@@ -229,7 +229,7 @@
             <div class="service-item d-flex">
             <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
             <div>
-                <h4 class="title"><a href="service-details.html" class="stretched-link">Kiểm Thử Phần Mềm</a></h4>
+                <h4 class="title"><a href="index.php" class="stretched-link">Kiểm Thử Phần Mềm</a></h4>
                 <p class="description">Chúng tôi cung cấp dịch vụ kiểm thử phần mềm, giúp đảm bảo chất lượng và hiệu suất của các sản phẩm phần mềm trước khi ra mắt.</p>
             </div>
             </div>
@@ -239,7 +239,7 @@
             <div class="service-item d-flex">
             <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
             <div>
-                <h4 class="title"><a href="service-details.html" class="stretched-link">Phát Triển Ứng Dụng Di Động</a></h4>
+                <h4 class="title"><a href="index.php" class="stretched-link">Phát Triển Ứng Dụng Di Động</a></h4>
                 <p class="description">Chúng tôi phát triển ứng dụng di động cho cả nền tảng Android và iOS, giúp khách hàng tiếp cận người dùng nhanh chóng và hiệu quả.</p>
             </div>
             </div>
@@ -249,7 +249,7 @@
             <div class="service-item d-flex">
             <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
             <div>
-                <h4 class="title"><a href="service-details.html" class="stretched-link">Hỗ Trợ Sau Bán Hàng</a></h4>
+                <h4 class="title"><a href="index.php" class="stretched-link">Hỗ Trợ Sau Bán Hàng</a></h4>
                 <p class="description">Chúng tôi cung cấp dịch vụ hỗ trợ và bảo trì phần mềm sau khi bàn giao, giúp khách hàng vận hành mượt mà các hệ thống phần mềm của mình.</p>
             </div>
             </div>
