@@ -75,7 +75,6 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background">
-
       <div class="container text-center">
         <div class="row justify-content-center" data-aos="zoom-out">
           <div class="col-lg-8">
@@ -93,37 +92,35 @@
 
     <!-- About Section -->
     <section id="about" class="about section">
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+      <h2>GIỚI THIỆU</h2>
+      <p>Công ty Phần mềm Đức Anh chuyên cung cấp các giải pháp công nghệ thông tin tiên tiến, hỗ trợ khách hàng trong hành trình chuyển đổi số và nâng cao hiệu quả kinh doanh.</p>
+      </div><!-- End Section Title -->
 
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-    <h2>GIỚI THIỆU</h2>
-    <p>Công ty Phần mềm Đức Anh chuyên cung cấp các giải pháp công nghệ thông tin tiên tiến, hỗ trợ khách hàng trong hành trình chuyển đổi số và nâng cao hiệu quả kinh doanh.</p>
-    </div><!-- End Section Title -->
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="row gy-4">
+          <div class="col-lg-6">
+          <img src="assets/img/about.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 content">
+          <h3>Đối tác công nghệ đáng tin cậy</h3>
+          <p class="fst-italic">
+              Với đội ngũ kỹ sư giàu kinh nghiệm và tận tâm, chúng tôi cam kết mang đến các sản phẩm phần mềm chất lượng cao, đáp ứng nhu cầu đa dạng từ hệ thống quản lý doanh nghiệp, thương mại điện tử, đến ứng dụng di động.
+          </p>
+          <ul>
+              <li><i class="bi bi-check2-all"></i> <span>Chuyển đổi số giúp tăng trưởng hiệu quả kinh doanh.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Phát triển các giải pháp công nghệ phù hợp với nhu cầu khách hàng.</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Đồng hành cùng khách hàng trong mọi giai đoạn phát triển.</span></li>
+          </ul>
+          <p>
+              Đức Anh không chỉ là đối tác công nghệ mà còn là người đồng hành đáng tin cậy trong sự phát triển và đổi mới của khách hàng.
+          </p>
+          </div>
+      </div>
 
-    <div class="row gy-4">
-        <div class="col-lg-6">
-        <img src="assets/img/about.jpg" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-6 content">
-        <h3>Đối tác công nghệ đáng tin cậy</h3>
-        <p class="fst-italic">
-            Với đội ngũ kỹ sư giàu kinh nghiệm và tận tâm, chúng tôi cam kết mang đến các sản phẩm phần mềm chất lượng cao, đáp ứng nhu cầu đa dạng từ hệ thống quản lý doanh nghiệp, thương mại điện tử, đến ứng dụng di động.
-        </p>
-        <ul>
-            <li><i class="bi bi-check2-all"></i> <span>Chuyển đổi số giúp tăng trưởng hiệu quả kinh doanh.</span></li>
-            <li><i class="bi bi-check2-all"></i> <span>Phát triển các giải pháp công nghệ phù hợp với nhu cầu khách hàng.</span></li>
-            <li><i class="bi bi-check2-all"></i> <span>Đồng hành cùng khách hàng trong mọi giai đoạn phát triển.</span></li>
-        </ul>
-        <p>
-            Đức Anh không chỉ là đối tác công nghệ mà còn là người đồng hành đáng tin cậy trong sự phát triển và đổi mới của khách hàng.
-        </p>
-        </div>
-    </div>
-
-    </div>
-
+      </div>
     </section><!-- /About Section -->
 
 
