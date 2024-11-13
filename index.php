@@ -61,13 +61,10 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      <div class="header-login">
+          <button class="btn btn-info login-button" data-toggle="modal" data-target="#loginModal">Đăng nhập</button>
       </div>
-
+      
     </div>
   </header>
 
@@ -94,8 +91,8 @@
     <section id="about" class="about section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-      <h2>GIỚI THIỆU</h2>
-      <p>Công ty Phần mềm Đức Anh chuyên cung cấp các giải pháp công nghệ thông tin tiên tiến, hỗ trợ khách hàng trong hành trình chuyển đổi số và nâng cao hiệu quả kinh doanh.</p>
+        <h2>GIỚI THIỆU</h2>
+        <p>Công ty Phần mềm Đức Anh chuyên cung cấp các giải pháp công nghệ thông tin tiên tiến, hỗ trợ khách hàng trong hành trình chuyển đổi số và nâng cao hiệu quả kinh doanh.</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
