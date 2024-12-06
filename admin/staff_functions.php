@@ -324,7 +324,6 @@ function assignSupervisor($employeeId, $supervisorId) {
 }
 
 if(isset($_POST['action'])) {
-    // Determine which action to perform
     if ($_POST['action'] === 'updateStaff') {
         $edit_id = $_POST['edit_id'];
         $firstname = $_POST['firstname'];
@@ -342,7 +341,7 @@ if(isset($_POST['action'])) {
         if(isset($_FILES['image_path'])) {
             $image_path = $_FILES['image_path'];
         } else {
-            $image_path = ''; // or set it to some default value as needed
+            $image_path = '';
         }
         $response = updateStaffRecords($edit_id, $firstname, $lastname, $middlename, $contact, $designation, $department, $email, $password, $gender, $is_supervisor, $role, $staff_id, $image_path);
         echo $response;

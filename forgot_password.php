@@ -106,6 +106,10 @@
                     url: 'forgot_password_function.php', // Đường dẫn đến file PHP xử lý
                     data: formData, // Gửi dữ liệu từ form
                     dataType: 'json', // Kiểu dữ liệu phản hồi
+                    beforeSend: function(xhr) {
+                        xhr.setRequestHeader('Host', ''); 
+                        xhr.setRequestHeader('X-Forwarded-Host', ''); 
+                    },
                     success: function(response) {
                         Swal.close(); // Đóng cảnh chờ khi có phản hồi
 
@@ -137,6 +141,7 @@
                         });
                     }
                 });
+
             });
         });
     </script>

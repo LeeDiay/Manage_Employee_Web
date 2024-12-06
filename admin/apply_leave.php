@@ -121,7 +121,7 @@ if (isset($_POST['empId'])) {
                                                                     <div class="j-unit">
                                                                         <label class="j-input j-select">
                                                                             <select  name="leave_type" id="leave_type">
-                                                                                 <option value="" selected="">Select Leave type</option>
+                                                                                 <option value="" selected="">Chọn loại nghỉ phép</option>
                                                                             </select>
                                                                             <i></i>
                                                                         </label>

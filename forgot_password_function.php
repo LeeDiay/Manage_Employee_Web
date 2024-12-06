@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $email = $_POST['email'];
 
         // Kiểm tra xem email có tồn tại trong cơ sở dữ liệu không
-        $stmt = mysqli_prepare($conn, "SELECT email_id FROM tblemployees WHERE email_id = ?"); 
+        $stmt = mysqli_prepare($conn, "SELECT email_id FROM tblemployees WHERE email_id = ?");
         mysqli_stmt_bind_param($stmt, "s", $email);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
@@ -27,19 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $updateStmt = mysqli_prepare($conn, "UPDATE tblemployees SET token = ? WHERE email_id = ?");
             mysqli_stmt_bind_param($updateStmt, "ss", $resetToken, $email);
             mysqli_stmt_execute($updateStmt);
-            
+
             // Gửi email đặt lại mật khẩu
             if (sendPasswordResetEmail($email, $resetToken)) {
-                // Phản hồi JSON cho yêu cầu AJAX
                 echo json_encode(["status" => "success", "message" => "Vui lòng kiểm tra email để khôi phục mật khẩu"]);
             } else {
-                // Phản hồi JSON cho yêu cầu AJAX
                 echo json_encode(["status" => "error", "message" => "Gửi email thất bại."]);
             }
-            
+
             mysqli_stmt_close($updateStmt); // Đóng câu lệnh chuẩn bị
         } else {
-            // Nếu email không tồn tại
             echo json_encode(["status" => "error", "message" => "Không tìm thấy email của bạn trong hệ thống"]);
         }
 
@@ -63,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo json_encode(["status" => "error", "message" => "Token không hợp lệ hoặc hết hạn"]);
         }
-        
+
         mysqli_stmt_close($stmt); // Đóng câu lệnh chuẩn bị
     }
 
@@ -82,16 +79,19 @@ function sendPasswordResetEmail($email, $resetToken) {
         $mail->Port = 465;
         $mail->CharSet = 'UTF-8';
 
-
         $mail->setFrom(EMAIL, 'Hệ thống quản lí nhân viên Đức Anh');
         $mail->addAddress($email);
 
         $mail->isHTML(true);
-        $mail->CharSet = 'UTF-8'; // Thêm dòng này để thiết lập mã hóa UTF-8
+        $mail->CharSet = 'UTF-8';
         $mail->Subject = 'Yêu cầu khôi phục mật khẩu';
-        $resetLink = "http://127.0.0.1/Management/forgot_password_token.php?token=$resetToken";
-        $mail->Body = "Xin chào bạn, có phải bạn vừa thực hiện khôi phục mật khẩu?<p>Bấm vào <a href='$resetLink'>đây</a> để khôi phục mật khẩu.</p>";
 
+        // Lấy giá trị host động từ header
+        $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '127.0.0.1';
+
+        // Tạo đường dẫn khôi phục mật khẩu
+        $resetLink = "http://$host/Management/forgot_password_token.php?token=$resetToken";
+        $mail->Body = "Xin chào bạn, có phải bạn vừa thực hiện khôi phục mật khẩu?<p>Bấm vào liên kết dưới đây để tiến hành khôi phục mật khẩu: </p>$resetLink<p>";
         $mail->send();
         return true;
     } catch (Exception $e) {

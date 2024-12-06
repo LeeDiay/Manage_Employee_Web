@@ -55,7 +55,6 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                             <div class="col-sm-12">
                                                 <!-- Basic Inputs Validation start -->
                                                 <?php
-                                                    // Check if the edit parameter is set and fetch the record from the database
                                                     if(isset($_GET['edit']) && $_GET['edit'] == 1 && isset($_GET['id'])) {
                                                         $id = $_GET['id'];
                                                         $stmt = mysqli_prepare($conn, "SELECT * FROM tblemployees WHERE emp_id = ?");
@@ -216,7 +215,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                         <div class="col-sm-12">
                                                                             <input type="password" placeholder="**********" id="password" name="password" autocomplete="off" class="form-control">
                                                                             <?php if(isset($row) && !empty($row)): ?>
-                                                                                <label for="userName" class="block" style="font-style: italic; font-size: 12px;">Leave this blank if you don't want to change password</label>
+                                                                                <label for="userName" class="block" style="font-style: italic; font-size: 12px;">Để trống nếu bạn không muốn đổi mật khẩu</label>
                                                                             <?php endif; ?>
                                                                         </div>
                                                                     </div>
@@ -283,9 +282,9 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                             <label class="col-sm-5"></label>
                                                             <div class="col-sm-5">
                                                                 <?php if(isset($row) && !empty($row)): ?>
-                                                                    <button id="staff-update" type="submit" class="btn btn-primary m-b-0">Update</button>
+                                                                    <button id="staff-update" type="submit" class="btn btn-primary m-b-0">Cập nhật</button>
                                                                 <?php else: ?>
-                                                                    <button id="staff-add" type="submit" class="btn btn-primary m-b-0">Submit</button>
+                                                                    <button id="staff-add" type="submit" class="btn btn-primary m-b-0">Gửi</button>
                                                                 <?php endif; ?>
                                                             </div>
                                                        </div>
@@ -339,7 +338,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                     if (value.trim() === '') {
                         Swal.fire({
                             icon: 'warning',
-                            text: 'Please fill in all required fields',
+                            text: 'Vui lòng điền đầy đủ thông tin',
                             confirmButtonColor: '#ffc107',
                             confirmButtonText: 'OK'
                         });
@@ -360,7 +359,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (!selectedGender) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please select a gender',
+                        text: 'Vui lòng chọn giới tính',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -373,7 +372,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (!selectedIsSupervisor) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please check whether is supervisor or not',
+                        text: 'Vui lòng chọn làm quản lí hay không',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -386,7 +385,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (!selectedRole) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please select a role',
+                        text: 'Vui lòng chọn chức vụ',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -403,7 +402,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (password !== cPassword) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Passwords do not match',
+                        text: 'Mật khẩu không khớp',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -478,7 +477,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                     if (value.trim() === '') {
                         Swal.fire({
                             icon: 'warning',
-                            text: 'Please fill in all required fields',
+                            text: 'Vui lòng điền đầy đủ thông tin',
                             confirmButtonColor: '#ffc107',
                             confirmButtonText: 'OK'
                         });
@@ -500,7 +499,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (password === '') {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Password cannot be empty',
+                        text: 'Mật khẩu không được để trống',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -511,7 +510,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (password !== cPassword) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Passwords do not match',
+                        text: 'Mật khẩu không khớp',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -526,7 +525,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (!selectedGender) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please select a gender',
+                        text: 'Vui lòng chọn giới tính',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -539,7 +538,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (!selectedIsSupervisor) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please check whether is supervisor or not',
+                        text: 'Vui lòng chọn làm quản lí hay không',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -552,7 +551,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (!selectedRole) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please select a role',
+                        text: 'Vui lòng chọn chức vụ',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
@@ -565,7 +564,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 if (!imageFile) {
                     Swal.fire({
                         icon: 'warning',
-                        text: 'Please select an image file',
+                        text: 'Vui lòng chọn ảnh đại diện',
                         confirmButtonColor: '#ffc107',
                         confirmButtonText: 'OK'
                     });
