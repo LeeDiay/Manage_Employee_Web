@@ -321,7 +321,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     <script>
       $(document).ready(function() {
         $('#staff-update').click(function(event){
-            event.preventDefault(); // prevent the default form submission
+            event.preventDefault();
             (async () => {
 
                 var editId = $('#edit_id').val();
@@ -368,7 +368,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 formData.append('gender', selectedGender);
 
                 // Validate supervisor
-                 var selectedIsSupervisor = $('input[name="is_supervisor"]:checked').val();
+                var selectedIsSupervisor = $('input[name="is_supervisor"]:checked').val();
                 if (!selectedIsSupervisor) {
                     Swal.fire({
                         icon: 'warning',

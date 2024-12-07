@@ -326,7 +326,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                             <?php if ($department['staffCount'] > 0): ?>
                                                                 <h3 class="f-w-400"><?= $department['staffCount'] ?></h3>
                                                             <?php else: ?>
-                                                                <h5>No</h5>
+                                                                <h5>0</h5>
                                                             <?php endif; ?>
                                                             <p class="text-muted">Tổng số nhân viên</p>
                                                         </div>
@@ -334,7 +334,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                             <?php if ($department['managerCount'] > 0): ?>
                                                                 <h3 class="f-w-400"><?= $department['managerCount'] ?></h3>
                                                             <?php else: ?>
-                                                                <h5>No</h5>
+                                                                <h5>0</h5>
                                                             <?php endif; ?>
                                                             <p class="text-muted">Số người quản lí</p>
                                                         </div>

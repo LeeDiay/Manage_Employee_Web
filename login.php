@@ -6,7 +6,6 @@ require_once 'alerts.php';
 // Enable error logging
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
-ini_set('error_log', 'path_to_your_error_log_file.log'); // Set the path to your error log file
 error_reporting(E_ALL);
 
 // Start output buffering
@@ -50,8 +49,7 @@ function checkAndSetSession($userRecord) {
     $_SESSION['sdesignation'] = $userRecord['designation'];
     $_SESSION['is_supervisor'] = $userRecord['is_supervisor'];
     $_SESSION['simageurl'] = $userRecord['image_path'];
-    $_SESSION['last_activity'] = time(); // Set the last activity time
-
+    $_SESSION['last_activity'] = time(); 
     $passwordReset = $userRecord['password_reset'];
 
     if ($userRecord['role'] == 'Admin') {
