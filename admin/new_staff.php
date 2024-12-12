@@ -53,7 +53,6 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                     <div class="page-body">
                                         <div class="row">
                                             <div class="col-sm-12">
-                                                <!-- Basic Inputs Validation start -->
                                                 <?php
                                                     if(isset($_GET['edit']) && $_GET['edit'] == 1 && isset($_GET['id'])) {
                                                         $id = $_GET['id'];
