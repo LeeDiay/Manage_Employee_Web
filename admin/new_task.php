@@ -41,7 +41,7 @@
                                         <div class="col-sm-12">
                                             <!-- Basic Inputs Validation start -->
                                             <?php
-                                                // Check if the edit parameter is set and fetch the record from the database
+                                                
                                                 if(isset($_GET['edit']) && $_GET['edit'] == 1 && isset($_GET['id'])) {
                                                     $id = $_GET['id'];
                                                     $stmt = mysqli_prepare($conn, "SELECT * FROM tbltask WHERE id = ?");
@@ -72,9 +72,9 @@
                                                                     <div class="col-sm-12">
                                                                         <select class="js-example-disabled-results col-sm-12" name="assigned_to" id="assigned_to" required>
                                                                             <?php
-                                                                            // Check if we are editing a record and have a pre-selected employee
+                                                                            
                                                                             if (!empty($row['assigned_to'])) {
-                                                                                // Query the database to get the employee details
+                                                                                
                                                                                 $stmt = mysqli_prepare($conn, "SELECT emp_id, first_name, middle_name, last_name FROM tblemployees WHERE emp_id = ?");
                                                                                 mysqli_stmt_bind_param($stmt, "i", $row['assigned_to']);
                                                                                 mysqli_stmt_execute($stmt);
@@ -82,15 +82,15 @@
                                                                                 mysqli_stmt_fetch($stmt);
                                                                                 mysqli_stmt_close($stmt);
 
-                                                                                // Output the selected option
+                                                                                
                                                                                 $selected_employee_name = $first_name . ' ' . $middle_name . ' ' . $last_name;
                                                                                 echo '<option value="' . $emp_id . '" selected>' . $selected_employee_name . '</option>';
 
-                                                                                // Prepare the base query to fetch other employees
+                                                                                
                                                                                 $query = "SELECT emp_id, first_name, middle_name, last_name, designation, department, role, is_supervisor 
                                                                                         FROM tblemployees WHERE 1=1";
 
-                                                                                // Adjust the query based on the role of the logged-in user
+                                                                                
                                                                                 if ($session_role == 'Admin') {
                                                                                     $query .= " AND can_be_assigned = 'YES'";
                                                                                 } elseif ($session_role == 'Manager') {
@@ -99,10 +99,10 @@
                                                                                     $query .= " AND supervisor_id = ?";
                                                                                 }
 
-                                                                                // Execute the adjusted query
+                                                                                
                                                                                 $stmt = $conn->prepare($query);
 
-                                                                                // Bind parameters based on the role
+                                                                                
                                                                                 if ($session_role == 'Manager') {
                                                                                     $stmt->bind_param("s", $session_depart);
                                                                                 } elseif ($session_role == 'Staff' && $session_supervisor == 1) {
@@ -112,9 +112,9 @@
                                                                                 $stmt->execute();
                                                                                 $stmt->bind_result($emp_id, $first_name, $middle_name, $last_name, $designation, $department, $role, $is_supervisor);
 
-                                                                                // Fetch and populate the dropdown with other options
+                                                                                
                                                                                 while ($stmt->fetch()) {
-                                                                                    // Skip the selected employee
+                                                                                    
                                                                                     if ($emp_id != $row['assigned_to']) {
                                                                                         $employee_name = $first_name . ' ' . $middle_name . ' ' . $last_name;
                                                                                         echo '<option value="' . $emp_id . '">' . $employee_name . ' (' . $designation . ')</option>';
@@ -124,14 +124,14 @@
                                                                                 $stmt->close();
 
                                                                             } else {
-                                                                                // Output the first option as "Select employee" and disabled
+                                                                                
                                                                                 echo '<option value="" disabled selected>Chọn nhân viên</option>';
 
-                                                                                // Prepare the base query to fetch employees
+                                                                                
                                                                                 $query = "SELECT emp_id, first_name, middle_name, last_name, designation, department, role, is_supervisor 
                                                                                         FROM tblemployees WHERE 1=1";
 
-                                                                                // Adjust the query based on the role of the logged-in user
+                                                                                
                                                                                 if ($session_role == 'Admin') {
                                                                                     $query .= " AND can_be_assigned = 'YES'";
                                                                                 } elseif ($session_role == 'Manager') {
@@ -140,10 +140,10 @@
                                                                                     $query .= " AND supervisor_id = ?";
                                                                                 }
 
-                                                                                // Execute the adjusted query
+                                                                                
                                                                                 $stmt = $conn->prepare($query);
 
-                                                                                // Bind parameters based on the role
+                                                                                
                                                                                 if ($session_role == 'Manager') {
                                                                                     $stmt->bind_param("s", $session_depart);
                                                                                 } elseif ($session_role == 'Staff' && $session_supervisor == 1) {
@@ -153,7 +153,7 @@
                                                                                 $stmt->execute();
                                                                                 $stmt->bind_result($emp_id, $first_name, $middle_name, $last_name, $designation, $department, $role, $is_supervisor);
 
-                                                                                // Fetch and populate the dropdown with options
+                                                                                
                                                                                 while ($stmt->fetch()) {
                                                                                     $employee_name = $first_name . ' ' . $middle_name . ' ' . $last_name;
                                                                                     echo '<option value="' . $emp_id . '">' . $employee_name . ' (' . $designation . ')</option>';
@@ -342,7 +342,7 @@
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     window.location.href = "task_list.php";
-                                    // location.reload();
+                                    
                                 }
                             });
                         } else {
@@ -378,7 +378,7 @@
         }
 
         $('#tasks-add').click(function(event){
-            event.preventDefault(); // prevent the default form submission
+            event.preventDefault(); 
             (async () => {
                 var startDate = convertDateFormat($('#dropper-animation').val());
                 var dueDate = convertDateFormat($('#dropper-default').val());
@@ -467,7 +467,7 @@
         })
     </script>
     <!-- Summernote JS - CDN Link -->
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script src="https:
     <script>
         $(document).ready(function() {
             $("#summernote").summernote({
@@ -487,7 +487,7 @@
                 fontSizes: ['12', '14', '16', '18', '20', '22', '24', '28', '32'],
                 callbacks: {
                 onChangeFont: function(fontName) {
-                    // Preserve font size when changing font family
+                    
                     var currentFontSize = $(this).summernote('fontSize');
                     $(this).summernote('fontName', fontName);
                     $(this).summernote('fontSize', currentFontSize);
@@ -501,7 +501,7 @@
         });
 
     </script>
-    <!-- //Summernote JS - CDN Link -->
+    <!-- 
  </body>
 
 </html>

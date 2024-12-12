@@ -12,7 +12,7 @@ function changePassword($email, $oldPassword, $newPassword) {
         exit;
     }
 
-    // Check if the email exists and retrieve the current password hash
+    
     $stmt = mysqli_prepare($conn, "SELECT password FROM tblemployees WHERE email_id = ?");
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
@@ -27,24 +27,24 @@ function changePassword($email, $oldPassword, $newPassword) {
         $row = mysqli_fetch_assoc($result);
         $currentPasswordHash = $row['password'];
 
-        // Verify the old password using MD5
+        
         if (md5($oldPassword) !== $currentPasswordHash) {
             $response = array('status' => 'error', 'message' => 'Mật khẩu cũ không đúng');
             echo json_encode($response);
             exit;
         }
 
-        // Hash the new password using MD5
+        
         $hashedNewPassword = md5($newPassword);
 
-        // Check if the new password is the same as the old password
+        
         if ($hashedNewPassword === $currentPasswordHash) {
             $response = array('status' => 'error', 'message' => 'Mật khẩu mới phải khác mật khẩu cũ');
             echo json_encode($response);
             exit;
         }
         
-        // Prepare the query to update the password
+        
         $stmt = mysqli_prepare($conn, "UPDATE tblemployees SET password = ? WHERE email_id = ?");
         mysqli_stmt_bind_param($stmt, "ss", $hashedNewPassword, $email);
         mysqli_stmt_execute($stmt);

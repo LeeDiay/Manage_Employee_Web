@@ -1,12 +1,12 @@
 <?php include('../includes/header.php')?>
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -59,7 +59,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                         <!--profile cover start-->
 
                                         <?php
-                                            // Check if the edit parameter is set and fetch the record from the database
+                                            
                                             if(isset($_GET['view']) && $_GET['view'] == 2 && isset($_GET['id'])) {
                                                 $id = $_GET['id'];
                                                 $stmt = mysqli_prepare($conn, "SELECT * FROM tblemployees WHERE emp_id = ?");
@@ -126,7 +126,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                         <?php
                                                                             $employeeId = $row['emp_id'];
 
-                                                                            // Fetch the supervisor details
+                                                                            
                                                                             $supervisorQuery = "
                                                                                 SELECT s.emp_id, s.first_name, s.middle_name, s.last_name
                                                                                 FROM tblemployees e
@@ -143,7 +143,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 
                                                                             $userRole = $_SESSION['srole'];
 
-                                                                            // Fetch the designation of the currently viewed employee
+                                                                            
                                                                             $designationQuery = "
                                                                                 SELECT designation
                                                                                 FROM tblemployees
@@ -179,7 +179,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                     </div>
                                                                     <div class="card-block groups-contact">
                                                                         <?php
-                                                                            // Fetch assigned leave types for the employee
+                                                                            
                                                                             $assignedLeaveTypesQuery = "
                                                                                 SELECT lt.leave_type, lt.assign_days, elt.available_days
                                                                                 FROM tblleavetype lt
@@ -268,7 +268,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                                                         </td>
                                                                                                                     </tr>
                                                                                                                     <?php
-                                                                                                                        // Mảng tên tháng bằng tiếng Việt
+                                                                                                                        
                                                                                                                         $months = [
                                                                                                                             'January' => 'Tháng 1', 'February' => 'Tháng 2', 'March' => 'Tháng 3',
                                                                                                                             'April' => 'Tháng 4', 'May' => 'Tháng 5', 'June' => 'Tháng 6',
@@ -276,10 +276,10 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                                                             'October' => 'Tháng 10', 'November' => 'Tháng 11', 'December' => 'Tháng 12'
                                                                                                                         ];
                                                                                                                         
-                                                                                                                        // Định dạng ngày tạo
+                                                                                                                        
                                                                                                                         $dateCreated = date('j F, Y', strtotime($row['date_created']));
                                                                                                                         
-                                                                                                                        // Thay thế tháng bằng tiếng Việt
+                                                                                                                        
                                                                                                                         foreach ($months as $english => $vietnamese) {
                                                                                                                             $dateCreated = str_replace($english, $vietnamese, $dateCreated);
                                                                                                                         }
@@ -364,11 +364,11 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                 <?php
                                                     $employeeId = $row['emp_id']; 
 
-                                                    // Fetch all leave types
+                                                    
                                                     $leaveTypesQuery = "SELECT * FROM tblleavetype where status = '1'";
                                                     $leaveTypesResult = mysqli_query($conn, $leaveTypesQuery);
 
-                                                    // Fetch assigned leave types for the employee
+                                                    
                                                     $assignedLeaveTypesQuery = "SELECT leave_type_id, available_days FROM employee_leave_types WHERE emp_id = $employeeId";
                                                     $assignedLeaveTypesResult = mysqli_query($conn, $assignedLeaveTypesQuery);
                                                     $assignedLeaveTypes = [];
@@ -466,7 +466,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                         <?php
                                                                             $employeeId = $row['emp_id'];
                                                                             
-                                                                            // Fetch the employee's role and department
+                                                                            
                                                                             $employeeQuery = "SELECT role, department FROM tblemployees WHERE emp_id = ?";
                                                                             $stmt = $conn->prepare($employeeQuery);
                                                                             $stmt->bind_param('i', $employeeId);
@@ -476,9 +476,9 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                             $employeeRole = $employeeRow['role'];
                                                                             $employeeDept = $employeeRow['department'];
 
-                                                                            // Initialize the query to fetch supervisors
+                                                                            
                                                                             if ($employeeRole === 'Manager') {
-                                                                                // If the employee is a manager, list only managers in the same department
+                                                                                
                                                                                 $supervisorQuery = "
                                                                                     SELECT emp_id, first_name, middle_name, last_name 
                                                                                     FROM tblemployees 
@@ -489,7 +489,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                 $stmt = $conn->prepare($supervisorQuery);
                                                                                 $stmt->bind_param('si', $employeeDept, $employeeId);
                                                                             } else {
-                                                                                // If the employee is a staff member, list supervisors in the same department (either managers or staff with is_supervisor = 1)
+                                                                                
                                                                                 $supervisorQuery = "
                                                                                     SELECT emp_id, first_name, middle_name, last_name 
                                                                                     FROM tblemployees 
@@ -601,7 +601,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 <?php include('../includes/scripts.php')?>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script async="" src="https:
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -623,7 +623,7 @@ gtag('config', 'UA-23581568-13');
         var saveButton = document.getElementById('saveLeaveTypesBtn');
         var initialCheckedStates = Array.from(checkboxes).map(checkbox => checkbox.checked);
 
-        // Function to check for changes and enable/disable the Save button
+        
         function checkForChanges() {
             var currentCheckedStates = Array.from(checkboxes).map(checkbox => checkbox.checked);
             var hasChanges = !initialCheckedStates.every((state, index) => state === currentCheckedStates[index]);
@@ -638,17 +638,17 @@ gtag('config', 'UA-23581568-13');
             saveButton.disabled = !hasChanges;
         }
 
-        // Disable the Save button on page load
+        
         saveButton.classList.remove('btn-primary');
         saveButton.classList.add('btn-disabled');
         saveButton.disabled = true;
 
-        // Event listener for checkbox changes
+        
         checkboxes.forEach(function(checkbox) {
             checkbox.addEventListener('change', checkForChanges);
         });
 
-        // Event listener for the "Select All" checkbox
+        
         document.getElementById('selectAllLeaveTypes').addEventListener('change', function(event) {
             checkboxes.forEach(function(checkbox) {
                 if (!checkbox.disabled) {
@@ -658,7 +658,7 @@ gtag('config', 'UA-23581568-13');
             checkForChanges();
         });
 
-        // Check for changes when the modal is opened
+        
         $('#edit-leave-type').on('shown.bs.modal', function() {
             initialCheckedStates = Array.from(checkboxes).map(checkbox => checkbox.checked);
             checkForChanges();
@@ -667,11 +667,11 @@ gtag('config', 'UA-23581568-13');
 
 
     document.getElementById('saveLeaveTypesBtn').addEventListener('click', function(event) {
-        event.preventDefault(); // prevent the default form submission
+        event.preventDefault(); 
 
-        // $('#edit-leave-type').modal('hide');
         
-        // Validate if at least one leave type is selected
+        
+        
         var checkboxes = document.querySelectorAll('input[name="leaveTypes[]"]');
         var isChecked = false;
         checkboxes.forEach(function(checkbox) {
@@ -688,7 +688,7 @@ gtag('config', 'UA-23581568-13');
                 confirmButtonColor: '#ffc107',
                 confirmButtonText: 'OK',
                 didClose: () => {
-                    // Restore the z-index of the modal
+                    
                     $('.modal').css('z-index', '');
                 }
             });
@@ -697,19 +697,19 @@ gtag('config', 'UA-23581568-13');
         
         console.log("DATA HERE PASSED")
 
-        // If validation passes, proceed with form submission
+        
         var formData = new FormData();
         formData.append('employeeId', <?php echo $employeeId; ?>);
         formData.append('action', 'assign-leave-types');   
 
-        // Append selected leave types to formData
+        
         checkboxes.forEach(function(checkbox) {
             if (checkbox.checked) {
                 formData.append('leaveTypes[]', checkbox.value);
             }
         });
 
-        // Log the formData to the console
+        
         for (var pair of formData.entries()) {
             console.log("DATA TO BACKEND HERE: " + pair[0] + ': ' + pair[1]);
         }
@@ -740,21 +740,21 @@ gtag('config', 'UA-23581568-13');
                 confirmButtonColor: '#eb3422',
                 confirmButtonText: 'OK',
                 didClose: () => {
-                    // Restore the z-index of the modal
+                    
                     $('.modal').css('z-index', '');
                 }
             });
         });
     });
 
-    // Assign supervisor
+    
     document.getElementById('assignSupervisorBtn').addEventListener('click', function(event) {
-        event.preventDefault(); // prevent the default form submission
+        event.preventDefault(); 
 
-        // $('#edit-supervisor').modal('hide');
+        
         
         var supervisorId = document.querySelector('select[name="supervisor"]').value;
-        var employeeId = <?php echo $employeeId; ?>; // Assume $employeeId is set and contains the employee's ID
+        var employeeId = <?php echo $employeeId; ?>; 
         
         if (!supervisorId) {
             $('.modal').css('z-index', '1050');
@@ -764,7 +764,7 @@ gtag('config', 'UA-23581568-13');
                 confirmButtonColor: '#ffc107',
                 confirmButtonText: 'OK',
                 didClose: () => {
-                    // Restore the z-index of the modal
+                    
                     $('.modal').css('z-index', '');
                 }
             });
@@ -802,7 +802,7 @@ gtag('config', 'UA-23581568-13');
                     confirmButtonColor: '#eb3422',
                     confirmButtonText: 'OK',
                     didClose: () => {
-                        // Restore the z-index of the modal
+                        
                         $('.modal').css('z-index', '');
                     }
                 });
@@ -816,7 +816,7 @@ gtag('config', 'UA-23581568-13');
                 confirmButtonColor: '#eb3422',
                 confirmButtonText: 'OK',
                 didClose: () => {
-                    // Restore the z-index of the modal
+                    
                     $('.modal').css('z-index', '');
                 }
             });

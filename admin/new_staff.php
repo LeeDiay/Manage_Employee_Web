@@ -1,12 +1,12 @@
 <?php include('../includes/header.php')?>
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -151,18 +151,18 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                     <div class="col-sm-12">
                                                                         <select class="js-example-disabled-results col-sm-12" name="department" id="department" required>
                                                                             <?php
-                                                                                // Check if we are coming from an edit page and $selected_department_id is not empty
+                                                                                
                                                                                 if (!empty($row['department'])) {
-                                                                                        // Query the database to get the department details
+                                                                                        
                                                                                         $stmt = mysqli_prepare($conn, "SELECT id, department_name FROM tbldepartments WHERE id = ?");
                                                                                         mysqli_stmt_bind_param($stmt, "i", $row['department']);
                                                                                         mysqli_stmt_execute($stmt);
                                                                                         mysqli_stmt_bind_result($stmt, $id, $name);
                                                                                         mysqli_stmt_fetch($stmt);
                                                                                         mysqli_stmt_close($stmt);
-                                                                                        // Output the selected option
+                                                                                        
                                                                                         echo '<option value="' . $id . '" selected>' . $name . '</option>';
-                                                                                        // Output the rest of the options
+                                                                                        
                                                                                         $stmt = mysqli_prepare($conn, "SELECT id, department_name, department_desc FROM tbldepartments");
                                                                                         mysqli_stmt_execute($stmt);
                                                                                         mysqli_stmt_store_result($stmt);
@@ -172,9 +172,9 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                         }
                                                                                         mysqli_stmt_close($stmt);
                                                                                 } else {
-                                                                                    // Output the first option as "Select department" and disabled
+                                                                                    
                                                                                         echo '<option value="" disabled selected>Chọn phòng ban</option>';
-                                                                                        // Output the rest of the options
+                                                                                        
                                                                                         $stmt = mysqli_prepare($conn, "SELECT id, department_name, department_desc FROM tbldepartments");
                                                                                         mysqli_stmt_execute($stmt);
                                                                                         mysqli_stmt_store_result($stmt);
@@ -334,7 +334,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                     var field = requiredFields[i];
                     var value = $('#' + field).val();
                     
-                    // Check if the field is empty
+                    
                     if (value.trim() === '') {
                         Swal.fire({
                             icon: 'warning',
@@ -343,18 +343,18 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                             confirmButtonText: 'OK'
                         });
                         isValid = false;
-                        break; // Stop further validation
+                        break; 
                     }
 
-                    // Append the field to the form data
+                    
                     formData.append(field, value);
                 }
 
                 if (!isValid) {
-                    return; // Don't proceed if there are empty fields
+                    return; 
                 }
 
-                // Validate gender
+                
                 var selectedGender = $('input[name="gender"]:checked').val();
                 if (!selectedGender) {
                     Swal.fire({
@@ -367,7 +367,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 }
                 formData.append('gender', selectedGender);
 
-                // Validate supervisor
+                
                 var selectedIsSupervisor = $('input[name="is_supervisor"]:checked').val();
                 if (!selectedIsSupervisor) {
                     Swal.fire({
@@ -380,7 +380,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 }
                 formData.append('is_supervisor', selectedIsSupervisor);
                 
-                // Validate role
+                
                 var selectedRole = $('input[name="role"]:checked').val();
                 if (!selectedRole) {
                     Swal.fire({
@@ -393,10 +393,10 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 }
                 formData.append('role', selectedRole);
 
-                // Handle the image field separately
+                
                 var imageFile = $('#image_path')[0].files[0];
 
-                // Check if password and c_password match
+                
                 var password = $('#password').val();
                 var cPassword = $('#c_password').val();
                 if (password !== cPassword) {
@@ -438,7 +438,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     window.location.href = "staff_list.php";
-                                    // location.reload();
+                                    
                                 }
                             });
                         } else {
@@ -462,9 +462,9 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     </script>
     <script>
         $('#staff-add').click(function(event){
-            event.preventDefault(); // prevent the default form submission
+            event.preventDefault(); 
             (async () => {
-                // Validate required fields
+                
                 var requiredFields = ['firstname', 'lastname', 'contact', 'designation', 'department', 'email', 'staff_id'];
                 var formData = new FormData();
                 var isValid = true;
@@ -473,7 +473,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                     var field = requiredFields[i];
                     var value = $('#' + field).val();
                     
-                    // Check if the field is empty
+                    
                     if (value.trim() === '') {
                         Swal.fire({
                             icon: 'warning',
@@ -482,18 +482,18 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                             confirmButtonText: 'OK'
                         });
                         isValid = false;
-                        break; // Stop further validation
+                        break; 
                     }
 
-                    // Append the field to the form data
+                    
                     formData.append(field, value);
                 }
 
                 if (!isValid) {
-                    return; // Don't proceed if there are empty fields
+                    return; 
                 }
 
-                // Check if password is empty
+                
                 var password = $('#password').val();
                 var cPassword = $('#c_password').val();
                 if (password === '') {
@@ -506,7 +506,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                     return;
                 }
 
-                // Check if password and c_password match
+                
                 if (password !== cPassword) {
                     Swal.fire({
                         icon: 'warning',
@@ -517,10 +517,10 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                     return;
                 }
 
-                // Append the password to the form data
+                
                 formData.append('password', password);
 
-                // Validate gender
+                
                 var selectedGender = $('input[name="gender"]:checked').val();
                 if (!selectedGender) {
                     Swal.fire({
@@ -533,7 +533,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 }
                 formData.append('gender', selectedGender);
 
-                // Validate supervisor
+                
                 var selectedIsSupervisor = $('input[name="is_supervisor"]:checked').val();
                 if (!selectedIsSupervisor) {
                     Swal.fire({
@@ -546,7 +546,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 }
                 formData.append('is_supervisor', selectedIsSupervisor);
 
-                // Validate role
+                
                 var selectedRole = $('input[name="role"]:checked').val();
                 if (!selectedRole) {
                     Swal.fire({
@@ -559,7 +559,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 }
                 formData.append('role', selectedRole);
 
-                // Handle the image field separately
+                
                 var imageFile = $('#image_path')[0].files[0];
                 if (!imageFile) {
                     Swal.fire({

@@ -1,12 +1,12 @@
 <?php include('../includes/header.php')?>
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -61,7 +61,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                 <div class="col-sm-12">
                                                                     <!-- contact data table card start -->
                                                                      <?php
-                                                                        // Query to fetch attendance records
+                                                                        
                                                                         $stmt = mysqli_prepare($conn, "SELECT a.date, a.staff_id, 
                                                                                                             e.first_name, e.middle_name, e.last_name, a.attendance_id,
                                                                                                             a.time_in, a.time_out 
@@ -94,7 +94,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                             <?php
                                                                                                 $time_in = new DateTime($row['time_in']);
                                                                                                 $time_out = $row['time_out'] ? new DateTime($row['time_out']) : null;
-                                                                                                // Calculate and format total hours
+                                                                                                
                                                                                                 if ($time_out) {
                                                                                                     $time_in = new DateTime($row['time_in']);
                                                                                                     $interval = $time_in->diff($time_out);
@@ -118,10 +118,10 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                                 } else {
                                                                                                     $total_hours = '-';
                                                                                                 }
-                                                                                                // Determine status
+                                                                                                
                                                                                                 $status = $row['time_out'] ? 'In/Out' : 'In';
 
-                                                                                                // Split and color the status
+                                                                                                
                                                                                                 if ($status == 'In/Out') {
                                                                                                     $formatted_status = '<span style="color: green;">Vào</span>/<span style="color: orange;">Ra</span>';
                                                                                                 } else {
@@ -220,7 +220,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                         'Đã xóa bản ghi.',
                                         'success'
                                     ).then(() => {
-                                        location.reload(); // Refresh the page to reflect changes
+                                        location.reload(); 
                                     });
                                 } else {
                                     Swal.fire(

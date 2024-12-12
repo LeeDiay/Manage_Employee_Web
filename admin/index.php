@@ -1,13 +1,13 @@
 <?php include('../includes/header.php')?>
 
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -20,35 +20,35 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $total_leave = $row['total_leave'];
 
-// Fetch the count of pending leaves
+
 $stmt = $conn->prepare("SELECT COUNT(*) as pending_leave FROM tblleave WHERE leave_status = 0");
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $pending_leave = $row['pending_leave'];
 
-// Fetch the count of approved leaves
+
 $stmt = $conn->prepare("SELECT COUNT(*) as approved_leave FROM tblleave WHERE leave_status = 1");
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $approved_leave = $row['approved_leave'];
 
-// Fetch the count of recalled leaves
+
 $stmt = $conn->prepare("SELECT COUNT(*) as recalled_leave FROM tblleave WHERE leave_status = 3");
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $recalled_leave = $row['recalled_leave'];
 
-// Fetch the count of canceled leaves
+
 $stmt = $conn->prepare("SELECT COUNT(*) as rejected_leave FROM tblleave WHERE leave_status = 4");
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $rejected_leave = $row['rejected_leave'];
 
-// Calculate the percentages
+
 $pending_percentage = ($total_leave > 0) ? floor(($pending_leave / $total_leave) * 100) : 0;
 $approved_percentage = ($total_leave > 0) ? floor(($approved_leave / $total_leave) * 100) : 0;
 $recalled_percentage = ($total_leave > 0) ? floor(($recalled_leave / $total_leave) * 100) : 0;
@@ -58,7 +58,7 @@ $rejected_percentage = ($total_leave > 0) ? floor(($rejected_leave / $total_leav
 <?php
 $totalStaff = 0;
 
-// Assuming you have a database connection, fetch all departments
+
 $departmentQuery = $conn->prepare("SELECT * FROM tbldepartments");
 $departmentQuery->execute();
 $departmentResult = $departmentQuery->get_result();
@@ -70,7 +70,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
     $departmentName = $departmentRow['department_name'];
     $departmentDesc = $departmentRow['department_desc'];
 
-    // Fetch the count of staff in the department
+    
     $staffQuery = $conn->prepare("SELECT COUNT(*) as staff_count FROM tblemployees WHERE department = ?");
     $staffQuery->bind_param("i", $departmentId);
     $staffQuery->execute();
@@ -80,7 +80,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
 
     $totalStaff += $staffCount;
 
-    // Fetch the count of managers in the department
+    
     $managerQuery = $conn->prepare("SELECT COUNT(*) as manager_count FROM tblemployees WHERE department = ? AND role = 'Manager'");
     $managerQuery->bind_param("i", $departmentId);
     $managerQuery->execute();
@@ -350,7 +350,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                             </p>
                                                             <div class="team-section d-inline-block">
                                                                 <?php
-                                                                // Fetch and display only 10 staff members for this department
+                                                                
                                                                 $staffQuery = $conn->prepare("SELECT * FROM tblemployees WHERE department = ? LIMIT 10");
                                                                 $staffQuery->bind_param("i", $department['id']);
                                                                 $staffQuery->execute();
@@ -383,7 +383,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                             <div class="col-md-12 col-xl-4">
                                                 <!-- contact data table card start -->
                                                 <?php
-                                                // Query to fetch attendance records
+                                                
                                                 $stmt = mysqli_prepare($conn, "SELECT * 
                                                                                 FROM tblemployees e
                                                                                 WHERE DATE(e.date_created) = CURDATE()
@@ -427,7 +427,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                             <div class="col-md-12 col-xl-4">
                                                 <!-- contact data table card start -->
                                                 <?php
-                                                // Query to fetch attendance records
+                                                
                                                 $stmt = mysqli_prepare($conn, "SELECT a.date, a.staff_id, 
                                                                                 e.first_name, e.middle_name, e.last_name, a.attendance_id,
                                                                                 a.time_in, a.time_out 
@@ -478,7 +478,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                             <div class="col-md-12 col-xl-4">
                                                 <!-- contact data table card start -->
                                                 <?php
-                                                // Query to fetch attendance records
+                                                
                                                 $stmt = mysqli_prepare($conn, "SELECT l.id, l.leave_type_id, l.requested_days, l.from_date, l.to_date, l.remarks, l.created_date, l.leave_status, l.empid, e.first_name, e.middle_name, e.last_name 
                                                                         FROM tblleave l
                                                                         JOIN tblemployees e ON l.empid = e.emp_id

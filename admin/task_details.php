@@ -36,7 +36,7 @@
                                 <!-- Page-header end -->
                                     
                                     <?php
-                                        // Check if the edit parameter is set and fetch the record from the database
+                                        
                                         if(isset($_GET['edit']) && $_GET['edit'] == 1 && isset($_GET['id'])) {
                                             $id = $_GET['id'];
                                             $stmt = mysqli_prepare($conn, "SELECT t.*, e1.first_name AS assigned_by_first_name, e1.last_name AS assigned_by_last_name, 
@@ -132,12 +132,12 @@
                                                         </table>
                                                     </div>
                                                     <?php
-                                                    // Fetch session data
+                                                    
                                                     $sessionRole = $_SESSION['srole'];
                                                     $sessionDepartmentId = $_SESSION['department'];
                                                     $assignedById = $row['assigned_by'];
 
-                                                    // Determine if edit and remove options should be shown
+                                                    
                                                     $showOptions = ($sessionRole === 'Admin') || ($sessionRole === 'Manager' && $sessionDepartmentId == $row['assigned_to_department_id']) || ($assignedById == $_SESSION['slogin']);
                                                     ?>
                                                     <?php if ($showOptions): ?>
@@ -214,7 +214,7 @@
     <script type="text/javascript" src="..\files\bower_components\switchery\js\switchery.min.js"></script>
 
     <script>
-        // Multiple swithces
+        
         var elem = Array.prototype.slice.call(document.querySelectorAll('.js-small'));
 
         elem.forEach(function(html) {
@@ -275,7 +275,7 @@
                                 console.log(`RESPONSE HERE: ${responseObject}`);
                                 console.log(`RESPONSE HERE: ${responseObject.message}`);
                                 if (response && responseObject.status === 'success') {
-                                    // Show success message
+                                    
                                     Swal.fire({
                                         icon: 'success',
                                         html: responseObject.message,
@@ -342,7 +342,7 @@
                         console.log(`RESPONSE HERE: ${responseObject}`);
                         console.log(`RESPONSE HERE: ${responseObject.message}`);
                         if (response && responseObject.status === 'success') {
-                            // Show success message
+                            
                             Swal.fire({
                                 icon: 'success',
                                 html: responseObject.message,

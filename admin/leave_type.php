@@ -1,12 +1,12 @@
 <?php include('../includes/header.php')?>
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -306,7 +306,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     </script>
     <script type="text/javascript">
         $('#save-btn').click(function(event){
-            event.preventDefault(); // prevent the default form submission
+            event.preventDefault(); 
             (async () => {
                 var data = {
                     dname: $('.dname').val(),
@@ -340,7 +340,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                 confirmButtonText: 'OK'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    $('.md-close').trigger('click'); // close the modal form
+                                    $('.md-close').trigger('click'); 
                                     location.reload();
                                 }
                             });
@@ -361,16 +361,16 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
         })
     </script>
     <script type="text/javascript">
-       // Get the edit button and listen for click events
+       
         $('.edit-btn').click(function() {
-            // Get the values of the data attributes from the clicked edit button
+            
             var id = $(this).data('id');
             var name = $(this).data('name');
             var description = $(this).data('description');
             var assigned = $(this).data('assigned');
             var status = $(this).data('status');
             
-            // Set the values of the input fields in the modal form
+            
             $('#modal-13 .type-id').val(id);
             $('#modal-13 .dname').val(name);
             $('#modal-13 .assigned').val(assigned);
@@ -381,7 +381,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                 $('#modal-13 .status[value="2"]').prop('checked', true);
             }
             
-            // Show the modal form
+            
             $('.md-modal[data-modal="modal-13"]').addClass('md-show');
 
             $('#save-btn').removeClass('d-inline-block').hide();
@@ -390,7 +390,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
         });
 
         $('#update-btn').click(function(event){
-            event.preventDefault(); // prevent the default form submission
+            event.preventDefault(); 
             (async () => {
                 var data = {
                     id: $('.type-id').val(),
@@ -425,7 +425,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                 confirmButtonText: 'OK'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    $('.md-close').trigger('click'); // close the modal form
+                                    $('.md-close').trigger('click'); 
                                     location.reload();
                                 }
                             });
@@ -472,7 +472,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                     const responseObject = JSON.parse(response);
                     console.log(`RESPONSE HERE: ${responseObject.status}`);
                     if (response && responseObject.status === 'success') {
-                        // Show success message
+                        
                         Swal.fire(
                             'Đã xóa!',
                             'Xóa nghỉ phép thành công',
@@ -485,7 +485,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                         });
                         
                     } else {
-                        // Show error message
+                        
                         Swal.fire(
                             'Error!',
                             'Xóa thất bại',

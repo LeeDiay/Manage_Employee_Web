@@ -15,7 +15,7 @@ function clockIn($staff_id) {
     $currentDate = date('Y-m-d');
     $currentTime = date('H:i:s');
 
-     // Check if staff_id exists in tblemployees
+     
     $stmt = mysqli_prepare($conn, "SELECT * FROM tblemployees WHERE staff_id = ?");
     mysqli_stmt_bind_param($stmt, 's', $staff_id);
     mysqli_stmt_execute($stmt);
@@ -27,7 +27,7 @@ function clockIn($staff_id) {
         exit;
     }
 
-    // Check if already clocked in today
+    
     $stmt = mysqli_prepare($conn, "SELECT * FROM tblattendance WHERE staff_id = ? AND DATE(date) = ?");
     mysqli_stmt_bind_param($stmt, 'ss', $staff_id, $currentDate);
     mysqli_stmt_execute($stmt);
@@ -39,7 +39,7 @@ function clockIn($staff_id) {
         exit;
     }
 
-    // Insert clock in time
+    
     $stmt = mysqli_prepare($conn, "INSERT INTO tblattendance (staff_id, time_in, date) VALUES (?, ?, ?)");
     mysqli_stmt_bind_param($stmt, 'sss', $staff_id, $currentTime, $currentDate);
     $result = mysqli_stmt_execute($stmt);
@@ -67,7 +67,7 @@ function clockOut($staff_id) {
     $currentDate = date('Y-m-d');
     $currentTime = date('H:i:s');
 
-     // Check if staff_id exists in tblemployees
+     
     $stmt = mysqli_prepare($conn, "SELECT * FROM tblemployees WHERE staff_id = ?");
     mysqli_stmt_bind_param($stmt, 's', $staff_id);
     mysqli_stmt_execute($stmt);
@@ -79,7 +79,7 @@ function clockOut($staff_id) {
         exit;
     }
 
-    // Check if clocked in today
+    
     $stmt = mysqli_prepare($conn, "SELECT * FROM tblattendance WHERE staff_id = ? AND DATE(date) = ? AND time_out IS NULL");
     mysqli_stmt_bind_param($stmt, 'ss', $staff_id, $currentDate);
     mysqli_stmt_execute($stmt);
@@ -91,7 +91,7 @@ function clockOut($staff_id) {
         exit;
     }
 
-    // Update clock out time
+    
     $stmt = mysqli_prepare($conn, "UPDATE tblattendance SET time_out = ? WHERE staff_id = ? AND DATE(date) = ? AND time_out IS NULL");
     mysqli_stmt_bind_param($stmt, 'sss', $currentTime, $staff_id, $currentDate);
     $result = mysqli_stmt_execute($stmt);

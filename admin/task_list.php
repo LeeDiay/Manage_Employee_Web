@@ -1,13 +1,13 @@
 <?php include('../includes/header.php')?>
 <?php include('../includes/utils.php')?>
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -207,7 +207,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                         die('Error executing statement: ' . mysqli_stmt_error($stmt));
                                                     }
 
-                                                    // Bind result variables
+                                                    
                                                     mysqli_stmt_bind_result($stmt, $id, $title, $description, $status, $priority, $created_at, $start_date, $due_date, 
                                                                             $assigned_to_first_name, $assigned_to_last_name, $assigned_to_middle_name, $assigned_to_profile,
                                                                             $assigned_by_first_name, $assigned_by_last_name, $assigned_by_middle_name, $assigned_by_profile);
@@ -228,7 +228,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                             'assigned_to_profile' => $assigned_to_profile,
                                                         ];
 
-                                                        // Calculate time ago (assuming calculate_time_ago() is defined elsewhere)
+                                                        
                                                         $due_label = calculate_time_ago($created_at);
                                                         $result['due_label'] = $due_label;
                                                         $results[] = $result;
@@ -277,7 +277,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                     <?php foreach ($results as $result){ ?>
                                                         <div class="col-sm-6">
                                                             <?php
-                                                            // Assign color class based on priority
+                                                            
                                                             $color_class = '';
                                                             switch ($result['priority']) {
                                                                 case 'High':
@@ -433,7 +433,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 
     <!-- Required Jquery -->
     <?php
-        // Query database for count of each priority level
+        
        $query = "SELECT
             SUM(CASE WHEN priority = 'High' THEN 1 ELSE 0 END) AS high_count,
             SUM(CASE WHEN priority = 'Medium' THEN 1 ELSE 0 END) AS normal_count,
@@ -448,7 +448,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 
         $total_count = $high_count + $normal_count + $low_count;
 
-        // Calculate percentage width for each loader bar
+        
         $high_width = ($total_count != 0) ? ($high_count / $total_count) * 100 : 0;
         $normal_width = ($total_count != 0) ? ($normal_count / $total_count) * 100 : 0;
         $low_width = ($total_count != 0) ? ($low_count / $total_count) * 100 : 0;
@@ -464,7 +464,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     </script>
     <script>
         setTimeout(function() {
-            // Set width of each loader bar
+            
             var high_progress = document.querySelector('.faq-bar-high');
             high_progress.style.width = '<?php echo $high_width; ?>%';
 
@@ -473,7 +473,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 
             var low_progress = document.querySelector('.faq-bar-low');
             low_progress.style.width = '<?php echo $low_width; ?>%';
-        }, 1000); // 1000ms = 1 second delay
+        }, 1000); 
     </script>
 
     <script type="text/javascript">
@@ -516,7 +516,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                 console.log(`RESPONSE HERE: ${responseObject}`);
                                 console.log(`RESPONSE HERE: ${responseObject.message}`);
                                 if (response && responseObject.status === 'success') {
-                                    // Show success message
+                                    
                                     Swal.fire({
                                         icon: 'success',
                                         html: responseObject.message,
@@ -591,7 +591,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                 console.log(`RESPONSE HERE: ${responseObject}`);
                                 console.log(`RESPONSE HERE: ${responseObject.message}`);
                                 if (response && responseObject.status === 'success') {
-                                    // Show success message
+                                    
                                     Swal.fire({
                                         icon: 'success',
                                         html: responseObject.message,
@@ -659,7 +659,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                         console.log(`RESPONSE HERE: ${responseObject}`);
                         console.log(`RESPONSE HERE: ${responseObject.message}`);
                         if (response && responseObject.status === 'success') {
-                            // Show success message
+                            
                             Swal.fire({
                                 icon: 'success',
                                 html: responseObject.message,

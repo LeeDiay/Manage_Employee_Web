@@ -44,7 +44,7 @@ function addTaskRecord($title, $description, $assigned_to, $assigned_by, $priori
         exit;
     }
 
-    // Insert task record
+    
     $stmt = mysqli_prepare($conn, "INSERT INTO tbltask (title, description, assigned_to, assigned_by, priority, start_date, due_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     mysqli_stmt_bind_param($stmt, 'ssiissss', $title, $description, $assigned_to, $assigned_by, $priority, $start_date, $due_date, $status);
     $result = mysqli_stmt_execute($stmt);
@@ -69,7 +69,7 @@ function updatePriority($id, $priority) {
         exit;
     }
 
-    // Update the priority value in the tickets table
+    
     $stmt = mysqli_prepare($conn, "UPDATE tbltask SET priority = ? WHERE id = ?");
     mysqli_stmt_bind_param($stmt, 'si', $priority, $id);
     $result = mysqli_stmt_execute($stmt);
@@ -94,7 +94,7 @@ function updateStatus($id, $status) {
         exit;
     }
 
-    // Update the status value in the task table
+    
     $stmt = mysqli_prepare($conn, "UPDATE tbltask SET status = ? WHERE id = ?");
     mysqli_stmt_bind_param($stmt, 'si', $status, $id);
     $result = mysqli_stmt_execute($stmt);
@@ -110,7 +110,7 @@ function updateStatus($id, $status) {
     }
 }
 
-  // Delete the task table
+  
 function deleteTask($id) {
     global $conn;
 
@@ -155,7 +155,7 @@ function updateTaskRecord($id, $title, $description, $assigned_to, $priority, $s
 
 
 if(isset($_POST['action'])) {
-    // Determine which action to perform
+    
     if ($_POST['action'] === 'tasks-add') {
 
         $title = $_POST['title'];

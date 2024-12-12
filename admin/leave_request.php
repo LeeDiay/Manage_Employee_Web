@@ -2,13 +2,13 @@
 <?php include('../includes/utils.php')?>
 
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -16,10 +16,10 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 }
 
 
-// Check if the department filter is set
+
 $leaveStatusFilter = isset($_GET['leave_status']) ? $_GET['leave_status'] : 'Show all';
 
-// Initialize variables for the filter dropdown
+
 $selectedLeaveStatus = null;
 $selectedLeaveStatusName = 'Show all';
 
@@ -43,13 +43,13 @@ if ($leaveStatusFilter !== 'Show all') {
     }
 }
 
-// Get the current user's role and department from session
+
 $userRole = $_SESSION['srole'];
 $userId = $_SESSION['slogin'];
 $userDepartment = $_SESSION['department'];
 $isSupervisor = $_SESSION['is_supervisor'];
 
-// Construct the query with conditions based on user role
+
 $query = "
     SELECT l.id, l.leave_type_id, l.requested_days, l.from_date, l.to_date, l.remarks, l.created_date, l.reviewed_by, l.reviewed_date, l.leave_status, l.empid, e.first_name, e.middle_name, e.last_name 
     FROM tblleave l
@@ -69,15 +69,15 @@ if ($userRole !== 'Admin') {
 
 if ($leaveStatusFilter !== 'Show all') {
     $conditions[] = "l.leave_status = ?";
-    $selectedLeaveStatus = $leaveStatusFilter; // Update the selected leave status
+    $selectedLeaveStatus = $leaveStatusFilter; 
 }
 
-// Add conditions to the query
+
 if (!empty($conditions)) {
     $query .= " WHERE " . implode(" AND ", $conditions);
 }
 
-// Prepare the statement
+
 $stmt = mysqli_prepare($conn, $query);
 
 if ($stmt === false) {
@@ -85,11 +85,11 @@ if ($stmt === false) {
 }
 
 if ($leaveStatusFilter !== 'Show all') {
-    // Bind the leave status filter parameter if it's set
+    
     mysqli_stmt_bind_param($stmt, "i", $selectedLeaveStatus);
 }
 
-// Execute the statement
+
 if (!mysqli_stmt_execute($stmt)) {
     die('Execute failed: ' . htmlspecialchars(mysqli_stmt_error($stmt)));
 }
@@ -128,14 +128,14 @@ $leaveStatusMap = [
     4 => 'Rejected'
 ];
 
-// Count the total leave requests for each status
+
 $leaveStatusCounts = array_fill_keys(array_keys($leaveStatusMap), 0);
 foreach ($leaveData as $leave) {
     $leaveStatus = $leave['leave_status'];
     if (isset($leaveStatusCounts[$leaveStatus])) {
         $leaveStatusCounts[$leaveStatus]++;
     } else {
-        // Handle unknown leave status
+        
         $leaveStatusCounts['Unknown']++;
     }
 }
@@ -284,7 +284,7 @@ foreach ($leaveData as $leave) {
                                                                     <!-- options will be dynamically inserted here -->
                                                                 </div>
                                                                 <!-- <span class="input-group-addon" id="basic-addon1"><i class="icofont icofont-verification-check"></i></span>
-                                                                <input type="text" class="form-control" value="https://www.website.com/signup/verify?id657&amp;key=7364fr5"> -->
+                                                                <input type="text" class="form-control" value="https:
                                                             </div>
                                                             <div class="row m-t-15">
                                                                 <div class="col-md-12">
@@ -376,7 +376,7 @@ foreach ($leaveData as $leave) {
                             console.log(`RESPONSE HERE: ${responseObject}`);
                             console.log(`RESPONSE HERE: ${responseObject.message}`);
                             if (response && responseObject.status === 'success') {
-                                // Show success message
+                                
                                 Swal.fire({
                                     icon: 'success',
                                     html: responseObject.message,
@@ -413,7 +413,7 @@ foreach ($leaveData as $leave) {
 
 <script type="text/javascript">
     $(document).ready(function() {
-        // Event listener for "Delete" buttons with class "delete-leave"
+        
         $(document).on('click', '.delete-leave', function(event) {
             event.preventDefault();
             const leaveId = $(this).data('id');
@@ -455,7 +455,7 @@ foreach ($leaveData as $leave) {
                         success: function(response) {
                             const responseObject = JSON.parse(response);
                             if (response && responseObject.status === 'success') {
-                                // Show success message
+                                
                                 Swal.fire({
                                     icon: 'success',
                                     html: responseObject.message,
@@ -488,74 +488,74 @@ foreach ($leaveData as $leave) {
 
 <script type="text/javascript">
     $(document).ready(function() {
-        // Retrieve the initial department filter value
+        
         var selectedStatus = '<?php echo $selectedLeaveStatusName; ?>';
-        // Function to fetch and display the filtered staff
+        
         console.log('RESPONSE HERE: ' + selectedStatus);
         function fetchStaff() {
-            var searchQuery = $('#searchInput').val(); // Get the search query
-            var leaveStatusFilter = (selectedStatus === 'Show all') ? '' : selectedStatus; // Get the selectedStatus filter value
-            // Make an AJAX request to fetch the filtered staff
+            var searchQuery = $('#searchInput').val(); 
+            var leaveStatusFilter = (selectedStatus === 'Show all') ? '' : selectedStatus; 
+            
             $.ajax({
-                url: 'leave_functions.php', // Replace with the actual PHP script that fetches the staff from the database
+                url: 'leave_functions.php', 
                 type: 'POST',
                 data: { searchQuery: searchQuery, leaveStatusFilter: leaveStatusFilter },
                 
                 success: function(response) {
-                    // Clear the existing staff cards
+                    
                     $('#leaveContainer').empty();
                      $('#leaveInformation').show();
 
                     console.log('RESPONSE HERE: ' + response);
 
-                    // Append the fetched staff cards to the container
+                    
                     if (response.includes('files/assets/images/no_data.png')) {
                         console.log('No data image found in the response.');
                         
-                        // Set the class of the id leaveMain to be col-sm-12
+                        
                         $('#leaveMain').removeClass().addClass('col-sm-12');
                         $('#leaveInformation').hide();
 
-                        // Remove the class of the id leaveContainer
+                        
                         $('#leaveContainer').removeClass();
 
-                        // Append the fetched staff cards to the container
+                        
                         $('#leaveContainer').append(response);
                     } else {
-                        // Maintain the current setup and append the response
+                        
                         $('#leaveContainer').append(response);
                     }
                 }
             });
         }
-        // Event listener for search input field
+        
         $('#searchInput').on('keyup', function() {
             fetchStaff();
         });
 
-        // Event listener for department filter dropdown
+        
         $('#bystatus .dropdown-item').on('click', function(event) {
             event.preventDefault();
-            // Update the selected department variable and dropdown text
+            
             selectedStatus = $(this).text().trim();
             $('#bystatus').text(selectedStatus);
 
-            // Fetch the staff based on the updated filter
+            
             fetchStaff();
         });
 
-        // Fetch the initial staff based on the default filter
+        
         fetchStaff();
     });
 
     $(document).ready(function() {
-         // Function to format dates as "6th May, 2024"
+         
         function formatDate(date) {
             var day = date.getDate();
             var month = date.toLocaleString('default', { month: 'long' });
             var year = date.getFullYear();
             
-            // Determine the ordinal suffix
+            
             var suffix = 'th';
             if (day % 10 === 1 && day !== 11) {
                 suffix = 'st';
@@ -568,9 +568,9 @@ foreach ($leaveData as $leave) {
             return day + suffix + ' ' + month + ', ' + year;
         }
 
-        // Handle the click event for the "Review" link
+        
         $(document).on('click', '.review-btn', function() {
-            // Get the data attributes from the clicked link
+            
             var leaveType = $(this).data('leave-type');
             var reason = $(this).data('leave-reason');
             var remaing = $(this).data('leave-remaing');
@@ -583,7 +583,7 @@ foreach ($leaveData as $leave) {
             var submissionDate = new Date($(this).data('submission-date'));
             var reviewer = '<?php echo ($session_sfirstname ? $session_sfirstname : '') . " " . ($session_smiddlename ? $session_smiddlename : '') . " " . ($session_slastname ? $session_slastname : ''); ?>';
             
-            // Map leave status strings to numeric values
+            
             var statusMap = {
                 "Pending": 0,
                 "Approved": 1,
@@ -592,10 +592,10 @@ foreach ($leaveData as $leave) {
                 "Rejected": 4
             };
             
-            // Convert the string leave status to its corresponding numeric value
+            
             var leaveStatusValue = statusMap[leaveStatus];
 
-            // Populate the modal with the data
+            
             $('#modalLeaveType').text(leaveType);
             $('#modalRequester').text(staff);
             $('#modalReviewer').text(reviewer);
@@ -606,7 +606,7 @@ foreach ($leaveData as $leave) {
 
             $('.leave-id').val(leaveId);
 
-            // Clear previous radio buttons
+            
             $('#radioButtonsContainer').empty();
 
             var today = new Date();
@@ -635,20 +635,20 @@ foreach ($leaveData as $leave) {
                     $('#modalLeaveStatus').addClass('text-danger');
                     break;
                 default:
-                    // Default color or handling if status is not recognized
+                    
                     break;
             }
 
             var modalMessage;
             switch (leaveStatusValue) {
-                case 0: // Đang chờ
+                case 0: 
                     if (today > endDate) {
                         modalMessage = "Yêu cầu nghỉ phép do <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đang chờ xử lý, nhưng thời gian nghỉ phép đã qua. Đã quá muộn để phê duyệt hoặc từ chối yêu cầu này.";
                     } else {
                         modalMessage = "Bạn sắp xem xét yêu cầu nghỉ phép đang chờ xử lý của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b>. Hãy xem xét kỹ chi tiết và quyết định phê duyệt hoặc từ chối yêu cầu.";
                     }
                     break;
-                case 1: // Đã phê duyệt
+                case 1: 
                     if (today < startDate) {
                         modalMessage = "Yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã được phê duyệt. Bạn có thể thu hồi phê duyệt nếu cần.";
                     } else if (today >= startDate && today <= endDate) {
@@ -657,13 +657,13 @@ foreach ($leaveData as $leave) {
                         modalMessage = "Yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã hoàn thành.";
                     }
                     break;
-                case 2: // Đã hủy
+                case 2: 
                     modalMessage = "Yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị hủy.";
                     break;
-                case 3: // Đã thu hồi
+                case 3: 
                     modalMessage = "Yêu cầu nghỉ phép đã phê duyệt của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị thu hồi.";
                     break;
-                case 4: // Đã từ chối
+                case 4: 
                     modalMessage = "Yêu cầu nghỉ phép của <b>" + staff + "</b> gửi vào ngày <b>" + formattedSubmissionDate + "</b> cho khoảng thời gian từ <b>" + formattedStartDate + "</b> đến <b>" + formattedEndDate + "</b> đã bị từ chối.";
                     break;
                 default:
@@ -672,8 +672,8 @@ foreach ($leaveData as $leave) {
 
             $('#modalMessage').html(modalMessage);
             
-            // Determine if options should be shown based on leave status and dates
-            if (leaveStatusValue === 0) { // Pending
+            
+            if (leaveStatusValue === 0) { 
                 if (today <= endDate) {
                     $('#radioButtonsContainer').append(`
                         <select name="select" id="select" class="form-control form-control-primary">
@@ -690,7 +690,7 @@ foreach ($leaveData as $leave) {
                         </select>
                     `);
                 }
-            } else if (leaveStatusValue === 1) { // Approved
+            } else if (leaveStatusValue === 1) { 
                 if (today < startDate || (today >= startDate && today <= endDate)) {
                     $('#radioButtonsContainer').append(`
                         <select name="select" id="select" class="form-control form-control-primary">
@@ -705,7 +705,7 @@ foreach ($leaveData as $leave) {
                         </select>
                     `);
                 }
-            } else if (leaveStatusValue === 2) { // Cancelled
+            } else if (leaveStatusValue === 2) { 
                 if (today < startDate) {
                     $('#radioButtonsContainer').append(`
                         <select name="select" id="select" class="form-control form-control-primary">
@@ -721,7 +721,7 @@ foreach ($leaveData as $leave) {
                     `);
                 }
             } 
-            // No options for Rejected (4) or Recalled (3)
+            
             else {
                 $('#radioButtonsContainer').append(`
                     <select name="select" id="select" class="form-control form-control-primary" disabled>
@@ -730,15 +730,15 @@ foreach ($leaveData as $leave) {
                 `);
             }
 
-            // Update the button based on the status and date
+            
             var updateButtonHTML;
-            if (leaveStatusValue === 0) { // Đang chờ
+            if (leaveStatusValue === 0) { 
                 if (today > endDate) {
                     updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> HẾT HẠN </b></button>';
                 } else {
                     updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                 }
-            } else if (leaveStatusValue === 1) { // Đã phê duyệt
+            } else if (leaveStatusValue === 1) { 
                 if (today >= startDate && today <= endDate) {
                     updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                 } else if (today < startDate) {
@@ -746,41 +746,41 @@ foreach ($leaveData as $leave) {
                 } else {
                     updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> HẾT HẠN </b></button>';
                 }
-            } else if (leaveStatusValue === 2) { // Đã hủy
+            } else if (leaveStatusValue === 2) { 
                 if (today < startDate) {
                     updateButtonHTML = '<button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center status-update">Cập nhật</button>';
                 } else {
                     updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> BỊ HỦY </b></button>';
                 }
-            } else if (leaveStatusValue === 4) { // Đã từ chối
+            } else if (leaveStatusValue === 4) { 
                 updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> BỊ TỪ CHỐI </b></button>';
-            } else if (leaveStatusValue === 3) { // Đã thu hồi
+            } else if (leaveStatusValue === 3) { 
                 updateButtonHTML = '<button type="button" class="btn btn-disabled btn-md btn-block waves-effect text-center status-update" disabled>Yêu cầu này đã <b style="color: #eb3422;"> BỊ THU HỒI </b></button>';
             }
 
-            // Update the button in the modal
+            
             $('.row.m-t-15 .col-md-12').html(updateButtonHTML);
 
             function performInitialCheck() {
                 var stat = $('#select').val();
                 console.log("COMPARE: " + stat);
-                // Compare leaveStatusValue with the selected option value (stat)
+                
                 if (leaveStatusValue == stat) {
-                    // If they are the same, disable the update button
+                    
                      $('.status-update').prop('disabled', true).removeClass('btn-primary').addClass('btn-disabled');
                 } else {
-                    // If they are different, enable the update button
+                    
                     $('.status-update').prop('disabled', false).removeClass('btn-disabled').addClass('btn-primary');
                 }
             }
 
-            // Set the initial value of the select element based on data from the database
+            
             $('#select').val(leaveStatusValue);
 
-            // Perform the initial check
+            
             performInitialCheck();
 
-            // Attach change event handler to perform the check whenever the select value changes
+            
             $('#select').change(performInitialCheck);
 
         });

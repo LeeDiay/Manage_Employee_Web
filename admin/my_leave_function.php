@@ -8,13 +8,13 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-// Retrieve the search query and leave status filter from the AJAX request
+
 $searchQuery = isset($_POST['searchQuery']) ? $_POST['searchQuery'] : '';
 $leaveStatusFilter = isset($_POST['leaveStatusFilter']) ? $_POST['leaveStatusFilter'] : 'Show all';
 
 $userId = $_SESSION['slogin'];
 
-// Map the leave status filter to the corresponding integer values
+
 $statusMap = [
     'Pending' => 0,
     'Approved' => 1,
@@ -23,23 +23,23 @@ $statusMap = [
     'Rejected' => 4 
 ];
 
-// Initialize the leave status filter value
+
 $leaveStatusValue = null;
 if ($leaveStatusFilter !== 'Show all' && isset($statusMap[$leaveStatusFilter])) {
     $leaveStatusValue = $statusMap[$leaveStatusFilter];
 }
 
-// Construct the base query
+
 $sql = "SELECT l.*, e.first_name, e.middle_name, e.last_name, e.image_path, e.designation, lt.leave_type, elt.available_days
         FROM tblleave l 
         JOIN tblemployees e ON l.empid = e.emp_id 
         JOIN tblleavetype lt ON l.leave_type_id = lt.id
         JOIN employee_leave_types elt ON l.empid = elt.emp_id AND l.leave_type_id = elt.leave_type_id";
 
-// Initialize an array to hold the conditions
+
 $conditions = [];
 
-// Apply the leave status filter if it's not 'Show all'
+
 if ($leaveStatusValue !== null) {
     $conditions[] = "l.leave_status = $leaveStatusValue";
 }
@@ -48,24 +48,24 @@ if (!empty($userId)) {
     $conditions[] = "e.emp_id = $userId";
 }
 
-// Apply the search query filter if it's not empty
+
 if (!empty($searchQuery)) {
-    // Escaping the search query for safety
+    
     $searchQueryEscaped = mysqli_real_escape_string($conn, $searchQuery);
     $conditions[] = "(e.first_name LIKE '%$searchQueryEscaped%' OR e.last_name LIKE '%$searchQueryEscaped%' 
                     OR e.designation LIKE '%$searchQueryEscaped%' OR lt.leave_type LIKE '%$searchQueryEscaped%')";
 }
 
-// Combine conditions with 'AND' if any exist
+
 if (count($conditions) > 0) {
     $sql .= ' WHERE ' . implode(' AND ', $conditions);
 }
 
-// Add the ORDER BY clause
+
 $sql .= " ORDER BY CASE WHEN l.leave_status = 0 THEN 0 ELSE 1 END, l.created_date DESC";
 
-// Execute the query and fetch the leave data
-$leaveData = []; // Array to store the fetched leave data
+
+$leaveData = []; 
 $result = mysqli_query($conn, $sql);
 if ($result && mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -73,7 +73,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     }
 }
 
-// Fetch leave type names
+
 $leaveTypes = [];
 $leaveTypeResult = mysqli_query($conn, "SELECT id, leave_type FROM tblleavetype");
 if ($leaveTypeResult && mysqli_num_rows($leaveTypeResult) > 0) {
@@ -82,7 +82,7 @@ if ($leaveTypeResult && mysqli_num_rows($leaveTypeResult) > 0) {
     }
 }
 
-// Generate and return the HTML markup for the leave cards
+
 if (empty($leaveData)) {
     echo '<div class="col-sm-12 text-center">
             <img src="../files/assets/images/no_data.png" class="img-radius" alt="No Data Found" style="width: 200px; height: auto;">
@@ -115,7 +115,7 @@ if (empty($leaveData)) {
                 $badgeClass = 'badge-warning';
                 $iconClass = 'fa fa-undo-alt';
                 break;
-            case 4:  // Added Rejected status class
+            case 4:  
                 $badgeClass = 'badge-danger';
                 $iconClass = 'fa fa-ban';
                 break;
@@ -125,7 +125,7 @@ if (empty($leaveData)) {
                 break;
         }
 
-        // Format the dates
+        
         $fromDate = date('jS F, Y', strtotime($leave['from_date']));
         $toDate = date('jS F, Y', strtotime($leave['to_date']));
         $postingDate = date('jS F, Y', strtotime($leave['created_date']));

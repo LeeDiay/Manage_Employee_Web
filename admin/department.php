@@ -1,13 +1,13 @@
 <?php include('../includes/header.php')?>
 
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -17,7 +17,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 
 $totalStaff = 0;
 
-// Assuming you have a database connection, fetch all departments
+
 $departmentQuery = $conn->prepare("SELECT * FROM tbldepartments");
 $departmentQuery->execute();
 $departmentResult = $departmentQuery->get_result();
@@ -30,7 +30,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
     $departmentDesc = $departmentRow['department_desc'];
     $createDate = $departmentRow['creation_date'];
 
-    // Fetch the count of staff in the department
+    
     $staffQuery = $conn->prepare("SELECT COUNT(*) as staff_count FROM tblemployees WHERE department = ?");
     $staffQuery->bind_param("i", $departmentId);
     $staffQuery->execute();
@@ -40,7 +40,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
 
     $totalStaff += $staffCount;
 
-    // Fetch the count of managers in the department
+    
     $managerQuery = $conn->prepare("SELECT COUNT(*) as manager_count FROM tblemployees WHERE department = ? AND role = 'Manager'");
     $managerQuery->bind_param("i", $departmentId);
     $managerQuery->execute();
@@ -234,7 +234,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                                         </p>
                                                         <div class="team-section d-inline-block">
                                                             <?php
-                                                            // Fetch and display only 10 staff members for this department
+                                                            
                                                             $staffQuery = $conn->prepare("SELECT * FROM tblemployees WHERE department = ? LIMIT 10");
                                                             $staffQuery->bind_param("i", $department['id']);
                                                             $staffQuery->execute();
@@ -313,7 +313,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
     </script>
     <script type="text/javascript">
         $('#save-btn').click(function(event){
-            event.preventDefault(); // prevent the default form submission
+            event.preventDefault(); 
             (async () => {
                 var data = {
                     dname: $('.dname').val(),
@@ -345,7 +345,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                 confirmButtonText: 'OK'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    $('.md-close').trigger('click'); // close the modal form
+                                    $('.md-close').trigger('click'); 
                                     location.reload();
                                 }
                             });
@@ -366,19 +366,19 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
         })
     </script>
     <script type="text/javascript">
-       // Get the edit button and listen for click events
+       
         $('.edit-btn').click(function() {
-            // Get the values of the data attributes from the clicked edit button
+            
             var id = $(this).data('id');
             var name = $(this).data('name');
             var description = $(this).data('description');
             
-            // Set the values of the input fields in the modal form
+            
             $('#modal-13 .department-id').val(id);
             $('#modal-13 .dname').val(name);
             $('#modal-13 .description').val(description);
             
-            // Show the modal form
+            
             $('.md-modal[data-modal="modal-13"]').addClass('md-show');
 
             $('#save-btn').removeClass('d-inline-block').hide();
@@ -387,7 +387,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
         });
 
         $('#update-btn').click(function(event){
-            event.preventDefault(); // prevent the default form submission
+            event.preventDefault(); 
             (async () => {
                 var data = {
                     id: $('.department-id').val(),
@@ -420,7 +420,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                                 confirmButtonText: 'OK'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    $('.md-close').trigger('click'); // close the modal form
+                                    $('.md-close').trigger('click'); 
                                     location.reload();
                                 }
                             });
@@ -467,7 +467,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                     const responseObject = JSON.parse(response);
                     console.log(`RESPONSE HERE: ${responseObject.status}`);
                     if (response && responseObject.status === 'success') {
-                        // Show success message
+                        
                         Swal.fire(
                             'Xóa thành công',
                             'Phòng ban đã được xóa.',
@@ -480,7 +480,7 @@ while ($departmentRow = $departmentResult->fetch_assoc()) {
                         });
                         
                     } else {
-                        // Show error message
+                        
                         Swal.fire(
                             'Lỗi',
                             'Không thể xóa phòng ban.',

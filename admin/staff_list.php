@@ -1,12 +1,12 @@
 <?php include('../includes/header.php')?>
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -14,41 +14,41 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 }
 
 
-// Check if the department filter is set
+
 $departmentFilter = isset($_GET['department']) ? $_GET['department'] : 'Show all';
 
-// Initialize variables for the filter dropdown
+
 $selectedDepartmentId = null;
 $selectedDepartmentName = 'Show all';
 
-// Construct the query
+
 $query = "SELECT emp_id, first_name, middle_name, last_name, phone_number, designation, email_id, department, image_path FROM tblemployees";
 
-// Check if a specific department is selected
+
 if ($departmentFilter !== 'Show all') {
-    // Perform a lookup to get the department ID based on the selected department name
+    
     $departmentLookupQuery = mysqli_prepare($conn, "SELECT id FROM tbldepartments WHERE department_name = ?");
     mysqli_stmt_bind_param($departmentLookupQuery, "s", $departmentFilter);
     mysqli_stmt_execute($departmentLookupQuery);
     mysqli_stmt_store_result($departmentLookupQuery);
     mysqli_stmt_bind_result($departmentLookupQuery, $selectedDepartmentId);
 
-    // Fetch the department ID
+    
     mysqli_stmt_fetch($departmentLookupQuery);
     mysqli_stmt_close($departmentLookupQuery);
 
-    // Modify the query to filter by department ID
+    
     $query .= " WHERE department = ?";
-    $selectedDepartmentName = $departmentFilter; // Update the selected department name
+    $selectedDepartmentName = $departmentFilter; 
 }
 
 $query .= " ORDER BY date_created DESC";
 
-// Prepare and execute the query
+
 $stmt = mysqli_prepare($conn, $query);
 
 if ($departmentFilter !== 'Show all') {
-    // Bind the department filter parameter
+    
     mysqli_stmt_bind_param($stmt, "s", $selectedDepartmentId);
 }
 
@@ -186,7 +186,7 @@ mysqli_stmt_close($stmt);
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-            // Event listener for "Delete" buttons with class "delete-staff"
+            
             $(document).on('click', '.delete-staff', function(event) {
                 event.preventDefault();
                 const staffId = $(this).data('id');
@@ -215,7 +215,7 @@ mysqli_stmt_close($stmt);
                             success: function(response) {
                                 const responseObject = JSON.parse(response);
                                 if (response && responseObject.status === 'success') {
-                                    // Show success message
+                                    
                                     Swal.fire({
                                         icon: 'success',
                                         html: responseObject.message,
@@ -248,43 +248,43 @@ mysqli_stmt_close($stmt);
 
     <script type="text/javascript">
     $(document).ready(function() {
-        // Retrieve the initial department filter value
+        
         var selectedDepartment = '<?php echo $selectedDepartmentName; ?>';
-        // Function to fetch and display the filtered staff
+        
         function fetchStaff() {
-            var searchQuery = $('#searchInput').val(); // Get the search query
-            var departmentFilter = (selectedDepartment === 'Show all') ? '' : selectedDepartment; // Get the department filter value
-            // Make an AJAX request to fetch the filtered staff
+            var searchQuery = $('#searchInput').val(); 
+            var departmentFilter = (selectedDepartment === 'Show all') ? '' : selectedDepartment; 
+            
             $.ajax({
-                url: 'staff_functions.php', // Replace with the actual PHP script that fetches the staff from the database
+                url: 'staff_functions.php', 
                 type: 'POST',
                 data: { searchQuery: searchQuery, departmentFilter: departmentFilter },
                 success: function(response) {
-                    // Clear the existing staff cards
+                    
                     $('#staffContainer').empty();
 
-                    // Append the fetched staff cards to the container
+                    
                     $('#staffContainer').append(response);
                 }
             });
         }
-        // Event listener for search input field
+        
         $('#searchInput').on('keyup', function() {
             fetchStaff();
         });
 
-        // Event listener for department filter dropdown
+        
         $('#bydepartment .dropdown-item').on('click', function(event) {
             event.preventDefault();
-            // Update the selected department variable and dropdown text
+            
             selectedDepartment = $(this).text().trim();
             $('#bydepartment').text(selectedDepartment);
 
-            // Fetch the staff based on the updated filter
+            
             fetchStaff();
         });
 
-        // Fetch the initial staff based on the default filter
+        
         fetchStaff();
     });
     </script>

@@ -1,11 +1,11 @@
 <?php include('../includes/header.php')?> <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -122,7 +122,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                 <div class="row">
                                                                     <div class="col-sm-12">
                                                                         <!-- contact data table card start --> <?php
-                                                                        // Query to fetch attendance records
+                                                                        
                                                                         $stmt = mysqli_prepare($conn, "SELECT a.date, a.staff_id, 
                                                                                                             e.first_name, e.middle_name, e.last_name, a.total_hours,
                                                                                                             a.time_in, a.time_out 
@@ -150,14 +150,14 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                         </thead>
                                                                                         <tbody> 
                                                                                             <?php while ($row = mysqli_fetch_assoc($result)): ?> <?php
-                                                                                                    // Thiết lập múi giờ Việt Nam
+                                                                                                    
                                                                                                     $timezone = new DateTimeZone('Asia/Ho_Chi_Minh');
 
-                                                                                                    // Chuyển đổi 'time_in' và 'time_out' sang múi giờ Việt Nam
+                                                                                                    
                                                                                                     $time_in = new DateTime($row['time_in'], $timezone);
                                                                                                     $time_out = $row['time_out'] ? new DateTime($row['time_out'], $timezone) : null;
 
-                                                                                                    // Tính toán tổng thời gian
+                                                                                                    
                                                                                                     if ($time_out) {
                                                                                                         $interval = $time_in->diff($time_out);
                                                                                                         
@@ -181,10 +181,10 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
                                                                                                         $total_hours = '-';
                                                                                                     }
 
-                                                                                                    // Xác định trạng thái
+                                                                                                    
                                                                                                     $status = $row['time_out'] ? 'In/Out' : 'In';
 
-                                                                                                    // Định dạng và màu sắc cho trạng thái
+                                                                                                    
                                                                                                     if ($status == 'In/Out') {
                                                                                                         $formatted_status = '<span style="color: green;">Vào</span>/<span style="color: orange;">Ra</span>';
                                                                                                     } else {
@@ -234,14 +234,14 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
             gtag('config', 'UA-23581568-13');
 
             $(function() {
-                // Thiết lập ngôn ngữ Moment.js sang tiếng Việt
+                
                 moment.locale('vi');
 
                 var interval = setInterval(function() {
                     var momentNow = moment();
-                    $('.date').html(momentNow.format('LL')); // LL sẽ hiển thị ngày tháng đầy đủ theo ngôn ngữ đã chọn, ví dụ: "6 tháng 11, 2024"
-                    $('.time').html(momentNow.format('hh:mm:ss A')); // Giữ nguyên định dạng thời gian
-                    $('.day').html(momentNow.format('dddd').toUpperCase()); // Ngày trong tuần sẽ hiển thị bằng tiếng Việt, ví dụ: "THỨ TƯ"
+                    $('.date').html(momentNow.format('LL')); 
+                    $('.time').html(momentNow.format('hh:mm:ss A')); 
+                    $('.day').html(momentNow.format('dddd').toUpperCase()); 
                 }, 100);
             });
         </script>

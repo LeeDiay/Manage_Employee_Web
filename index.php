@@ -677,7 +677,7 @@ $('#login-form').click(function(event) {
                 Swal.fire({
                     icon: 'success',
                     title: titleMessage,
-                    confirmButtonColor: '#01a9ac',
+                    confirmButtonColor: '#01a9ac', 
                     confirmButtonText: 'OK'
                 }).then((result) => {
                     $('#loginModal').modal('hide');

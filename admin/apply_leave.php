@@ -1,13 +1,13 @@
 <?php include('../includes/header.php')?>
 
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
@@ -19,7 +19,7 @@ if ($userRole !== 'Manager' && $userRole !== 'Admin') {
 if (isset($_POST['empId'])) {
     $empId = $_POST['empId'];
 
-    // Query the database for leave types assigned to the selected employee
+    
     $sql = "SELECT lt.leave_type, lt.id AS leave_type_id
             FROM tblleavetype lt
             INNER JOIN employee_leave_types elt ON lt.id = elt.leave_type_id
@@ -40,7 +40,7 @@ if (isset($_POST['empId'])) {
     }
 
     echo $leaveTypesOptions;
-    exit; // Ensure the script stops executing after handling the AJAX request
+    exit; 
 }
 ?>
 
@@ -91,11 +91,11 @@ if (isset($_POST['empId'])) {
                                                                         <h4 style="text-align: center;">Tạo đơn mới</h4>
                                                                     </div>
                                                                      <?php
-                                                                        // Check if the user role is Admin and designation is Administrator
+                                                                        
                                                                         $userRole = $_SESSION['srole'];
                                                                         $userDesignation = $_SESSION['sdesignation'];
 
-                                                                        // Fetch all employees from the database
+                                                                        
                                                                         $sql = "SELECT emp_id, first_name, middle_name, last_name FROM tblemployees";
                                                                         $result = mysqli_query($conn, $sql);
 
@@ -212,9 +212,9 @@ if (isset($_POST['empId'])) {
     <script>
         $(document).ready(function() {
             $('#apply-leave').click(function(event) {
-                event.preventDefault(); // Prevent default form submission
+                event.preventDefault(); 
 
-                // Collect form data
+                
                 var formData = new FormData();
                 var empId = $('#empId').val();
                 var leaveType = $('#leave_type').val();
@@ -224,7 +224,7 @@ if (isset($_POST['empId'])) {
                 var remarks = $('#remarks').val();
                 var sickFile = $('#sick_file')[0].files[0];
 
-                // Validate fields
+                
                 if (!empId || !leaveType || !startDate || !endDate || !numberDays || numberDays <= 0) {
                     Swal.fire({
                         icon: 'warning',
@@ -246,7 +246,7 @@ if (isset($_POST['empId'])) {
                     return;
                 }
 
-                // Append data to FormData
+                
                 formData.append('empId', empId);
                 formData.append('leave_type', leaveType);
                 formData.append('start_date', startDate);
@@ -256,7 +256,7 @@ if (isset($_POST['empId'])) {
                 formData.append('sick_file', sickFile);
                 formData.append('action', 'apply-leave');
 
-                // AJAX request to submit the form data
+                
                 $.ajax({
                     url: 'leave_functions.php',
                     type: 'POST',
@@ -333,13 +333,13 @@ if (isset($_POST['empId'])) {
                 loadLeaveTypes(empId);
             });
 
-            // Automatically load leave types for non-Admin users
+            
             <?php if ($userRole !== 'Admin' || $userDesignation !== 'Administrator'): ?>
             var empId = $('#empId').val();
             loadLeaveTypes(empId);
             <?php endif; ?>
 
-            // Show or hide the file input based on the leave type
+            
             $('#leave_type').change(function() {
                var selectedLeaveType = $(this).find('option:selected').text().toLowerCase();
                 if (selectedLeaveType.includes('sick') || selectedLeaveType === 'sick leave') {
@@ -355,11 +355,11 @@ if (isset($_POST['empId'])) {
         function validateFile(input) {
             var file = input.files[0];
             var fileType = file.type.toLowerCase();
-            var fileSize = file.size; // in bytes
+            var fileSize = file.size; 
 
-            // Allowed file types and maximum file size (2MB)
+            
             var allowedTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-            var maxSize = 2 * 1024 * 1024; // 2MB
+            var maxSize = 2 * 1024 * 1024; 
 
             if (!allowedTypes.includes(fileType)) {
                 Swal.fire({
@@ -383,7 +383,7 @@ if (isset($_POST['empId'])) {
                 return false;
             }
 
-            // Display the selected file name in the input field
+            
             var fileName = file.name;
             $('#sick_file_input').val(fileName);
         }
@@ -394,7 +394,7 @@ if (isset($_POST['empId'])) {
             const endDateInput = document.getElementById('end_date');
             const numberDaysInput = document.getElementById('number_days');
 
-            // Set the min attribute to today's date
+            
             const today = new Date().toISOString().split('T')[0];
             startDateInput.setAttribute('min', today);
             endDateInput.setAttribute('min', today);
@@ -404,8 +404,8 @@ if (isset($_POST['empId'])) {
                     const date = new Date(this.value);
                     const day = date.getUTCDay();
 
-                    // Prevent selecting weekends
-                    if (day === 0 || day === 6) { // 0 for Sunday and 6 for Saturday
+                    
+                    if (day === 0 || day === 6) { 
                         Swal.fire({
                             icon: 'warning',
                             text: 'Không được phép vào cuối tuần. Vui lòng chọn một ngày trong tuần.',
@@ -416,7 +416,7 @@ if (isset($_POST['empId'])) {
                         return;
                     }
 
-                    // Ensure end date is not less than start date
+                    
                     if (input.id === 'end_date' && startDateInput.value && new Date(this.value) < new Date(startDateInput.value)) {
                         Swal.fire({
                             icon: 'warning',
@@ -428,7 +428,7 @@ if (isset($_POST['empId'])) {
                         return;
                     }
 
-                    // Ensure start date is not more than end date
+                    
                     if (input.id === 'start_date' && endDateInput.value && new Date(this.value) > new Date(endDateInput.value)) {
                         Swal.fire({
                             icon: 'warning',

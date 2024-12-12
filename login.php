@@ -3,12 +3,12 @@ session_start();
 include('includes/config.php');
 require_once 'alerts.php';
 
-// Enable error logging
+
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 error_reporting(E_ALL);
 
-// Start output buffering
+
 ob_start();
 
 function login($email, $password) {
@@ -16,7 +16,7 @@ function login($email, $password) {
 
     $password = md5($password);
 
-    // Query staff table
+    
     $staffQuery = mysqli_query($conn, "SELECT * FROM tblemployees WHERE email_id='$email' AND password='$password'");
     if (!$staffQuery) {
         error_log("MySQL error: " . mysqli_error($conn));
@@ -37,7 +37,6 @@ function checkAndSetSession($userRecord) {
         return array('status' => 'error', 'message' => 'Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.');
     }
 
-    // Set session variables and redirect based on user type
     $_SESSION['slogin'] = $userRecord['emp_id'];
     $_SESSION['srole'] = $userRecord['role'];
     $_SESSION['semail'] = $userRecord['email_id'];
@@ -81,10 +80,9 @@ if (isset($_POST['action'])) {
         try {
             $loginResponse = login($email, $password);
 
-            // Clean (erase) the output buffer before sending the JSON response
             ob_end_clean();
 
-            header('Content-Type: application/json'); // Set the content type to JSON
+            header('Content-Type: application/json');
             echo json_encode($loginResponse);
         } catch (Exception $e) {
             ob_end_clean();

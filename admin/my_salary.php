@@ -1,25 +1,25 @@
 <?php include('../includes/header.php')?>
 <?php
-// Check if the user is logged in
+
 if (!isset($_SESSION['slogin']) || !isset($_SESSION['srole'])) {
     header('Location: ../index.php');
     exit();
 }
 
-// Check if the user has the role of Manager or Admin
+
 $userRole = $_SESSION['srole'];
 if ($userRole !== 'Manager' && $userRole !== 'Admin') {
     header('Location: ../index.php');
     exit();
 }
 
-// Query to fetch salary data
+
 $sql = "SELECT s.salary_id, e.first_name, e.middle_name, e.last_name, s.base_salary, s.total_hours, s.leave_days, s.final_salary, s.date_generated
         FROM tblsalary s
         JOIN tblemployees e ON s.emp_id = e.emp_id
-        ORDER BY s.date_generated DESC"; // Change the sorting as needed
+        ORDER BY s.date_generated DESC"; 
 
-// Execute query
+
 $result = $conn->query($sql);
 
 if (!$result) {

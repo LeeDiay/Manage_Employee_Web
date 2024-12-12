@@ -4,7 +4,7 @@ session_start();
 include('../includes/config.php');
 include('../sendmail.php');
 
-// Function to validate an email address
+
 function isValidEmail($email)
 {
     return filter_var($email, FILTER_VALIDATE_EMAIL) !== false;
@@ -14,7 +14,7 @@ function getAvailableDays($empId, $leaveTypeId)
 {
     global $conn;
 
-    // Query to get the available days for the employee and leave type
+    
     $sql = "SELECT available_days FROM employee_leave_types WHERE emp_id = ? AND leave_type_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('ii', $empId, $leaveTypeId);
@@ -182,7 +182,7 @@ function updateStatus($id, $status)
 {
     global $conn;
 
-    // Fetch leave details
+    
     $leaveQuery = "SELECT empid, leave_type_id, from_date, to_date, requested_days, leave_status FROM tblleave WHERE id = ?";
     $stmt = mysqli_prepare($conn, $leaveQuery);
     mysqli_stmt_bind_param($stmt, 'i', $id);
@@ -198,7 +198,7 @@ function updateStatus($id, $status)
         $requestedDays = $leaveData['requested_days'];
         $currentStatus = $leaveData['leave_status'];
 
-        if ($status == 3 && $currentStatus == 1) {  // Recall leave
+        if ($status == 3 && $currentStatus == 1) {  
             $remainingDays = calculateBusinessDays($fromDate, $toDate);
             $updateLeaveTypeQuery = "UPDATE employee_leave_types 
                                      SET available_days = available_days + ? 
@@ -206,7 +206,7 @@ function updateStatus($id, $status)
             $stmt = mysqli_prepare($conn, $updateLeaveTypeQuery);
             mysqli_stmt_bind_param($stmt, 'iii', $remainingDays, $empId, $leaveTypeId);
             mysqli_stmt_execute($stmt);
-        } elseif ($status == 1) {  // Approve leave
+        } elseif ($status == 1) {  
             $updateLeaveTypeQuery = "UPDATE employee_leave_types 
                                      SET available_days = available_days - ? 
                                      WHERE emp_id = ? AND leave_type_id = ?";
@@ -215,7 +215,7 @@ function updateStatus($id, $status)
             mysqli_stmt_execute($stmt);
         }
 
-        // Update leave status
+        
         $updateQuery = "UPDATE tblleave SET leave_status = ? WHERE id = ?";
         $stmt = mysqli_prepare($conn, $updateQuery);
         mysqli_stmt_bind_param($stmt, 'ii', $status, $id);
@@ -275,7 +275,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'apply-leave') {
 ?>
 
 <?php
-// Retrieve the search query and leave status filter from the AJAX request
+
 $searchQuery = isset($_POST['searchQuery']) ? $_POST['searchQuery'] : '';
 $leaveStatusFilter = isset($_POST['leaveStatusFilter']) ? $_POST['leaveStatusFilter'] : 'Show all';
 
@@ -284,7 +284,7 @@ $userId = $_SESSION['slogin'];
 $userDepartment = $_SESSION['department'];
 $isSupervisor = $_SESSION['is_supervisor'];
 
-// Map the leave status filter to the corresponding integer values
+
 $statusMap = [
     'Pending' => 0,
     'Approved' => 1,
@@ -293,36 +293,36 @@ $statusMap = [
     'Rejected' => 4
 ];
 
-// Initialize the leave status filter value
+
 $leaveStatusValue = null;
 if ($leaveStatusFilter !== 'Show all' && isset($statusMap[$leaveStatusFilter])) {
     $leaveStatusValue = $statusMap[$leaveStatusFilter];
 }
 
-// Construct the base query
+
 $sql = "SELECT l.*, e.first_name, e.middle_name, e.last_name, e.image_path, e.designation, lt.leave_type, elt.available_days
         FROM tblleave l 
         JOIN tblemployees e ON l.empid = e.emp_id 
         JOIN tblleavetype lt ON l.leave_type_id = lt.id
         JOIN employee_leave_types elt ON l.empid = elt.emp_id AND l.leave_type_id = elt.leave_type_id";
 
-// Initialize an array to hold the conditions
+
 $conditions = [];
 
-// Apply the leave status filter if it's not 'Show all'
+
 if ($leaveStatusValue !== null) {
     $conditions[] = "l.leave_status = $leaveStatusValue";
 }
 
-// Apply the search query filter if it's not empty
+
 if (!empty($searchQuery)) {
-    // Escaping the search query for safety
+    
     $searchQueryEscaped = mysqli_real_escape_string($conn, $searchQuery);
     $conditions[] = "(e.first_name LIKE '%$searchQueryEscaped%' OR e.last_name LIKE '%$searchQueryEscaped%' 
                     OR e.designation LIKE '%$searchQueryEscaped%' OR lt.leave_type LIKE '%$searchQueryEscaped%')";
 }
 
-// Apply role-based conditions
+
 if ($userRole !== 'Admin') {
     if ($userRole === 'Manager') {
         $conditions[] = "e.department = '$userDepartment' AND l.empid != $userId";
@@ -331,16 +331,16 @@ if ($userRole !== 'Admin') {
     }
 }
 
-// Combine conditions with 'AND' if any exist
+
 if (count($conditions) > 0) {
     $sql .= ' WHERE ' . implode(' AND ', $conditions);
 }
 
-// Add the ORDER BY clause
+
 $sql .= " ORDER BY CASE WHEN l.leave_status = 0 THEN 0 ELSE 1 END, l.created_date DESC";
 
-// Execute the query and fetch the leave data
-$leaveData = []; // Array to store the fetched leave data
+
+$leaveData = []; 
 $result = mysqli_query($conn, $sql);
 if ($result && mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -348,7 +348,7 @@ if ($result && mysqli_num_rows($result) > 0) {
     }
 }
 
-// Fetch leave type names
+
 $leaveTypes = [];
 $leaveTypeResult = mysqli_query($conn, "SELECT id, leave_type FROM tblleavetype");
 if ($leaveTypeResult && mysqli_num_rows($leaveTypeResult) > 0) {
@@ -357,7 +357,7 @@ if ($leaveTypeResult && mysqli_num_rows($leaveTypeResult) > 0) {
     }
 }
 
-// Generate and return the HTML markup for the leave cards
+
 if (empty($leaveData)) {
     echo '<div class="col-sm-12 text-center">
             <img src="../files/assets/images/no_data.png" class="img-radius" alt="No Data Found" style="width: 200px; height: auto;">
@@ -382,7 +382,7 @@ if (empty($leaveData)) {
             case 3:
                 $badgeClass = 'badge-warning';
                 break;
-            case 4:  // Added Rejected status class
+            case 4:  
                 $badgeClass = 'badge-danger';
                 break;
             default:
@@ -390,7 +390,7 @@ if (empty($leaveData)) {
                 break;
         }
 
-        // Format the dates
+        
         $fromDate = date('jS F, Y', strtotime($leave['from_date']));
         $toDate = date('jS F, Y', strtotime($leave['to_date']));
         $postingDate = date('jS F, Y', strtotime($leave['created_date']));
