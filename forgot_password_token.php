@@ -38,14 +38,83 @@
                                         <h3 class="text-center"><i class="feather icon-lock text-primary f-60 p-t-15 p-b-20 d-block"></i></h3>
                                     </div>
                                 </div>
-                                <div class="form-group form-primary">
-                                    <input type="password" id="new_password" name="new_password" class="form-control password" required="" placeholder="Nhập mật khẩu mới">
+                                <div class="form-group form-primary position-relative">
+                                    <input type="password" id="new_password" name="new_password" class="form-control password" 
+                                        required="" placeholder="Nhập mật khẩu mới" style="padding-right: 40px;">
                                     <span class="form-bar"></span>
+                                    <span id="toggleNewPassword" class="position-absolute" 
+                                        style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                        <i class="fa fa-eye" style="color: black;"></i>
+                                    </span>
                                 </div>
-                                <div class="form-group form-primary">
-                                    <input type="password" id="confirm_password" name="confirm_password" class="form-control password" required="" placeholder="Nhập lại mật khẩu">
+
+                                <div class="form-group form-primary position-relative">
+                                    <input type="password" id="confirm_password" name="confirm_password" class="form-control password" 
+                                        required="" placeholder="Nhập lại mật khẩu" style="padding-right: 40px;">
                                     <span class="form-bar"></span>
+                                    <span id="toggleConfirmPassword" class="position-absolute" 
+                                        style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                        <i class="fa fa-eye" style="color: black;"></i>
+                                    </span>
                                 </div>
+
+                                <!-- CSS -->
+                                <style>
+                                    .fa-eye, .fa-eye-slash {
+                                        color: black; /* Đặt màu đen cho icon */
+                                    }
+
+                                    .position-relative {
+                                        position: relative;
+                                    }
+
+                                    .form-control {
+                                        padding-right: 40px; /* Tạo khoảng trống để icon không đè lên chữ */
+                                    }
+
+                                    #toggleNewPassword, #toggleConfirmPassword {
+                                        right: 10px; /* Đặt icon ở góc phải */
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        position: absolute;
+                                        cursor: pointer;
+                                    }
+                                </style>
+
+                                <!-- JavaScript -->
+                                <script>
+                                    // Hiện/Ẩn mật khẩu cho trường "Nhập mật khẩu mới"
+                                    const toggleNewPassword = document.getElementById('toggleNewPassword');
+                                    const newPasswordField = document.getElementById('new_password');
+
+                                    toggleNewPassword.addEventListener('click', () => {
+                                        const type = newPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                                        newPasswordField.setAttribute('type', type);
+
+                                        // Đổi icon
+                                        toggleNewPassword.innerHTML = type === 'text' 
+                                            ? '<i class="fa fa-eye-slash" style="color: black;"></i>' 
+                                            : '<i class="fa fa-eye" style="color: black;"></i>';
+                                    });
+
+                                    // Hiện/Ẩn mật khẩu cho trường "Nhập lại mật khẩu"
+                                    const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+                                    const confirmPasswordField = document.getElementById('confirm_password');
+
+                                    toggleConfirmPassword.addEventListener('click', () => {
+                                        const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                                        confirmPasswordField.setAttribute('type', type);
+
+                                        // Đổi icon
+                                        toggleConfirmPassword.innerHTML = type === 'text' 
+                                            ? '<i class="fa fa-eye-slash" style="color: black;"></i>' 
+                                            : '<i class="fa fa-eye" style="color: black;"></i>';
+                                    });
+                                </script>
+
+                                <!-- Font Awesome -->
+                                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+
                                 <input type="hidden" id="token" name="token" value="<?php echo $_GET['token']; ?>">
                                 <div class="row">
                                     <div class="col-md-12">

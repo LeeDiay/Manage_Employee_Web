@@ -101,12 +101,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class="<?php echo ($page_name == 'salary_list') ? 'active' : ''; ?>">
+                <!-- <li class="<?php echo ($page_name == 'salary_list') ? 'active' : ''; ?>">
                     <a href="my_salary.php">
                         <span class="pcoded-micon"><i class="feather icon-bell"></i></span>
                         <span class="pcoded-mtext">Quản lí lương</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         <?php endif; ?>   
         <?php if ($session_role == 'Staff') : ?>

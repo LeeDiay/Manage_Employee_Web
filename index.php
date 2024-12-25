@@ -580,16 +580,54 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input type="email" id="email" class="form-control" placeholder="Địa Chỉ Email Của Bạn"
+                            <input type="email" id="email" class="form-control" placeholder="Nhập Email của bạn"
                                 required />
                         </div>
-                        <div class="form-group">
-                            <input type="password" id="password" class="form-control" placeholder="Mật Khẩu" required />
+                        <div class="form-group position-relative">
+                            <input type="password" id="password" class="form-control" placeholder="Nhập mật Khẩu" required />
+                            <span id="togglePassword" class="position-absolute"
+                                style="right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                <i class="fa fa-eye" style="color: black;"></i>
+                            </span>
                         </div>
                         <div class="text-right">
                             <a href="forgot_password.php">Quên Mật Khẩu?</a>
                         </div>
                     </div>
+
+                    <!-- Thêm đoạn mã CSS này -->
+                    <style>
+                    .fa-eye,
+                    .fa-eye-slash {
+                        color: black;
+                        /* Đặt màu đen cho icon */
+                    }
+
+                    .position-relative {
+                        position: relative;
+                    }
+                    </style>
+
+                    <!-- JavaScript -->
+                    <script>
+                    const togglePassword = document.getElementById('togglePassword');
+                    const passwordField = document.getElementById('password');
+
+                    togglePassword.addEventListener('click', () => {
+                        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                        passwordField.setAttribute('type', type);
+
+                        // Đổi icon
+                        togglePassword.innerHTML = type === 'text' ?
+                            '<i class="fa fa-eye-slash" style="color: black;"></i>' :
+                            '<i class="fa fa-eye" style="color: black;"></i>';
+                    });
+                    </script>
+
+                    <!-- Font Awesome -->
+                    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+                        rel="stylesheet" />
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">
                             Đóng
@@ -604,7 +642,8 @@
 
         <div class="container copyright text-center mt-4">
             <p>© <span>Bản quyền thuộc về</span> <strong class="px-1 sitename">Công ty phần mềm Đức Anh.</strong>
-                <span>Mọi quyền đều được bảo lưu.</span></p>
+                <span>Mọi quyền đều được bảo lưu.</span>
+            </p>
         </div>
 
     </footer>
@@ -677,7 +716,7 @@ $('#login-form').click(function(event) {
                 Swal.fire({
                     icon: 'success',
                     title: titleMessage,
-                    confirmButtonColor: '#01a9ac', 
+                    confirmButtonColor: '#01a9ac',
                     confirmButtonText: 'OK'
                 }).then((result) => {
                     $('#loginModal').modal('hide');
